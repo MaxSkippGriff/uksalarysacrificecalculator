@@ -1,0 +1,170 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="section">
+  <div class="badge">Calculator</div>
+  <h1>£100k Salary Sacrifice &amp; Tax Trap Calculator 2026/27</h1>
+  <p style="color:var(--text-secondary);margin-bottom:1.25rem;">Estimate how salary sacrifice can restore your personal allowance when income exceeds £100,000.</p>
+
+  <div class="calc-widget">
+    <div class="calc-widget-header">
+      <h2>£100k Tax Trap</h2>
+      <span class="calc-year-badge">2026/27 · 60% effective rate</span>
+    </div>
+    <div class="calc-widget-body">
+      <div class="calc-grid-2">
+        <div class="field">
+          <label>Gross salary before sacrifice</label>
+          <div class="currency-input">
+            <span class="currency-symbol">£</span>
+            <input type="number" id="gross_salary" value="110000" min="0" oninput="calculate()">
+          </div>
+        </div>
+        <div class="field">
+          <label>Annual sacrifice amount</label>
+          <div class="currency-input">
+            <span class="currency-symbol">£</span>
+            <input type="number" id="sacrifice_amount" value="12000" min="0" oninput="calculate()">
+          </div>
+        </div>
+      </div>
+      <div id="below_100k_warning" style="display:none;background:#fffbeb;border:1px solid #f59e0b;border-radius:var(--radius-sm);padding:0.65rem 0.9rem;font-size:0.82rem;color:#92400e;margin-top:0.5rem;">
+        Your salary is below £100,000 — the personal allowance taper does not apply, but salary sacrifice still saves income tax and NI at your marginal rate.
+      </div>
+    </div>
+    <div class="calc-widget-results">
+      <div class="results-row"><span class="results-label">Salary before sacrifice</span><span class="results-value">£<span id="r_salary_before">0</span></span></div>
+      <div class="results-row"><span class="results-label">Salary after sacrifice</span><span class="results-value">£<span id="r_salary_after">0</span></span></div>
+      <div class="results-row"><span class="results-label">Personal allowance before</span><span class="results-value">£<span id="r_pa_before">0</span></span></div>
+      <div class="results-row"><span class="results-label">Personal allowance after</span><span class="results-value">£<span id="r_pa_after">0</span></span></div>
+      <div class="results-row"><span class="results-label">Income tax saving</span><span class="results-value">£<span id="r_tax_saving">0</span></span></div>
+      <div class="results-row"><span class="results-label">NI saving</span><span class="results-value">£<span id="r_ni_saving">0</span></span></div>
+      <div class="results-row results-total"><span class="results-label">Total saving</span><span class="results-value">£<span id="r_total_saving">0</span></span></div>
+      <div class="results-row"><span class="results-label">Net cost to take-home</span><span class="results-value">£<span id="r_net_cost">0</span></span></div>
+    </div>
+  </div>
+
+  <article class="card">
+    <h2>The £100k–£125,140 60% effective marginal rate</h2>
+    <p>Between £100,000 and £125,140, your personal allowance tapers at £1 for every £2 of income above £100,000. The personal allowance is fully withdrawn at £125,140. This means:</p>
+    <ul style="padding-left:1.25rem;font-size:0.9rem;color:var(--text-secondary);line-height:1.8;margin-top:0.25rem;margin-bottom:0.85rem;">
+      <li>Each extra £2 of income above £100,000 costs you £2 × 40% (higher-rate tax) + £1 × 40% (tax on the lost personal allowance) = £1.20 in total tax.</li>
+      <li>This is an effective marginal rate of 60% on income in this band.</li>
+      <li>Above £125,140 the effective rate returns to 45% (additional rate).</li>
+    </ul>
+    <p>Salary sacrifice reduces your gross pay, which lowers your income within (or below) this band. Each £2 of sacrifice in this zone saves you approximately £1.20 in income tax — plus NI on top — making sacrifice exceptionally valuable here.</p>
+  </article>
+
+  <article class="card">
+    <h2>How sacrifice restores the personal allowance</h2>
+    <p>If your salary is, say, £110,000, your personal allowance is reduced by (£110,000 − £100,000) / 2 = £5,000. So instead of £12,570, your effective personal allowance is £7,570.</p>
+    <p>A sacrifice of £10,000 would bring your income to £100,000 — restoring the full personal allowance of £12,570. The income tax saving on that sacrifice is approximately £6,000 (at the effective 60% rate), plus employee NI saving of £200 (at 2% above £50,270). Total saving: ~£6,200 on a £10,000 sacrifice.</p>
+    <p style="margin-bottom:0;">The calculator above models this precisely for your inputs.</p>
+  </article>
+
+  <article class="card">
+    <h2>Frequently asked questions</h2>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary>What is the personal allowance taper?</summary>
+        <div class="faq-answer">
+          <p>If your adjusted net income exceeds £100,000, the standard personal allowance (£12,570 for 2026/27) is reduced by £1 for every £2 of income above that threshold. The allowance reaches zero at £125,140. The result is an effective 60% marginal income tax rate between £100,000 and £125,140.</p>
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary>Does salary sacrifice count as adjusted net income?</summary>
+        <div class="faq-answer">
+          <p>Yes. Salary sacrifice reduces your gross/contractual salary, which in turn reduces your adjusted net income. This is different from personal pension contributions, which also reduce adjusted net income but are added back to gross pay before the calculation. Both methods are effective, but salary sacrifice also saves employee NI.</p>
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary>Is it always worth sacrificing to get below £100k?</summary>
+        <div class="faq-answer">
+          <p>Usually yes, if your employer scheme allows it and the salary is genuinely in the taper zone. The 60% effective rate makes sacrifice very efficient. However, consider mortgage affordability (lenders may use post-sacrifice salary), and check the pension annual allowance — you cannot contribute more than £60,000 in 2026/27 (or your earnings, whichever is lower). A financial adviser can help weigh the trade-offs.</p>
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary>What if my income is above £125,140?</summary>
+        <div class="faq-answer">
+          <p>Above £125,140 the personal allowance is fully withdrawn and the additional rate of 45% applies. Salary sacrifice still saves 45% income tax plus 2% NI, so the effective saving rate on sacrifice in this zone is approximately 47%. This is still highly beneficial.</p>
+        </div>
+      </details>
+    </div>
+  </article>
+
+  <article class="card">
+    <h2>Official sources</h2>
+    <ul style="padding-left:1.25rem;font-size:0.9rem;color:var(--text-secondary);line-height:1.8;margin-top:0.25rem;margin-bottom:0;">
+      <li><a href="https://www.gov.uk/income-tax-rates" target="_blank" rel="noopener" style="color:var(--accent);">GOV.UK — Income Tax rates and Personal Allowances</a></li>
+      <li><a href="https://www.gov.uk/guidance/salary-sacrifice-and-the-effects-on-paye" target="_blank" rel="noopener" style="color:var(--accent);">GOV.UK — Salary sacrifice and the effects on PAYE</a></li>
+      <li><a href="https://www.gov.uk/national-insurance-rates-letters" target="_blank" rel="noopener" style="color:var(--accent);">GOV.UK — National Insurance rates</a></li>
+    </ul>
+  </article>
+
+  <p style="font-size:0.8rem;color:var(--text-tertiary);margin-top:1.5rem;">This calculator provides estimates only. It does not constitute financial, tax or legal advice. Always check current GOV.UK guidance and consult a qualified adviser before making decisions.</p>
+</section>
+
+<script>
+const PERSONAL_ALLOWANCE = 12570;
+const BASIC_RATE_LIMIT = 50270;
+const ADDITIONAL_RATE_THRESHOLD = 125140;
+const BASIC_RATE = 0.20;
+const HIGHER_RATE = 0.40;
+const ADDITIONAL_RATE = 0.45;
+const EMPLOYEE_NI_PRIMARY_THRESHOLD = 12570;
+const EMPLOYEE_NI_UPPER = 50270;
+const EMPLOYEE_NI_LOWER_RATE = 0.08;
+const EMPLOYEE_NI_UPPER_RATE = 0.02;
+
+function getPersonalAllowance(income) {
+  if (income <= 100000) return PERSONAL_ALLOWANCE;
+  if (income >= 125140) return 0;
+  return Math.max(0, PERSONAL_ALLOWANCE - Math.floor((income - 100000) / 2));
+}
+function calcIncomeTaxWithPA(taxableIncome, pa) {
+  if (taxableIncome <= 0) return 0;
+  const abovePA = Math.max(0, taxableIncome - pa);
+  const basic = Math.min(abovePA, BASIC_RATE_LIMIT - PERSONAL_ALLOWANCE);
+  const higher = Math.max(0, Math.min(abovePA - basic, ADDITIONAL_RATE_THRESHOLD - BASIC_RATE_LIMIT));
+  const additional = Math.max(0, abovePA - basic - higher);
+  return basic * BASIC_RATE + higher * HIGHER_RATE + additional * ADDITIONAL_RATE;
+}
+function calcEmployeeNI(gross) {
+  if (gross <= EMPLOYEE_NI_PRIMARY_THRESHOLD) return 0;
+  const lower = (Math.min(gross, EMPLOYEE_NI_UPPER) - EMPLOYEE_NI_PRIMARY_THRESHOLD) * EMPLOYEE_NI_LOWER_RATE;
+  const upper = Math.max(0, gross - EMPLOYEE_NI_UPPER) * EMPLOYEE_NI_UPPER_RATE;
+  return lower + upper;
+}
+
+function calculate() {
+  const salary = +document.getElementById('gross_salary').value || 0;
+  const sacrifice = Math.min(+document.getElementById('sacrifice_amount').value || 0, salary);
+
+  const salaryAfter = salary - sacrifice;
+  const paBefore = getPersonalAllowance(salary);
+  const paAfter = getPersonalAllowance(salaryAfter);
+
+  const taxBefore = calcIncomeTaxWithPA(salary, paBefore);
+  const taxAfter = calcIncomeTaxWithPA(salaryAfter, paAfter);
+  const niBefore = calcEmployeeNI(salary);
+  const niAfter = calcEmployeeNI(salaryAfter);
+
+  const taxSaving = taxBefore - taxAfter;
+  const niSaving = niBefore - niAfter;
+  const netCostAnnual = sacrifice - taxSaving - niSaving;
+
+  const warning = document.getElementById('below_100k_warning');
+  warning.style.display = salary < 100000 ? 'block' : 'none';
+
+  const fmt = n => n.toLocaleString('en-GB', {minimumFractionDigits:0,maximumFractionDigits:0});
+  document.getElementById('r_salary_before').textContent = fmt(salary);
+  document.getElementById('r_salary_after').textContent = fmt(salaryAfter);
+  document.getElementById('r_pa_before').textContent = fmt(paBefore);
+  document.getElementById('r_pa_after').textContent = fmt(paAfter);
+  document.getElementById('r_tax_saving').textContent = fmt(taxSaving);
+  document.getElementById('r_ni_saving').textContent = fmt(niSaving);
+  document.getElementById('r_total_saving').textContent = fmt(taxSaving + niSaving);
+  document.getElementById('r_net_cost').textContent = fmt(netCostAnnual);
+}
+window.onload = calculate;
+</script>
+{% endblock %}

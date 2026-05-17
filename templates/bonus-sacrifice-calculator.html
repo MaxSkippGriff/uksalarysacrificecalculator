@@ -1,0 +1,171 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="section">
+  <div class="badge">Calculator</div>
+  <h1>Bonus Sacrifice Calculator 2026/27</h1>
+  <p style="color:var(--text-secondary);margin-bottom:1.25rem;">Estimate the tax impact of sacrificing a bonus into your pension instead of taking it as cash.</p>
+
+  <div class="calc-widget">
+    <div class="calc-widget-header">
+      <h2>Bonus Sacrifice</h2>
+      <span class="calc-year-badge">2026/27</span>
+    </div>
+    <div class="calc-widget-body">
+      <div class="calc-grid-2">
+        <div class="field">
+          <label>Base salary</label>
+          <div class="currency-input">
+            <span class="currency-symbol">£</span>
+            <input type="number" id="salary_before_bonus" value="45000" min="0" oninput="calculate()">
+          </div>
+        </div>
+        <div class="field">
+          <label>Gross bonus</label>
+          <div class="currency-input">
+            <span class="currency-symbol">£</span>
+            <input type="number" id="bonus_amount" value="10000" min="0" oninput="calculate()">
+          </div>
+        </div>
+        <div class="field">
+          <label>Amount to sacrifice</label>
+          <div class="currency-input">
+            <span class="currency-symbol">£</span>
+            <input type="number" id="sacrifice_amount" value="10000" min="0" oninput="calculate()">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="calc-widget-results">
+      <div class="results-row"><span class="results-label">Gross bonus</span><span class="results-value">£<span id="r_bonus">0</span></span></div>
+      <div class="results-row"><span class="results-label">Amount sacrificed</span><span class="results-value">£<span id="r_sacrifice">0</span></span></div>
+      <div class="results-row"><span class="results-label">Cash taken</span><span class="results-value">£<span id="r_cash">0</span></span></div>
+      <div class="results-row"><span class="results-label">Cash take-home (after tax/NI)</span><span class="results-value">£<span id="r_cash_takehome">0</span></span></div>
+      <div class="results-row"><span class="results-label">Full bonus as cash take-home</span><span class="results-value">£<span id="r_full_bonus_takehome">0</span></span></div>
+      <div class="results-row results-total"><span class="results-label">Pension value from sacrifice</span><span class="results-value">£<span id="r_pension_value">0</span></span></div>
+      <div class="results-row"><span class="results-label">Tax and NI saved by sacrificing</span><span class="results-value">£<span id="r_tax_saved">0</span></span></div>
+    </div>
+  </div>
+
+  <article class="card">
+    <h2>Timing rules — sacrifice before the bonus is due</h2>
+    <p>HMRC requires that a bonus sacrifice be agreed and documented <strong>before the bonus becomes contractually due</strong>. This means you must elect to sacrifice before the bonus is awarded or confirmed in writing — not after you receive a bonus letter. If a bonus has already been contractually agreed and paid, you cannot retrospectively sacrifice it; doing so would be treated as a pension contribution from net pay (with less favourable tax treatment) or possibly disallowed entirely.</p>
+    <p>In practice, this means:</p>
+    <ul style="padding-left:1.25rem;font-size:0.9rem;color:var(--text-secondary);line-height:1.8;margin-top:0.25rem;margin-bottom:0.85rem;">
+      <li>Speak to your employer's HR or payroll team before the bonus review date.</li>
+      <li>Your employer should have a flexible remuneration policy or sacrifice agreement in place.</li>
+      <li>The sacrifice should be reflected in a variation to your employment contract before the bonus is processed.</li>
+    </ul>
+    <p style="margin-bottom:0;">Some employers have standing arrangements that allow bonus sacrifice elections up to a defined deadline each year. Check your employer's policy early.</p>
+  </article>
+
+  <article class="card">
+    <h2>Worked example</h2>
+    <p>Base salary £45,000, gross bonus £10,000, full bonus sacrificed to pension:</p>
+    <ul style="padding-left:1.25rem;font-size:0.9rem;color:var(--text-secondary);line-height:1.8;margin-top:0.25rem;margin-bottom:0.85rem;">
+      <li>Without sacrifice: bonus of £10,000 is taxed at 40% (most of it falls in the higher-rate band) plus 2% NI above £50,270 — cash take-home from the bonus is approximately <strong>£5,800</strong>.</li>
+      <li>With full sacrifice: pension receives <strong>£10,000</strong>. Tax and NI saving: approximately <strong>£4,200</strong>.</li>
+      <li>You forgo ~£5,800 cash but gain £10,000 in pension — an immediate uplift of ~£4,200.</li>
+    </ul>
+    <p style="margin-bottom:0;">The exact figures depend on where the bonus falls relative to the income tax and NI thresholds. Use the calculator above for your specific figures.</p>
+  </article>
+
+  <article class="card">
+    <h2>Frequently asked questions</h2>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary>Can I sacrifice part of a bonus?</summary>
+        <div class="faq-answer">
+          <p>Yes. You can sacrifice any amount up to the full bonus. Use the "Amount to sacrifice" field above to model partial sacrifice. The remaining cash portion is paid through payroll as normal.</p>
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary>When must I decide to sacrifice a bonus?</summary>
+        <div class="faq-answer">
+          <p>You must make the election before the bonus is contractually due. The exact deadline depends on your employer's policy and when your employment contract is varied. Typically this means before your annual bonus review, performance appraisal outcome or any formal bonus letter is issued. Once a bonus is contractually awarded, you cannot sacrifice it under the salary sacrifice rules.</p>
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary>Does sacrificing a bonus affect my annual allowance?</summary>
+        <div class="faq-answer">
+          <p>Yes. All pension contributions — including those from bonus sacrifice — count towards your annual allowance (£60,000 for 2026/27, or 100% of earnings). If you have a large bonus and are also making regular salary sacrifice contributions, check that the combined total does not exceed the annual allowance or trigger a tax charge.</p>
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary>Does bonus sacrifice reduce my mortgage borrowing?</summary>
+        <div class="faq-answer">
+          <p>Bonus sacrifice typically only affects your mortgage if the lender uses total remuneration (including expected bonuses) as part of their income assessment. Most lenders focus on basic salary — so sacrificing a one-off bonus is unlikely to affect affordability as significantly as ongoing salary sacrifice. Check with your lender or mortgage broker if this is a concern.</p>
+        </div>
+      </details>
+    </div>
+  </article>
+
+  <article class="card">
+    <h2>Official sources</h2>
+    <ul style="padding-left:1.25rem;font-size:0.9rem;color:var(--text-secondary);line-height:1.8;margin-top:0.25rem;margin-bottom:0;">
+      <li><a href="https://www.gov.uk/guidance/salary-sacrifice-and-the-effects-on-paye" target="_blank" rel="noopener" style="color:var(--accent);">GOV.UK — Salary sacrifice and the effects on PAYE</a></li>
+      <li><a href="https://www.gov.uk/tax-on-your-private-pension/annual-allowance" target="_blank" rel="noopener" style="color:var(--accent);">GOV.UK — Pension annual allowance</a></li>
+    </ul>
+  </article>
+
+  <p style="font-size:0.8rem;color:var(--text-tertiary);margin-top:1.5rem;">This calculator provides estimates only. It does not constitute financial, tax or legal advice. Always check current GOV.UK guidance and consult a qualified adviser before making decisions.</p>
+</section>
+
+<script>
+const PERSONAL_ALLOWANCE = 12570;
+const BASIC_RATE_LIMIT = 50270;
+const ADDITIONAL_RATE_THRESHOLD = 125140;
+const BASIC_RATE = 0.20;
+const HIGHER_RATE = 0.40;
+const ADDITIONAL_RATE = 0.45;
+const EMPLOYEE_NI_PRIMARY_THRESHOLD = 12570;
+const EMPLOYEE_NI_UPPER = 50270;
+const EMPLOYEE_NI_LOWER_RATE = 0.08;
+const EMPLOYEE_NI_UPPER_RATE = 0.02;
+
+function calcIncomeTax(taxableIncome) {
+  if (taxableIncome <= 0) return 0;
+  const abovePA = Math.max(0, taxableIncome - PERSONAL_ALLOWANCE);
+  const basic = Math.min(abovePA, BASIC_RATE_LIMIT - PERSONAL_ALLOWANCE);
+  const higher = Math.max(0, Math.min(abovePA - basic, ADDITIONAL_RATE_THRESHOLD - BASIC_RATE_LIMIT));
+  const additional = Math.max(0, abovePA - basic - higher);
+  return basic * BASIC_RATE + higher * HIGHER_RATE + additional * ADDITIONAL_RATE;
+}
+function calcEmployeeNI(gross) {
+  if (gross <= EMPLOYEE_NI_PRIMARY_THRESHOLD) return 0;
+  const lower = (Math.min(gross, EMPLOYEE_NI_UPPER) - EMPLOYEE_NI_PRIMARY_THRESHOLD) * EMPLOYEE_NI_LOWER_RATE;
+  const upper = Math.max(0, gross - EMPLOYEE_NI_UPPER) * EMPLOYEE_NI_UPPER_RATE;
+  return lower + upper;
+}
+
+function calculate() {
+  const baseSalary = +document.getElementById('salary_before_bonus').value || 0;
+  const bonus = +document.getElementById('bonus_amount').value || 0;
+  const sacrifice = Math.min(+document.getElementById('sacrifice_amount').value || 0, bonus);
+  const cashBonus = bonus - sacrifice;
+
+  const totalWithBonus = baseSalary + bonus;
+  const taxWithBonus = calcIncomeTax(totalWithBonus);
+  const niWithBonus = calcEmployeeNI(totalWithBonus);
+  const takeHomeBonus = (totalWithBonus - taxWithBonus - niWithBonus) - (baseSalary - calcIncomeTax(baseSalary) - calcEmployeeNI(baseSalary));
+
+  const totalWithCash = baseSalary + cashBonus;
+  const taxWithCash = calcIncomeTax(totalWithCash);
+  const niWithCash = calcEmployeeNI(totalWithCash);
+  const takeHomeCash = (totalWithCash - taxWithCash - niWithCash) - (baseSalary - calcIncomeTax(baseSalary) - calcEmployeeNI(baseSalary));
+
+  const pensionValue = sacrifice;
+  const cashTakeHome = takeHomeCash;
+  const taxOnSacrificed = (taxWithBonus - taxWithCash) + (niWithBonus - niWithCash);
+
+  const fmt = n => n.toLocaleString('en-GB', {minimumFractionDigits:0,maximumFractionDigits:0});
+  document.getElementById('r_bonus').textContent = fmt(bonus);
+  document.getElementById('r_sacrifice').textContent = fmt(sacrifice);
+  document.getElementById('r_cash').textContent = fmt(cashBonus);
+  document.getElementById('r_cash_takehome').textContent = fmt(cashTakeHome);
+  document.getElementById('r_pension_value').textContent = fmt(pensionValue);
+  document.getElementById('r_tax_saved').textContent = fmt(taxOnSacrificed);
+  document.getElementById('r_full_bonus_takehome').textContent = fmt(takeHomeBonus);
+}
+window.onload = calculate;
+</script>
+{% endblock %}

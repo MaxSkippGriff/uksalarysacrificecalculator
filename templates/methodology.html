@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="section">
+  <div class="badge">Methodology</div>
+  <h1>Methodology — How We Calculate Salary Sacrifice Savings ({{ tax_year }})</h1>
+
+  <article class="card" style="padding:1rem 1.25rem;margin-top:0.9rem;">
+    <h2>Overview</h2>
+    <p>We calculate take-home pay before and after the salary sacrifice using published {{ tax_year }} rates. The calculator runs entirely in the browser — no data is sent to our servers.</p>
+  </article>
+
+  <article class="card" style="padding:1rem 1.25rem;margin-top:0.9rem;">
+    <h2>Income tax — England, Wales and Northern Ireland</h2>
+    <ul style="padding-left:1.25rem;font-size:0.9rem;color:var(--text-secondary);line-height:1.8;margin-top:0.25rem;">
+      <li>Personal Allowance: £12,570. Tapers above £100,000 adjusted net income — reduce by £1 for every £2 above £100,000. Zero at £125,140.</li>
+      <li>Basic rate 20% on taxable income up to £37,700 (gross £12,571–£50,270).</li>
+      <li>Higher rate 40% on taxable income from £37,701 to £112,570 (gross £50,271–£125,140).</li>
+      <li>Additional rate 45% above £112,570 taxable income (gross above £125,140).</li>
+    </ul>
+  </article>
+
+  <article class="card" style="padding:1rem 1.25rem;margin-top:0.9rem;">
+    <h2>Income tax — Scotland ({{ tax_year }})</h2>
+    <ul style="padding-left:1.25rem;font-size:0.9rem;color:var(--text-secondary);line-height:1.8;margin-top:0.25rem;">
+      <li>Starter rate 19% on taxable income £0–£3,967.</li>
+      <li>Basic rate 20% on taxable income £3,968–£16,956.</li>
+      <li>Intermediate rate 21% on taxable income £16,957–£31,092.</li>
+      <li>Higher rate 42% on taxable income £31,093–£62,430.</li>
+      <li>Advanced rate 45% on taxable income £62,431–£125,140.</li>
+      <li>Top rate 48% above £125,140 taxable income.</li>
+      <li>Personal Allowance and taper rules are the same as rUK.</li>
+    </ul>
+  </article>
+
+  <article class="card" style="padding:1rem 1.25rem;margin-top:0.9rem;">
+    <h2>Employee National Insurance ({{ tax_year }})</h2>
+    <ul style="padding-left:1.25rem;font-size:0.9rem;color:var(--text-secondary);line-height:1.8;margin-top:0.25rem;">
+      <li>0% on earnings up to £12,570 (Lower Primary Threshold).</li>
+      <li>8% on earnings from £12,571 to £50,270 (Upper Earnings Limit).</li>
+      <li>2% on earnings above £50,270.</li>
+      <li>These rates apply UK-wide regardless of which income tax region you are in.</li>
+    </ul>
+  </article>
+
+  <article class="card" style="padding:1rem 1.25rem;margin-top:0.9rem;">
+    <h2>Employer National Insurance</h2>
+    <p style="font-size:0.9rem;color:var(--text-secondary);line-height:1.7;margin-bottom:0;">15% on earnings above £5,000 secondary threshold. Salary sacrifice reduces the employee's gross salary, so the employer pays NI on a smaller base. The employer NI saving shown is 15% of the sacrifice amount. Some employers pass this saving back as extra pension contribution — use the "Employer NI passed on" option to model this.</p>
+  </article>
+
+  <article class="card" style="padding:1rem 1.25rem;margin-top:0.9rem;">
+    <h2>What we do not model</h2>
+    <ul style="padding-left:1.25rem;font-size:0.9rem;color:var(--text-secondary);line-height:1.8;margin-top:0.25rem;">
+      <li>Student loan repayments (these are unaffected by salary sacrifice for most plans).</li>
+      <li>Benefit-in-kind tax on EV cars — the 4% BIK rate is mentioned but not fully calculated.</li>
+      <li>Impact on mortgage affordability calculations (lenders may use pre-sacrifice salary).</li>
+      <li>Annual Allowance limits on pension contributions (usually £60,000).</li>
+      <li>Company-specific scheme rules or pension provider restrictions.</li>
+    </ul>
+  </article>
+
+  <article class="card" style="padding:1rem 1.25rem;margin-top:0.9rem;">
+    <h2>Sources</h2>
+    <ul style="padding-left:1.25rem;font-size:0.9rem;color:var(--text-secondary);line-height:1.8;margin-top:0.25rem;">
+      <li><a href="https://www.gov.uk/guidance/salary-sacrifice-and-the-effects-on-paye" target="_blank" rel="noopener" style="color:var(--accent);">GOV.UK — Salary sacrifice and the effects on PAYE</a></li>
+      <li><a href="https://www.gov.uk/income-tax-rates" target="_blank" rel="noopener" style="color:var(--accent);">GOV.UK — Income Tax rates and bands</a></li>
+      <li><a href="https://www.gov.uk/national-insurance-rates-letters" target="_blank" rel="noopener" style="color:var(--accent);">GOV.UK — National Insurance rates</a></li>
+      <li><a href="https://www.gov.scot/news/scottish-income-tax-2026-to-2027/" target="_blank" rel="noopener" style="color:var(--accent);">Scottish Government — Scottish income tax rates 2026/27</a></li>
+    </ul>
+  </article>
+</section>
+{% endblock %}

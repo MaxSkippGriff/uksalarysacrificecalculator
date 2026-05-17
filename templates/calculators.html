@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="section">
+  <div class="badge">Calculators</div>
+  <h1>Salary Sacrifice Calculators 2026/27</h1>
+  <p>Free UK salary sacrifice calculators for pensions, bonuses, the £100k tax trap and employer NI savings. All use 2026/27 rates.</p>
+
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:0.9rem;margin-top:1.25rem;">
+
+    <a href="/" style="display:block;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1rem 1.25rem;text-decoration:none;">
+      <div style="font-size:0.72rem;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:0.3rem;">Calculator</div>
+      <div style="font-size:0.95rem;font-weight:600;color:var(--text-primary);margin-bottom:0.3rem;">UK Salary Sacrifice Calculator</div>
+      <div style="font-size:0.82rem;color:var(--text-secondary);">Estimate take-home pay, tax and NI savings from any salary sacrifice arrangement.</div>
+    </a>
+
+    <a href="/pension-salary-sacrifice-calculator" style="display:block;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1rem 1.25rem;text-decoration:none;">
+      <div style="font-size:0.72rem;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:0.3rem;">Calculator</div>
+      <div style="font-size:0.95rem;font-weight:600;color:var(--text-primary);margin-bottom:0.3rem;">Pension Salary Sacrifice Calculator</div>
+      <div style="font-size:0.82rem;color:var(--text-secondary);">Detailed pension sacrifice: income tax saving, employee NI, employer NI and net cost.</div>
+    </a>
+
+    <a href="/bonus-sacrifice-calculator" style="display:block;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1rem 1.25rem;text-decoration:none;">
+      <div style="font-size:0.72rem;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:0.3rem;">Calculator</div>
+      <div style="font-size:0.95rem;font-weight:600;color:var(--text-primary);margin-bottom:0.3rem;">Bonus Sacrifice Calculator</div>
+      <div style="font-size:0.82rem;color:var(--text-secondary);">Estimate the benefit of sacrificing a bonus into your pension instead of taking it as cash.</div>
+    </a>
+
+    <a href="/salary-sacrifice-100k-calculator" style="display:block;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1rem 1.25rem;text-decoration:none;">
+      <div style="font-size:0.72rem;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:0.3rem;">Calculator</div>
+      <div style="font-size:0.95rem;font-weight:600;color:var(--text-primary);margin-bottom:0.3rem;">£100k Tax Trap Calculator</div>
+      <div style="font-size:0.82rem;color:var(--text-secondary);">See how salary sacrifice can restore your personal allowance if income exceeds £100,000.</div>
+    </a>
+
+    <a href="/employer-ni-saving-calculator" style="display:block;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1rem 1.25rem;text-decoration:none;">
+      <div style="font-size:0.72rem;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:0.3rem;">Calculator</div>
+      <div style="font-size:0.95rem;font-weight:600;color:var(--text-primary);margin-bottom:0.3rem;">Employer NI Saving Calculator</div>
+      <div style="font-size:0.82rem;color:var(--text-secondary);">Estimate employer NI savings and optional pass-on to pension for any sacrifice amount.</div>
+    </a>
+
+  </div>
+</section>
+{% endblock %}

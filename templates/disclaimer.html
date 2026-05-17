@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="section">
+  <div class="badge">Disclaimer</div>
+  <h1>Disclaimer — UKSalarySacrificeCalculator.co.uk</h1>
+
+  <article class="card" style="padding:1rem 1.25rem;margin-top:0.9rem;">
+    <h2>Estimates only</h2>
+    <p>All results produced by UKSalarySacrificeCalculator.co.uk are estimates for planning purposes only. They are not financial, tax or legal advice.</p>
+    <p style="margin-bottom:0;">Actual savings will depend on your specific tax code, payroll circumstances, employer scheme rules and any other deductions not modelled here. Always confirm with your employer's HR or payroll team and, where significant amounts are involved, consult a qualified financial adviser or tax professional.</p>
+  </article>
+
+  <article class="card" style="padding:1rem 1.25rem;margin-top:0.9rem;">
+    <h2>Accuracy</h2>
+    <p style="margin-bottom:0;">We aim to keep rates and thresholds up to date with published HMRC guidance. However, we make no warranty of accuracy, completeness or fitness for any particular purpose. Use this tool as a starting point for planning conversations, not as a definitive calculation.</p>
+  </article>
+
+  <article class="card" style="padding:1rem 1.25rem;margin-top:0.9rem;">
+    <h2>Sources</h2>
+    <p style="margin-bottom:0;">Rates used are sourced from <a href="https://www.gov.uk/guidance/salary-sacrifice-and-the-effects-on-paye" target="_blank" rel="noopener" style="color:var(--accent);">GOV.UK salary sacrifice guidance</a> and <a href="https://www.gov.uk/national-insurance-rates-letters" target="_blank" rel="noopener" style="color:var(--accent);">HMRC NI rates</a> for {{ tax_year }}.</p>
+  </article>
+</section>
+{% endblock %}

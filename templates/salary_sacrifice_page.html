@@ -1,0 +1,194 @@
+{% extends "base.html" %}
+
+{% block head_extra %}
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{% for b in breadcrumbs %}{"@type":"ListItem","position":{{ loop.index }},"name":{{ b.name|tojson }},"item":{{ b.url|tojson }}}{% if not loop.last %},{% endif %}{% endfor %}]}
+</script>
+{% endblock %}
+
+{% block content %}
+<div class="page-wrap">
+
+  <!-- HERO -->
+  <header class="page-hero">
+    <div class="page-hero-inner">
+      <div class="page-badge">Updated for {{ tax_year }}</div>
+      <h1>Salary Sacrifice on a £{{ "{:,}".format(salary) }} Salary {{ tax_year }}</h1>
+      <p class="page-lead">
+        A <strong>£{{ "{:,}".format(sacrifice) }} pension sacrifice</strong> on a £{{ "{:,}".format(salary) }} salary saves approximately
+        <strong>£{{ "{:,.0f}".format(calc.income_tax_saving + calc.employee_ni_saving) }}</strong> in income tax and NI in {{ tax_year }}.
+        The net cost to your take-home pay is <strong>£{{ "{:,.0f}".format(calc.net_monthly_cost) }}/month</strong>.
+      </p>
+    </div>
+  </header>
+
+  <!-- RESULTS CARD -->
+  <section class="page-section" style="padding-top:0;">
+    <div class="results-card">
+      <div class="results-header">
+        <span class="results-badge">{{ tax_year }} · England/Wales/NI · Pension sacrifice</span>
+      </div>
+      <div class="results-grid">
+        <div class="result-item result-item--highlight">
+          <div class="result-label">Gross salary</div>
+          <div class="result-value">£{{ "{:,}".format(salary) }}</div>
+        </div>
+        <div class="result-item result-item--highlight">
+          <div class="result-label">Sacrifice amount</div>
+          <div class="result-value">£{{ "{:,}".format(sacrifice) }}</div>
+        </div>
+        <div class="result-item">
+          <div class="result-label">Income tax saving</div>
+          <div class="result-value result-value--green">£{{ "{:,.0f}".format(calc.income_tax_saving) }}</div>
+        </div>
+        <div class="result-item">
+          <div class="result-label">Employee NI saving</div>
+          <div class="result-value result-value--green">£{{ "{:,.0f}".format(calc.employee_ni_saving) }}</div>
+        </div>
+        <div class="result-item">
+          <div class="result-label">Total annual saving</div>
+          <div class="result-value result-value--green result-value--large">£{{ "{:,.0f}".format(calc.income_tax_saving + calc.employee_ni_saving) }}</div>
+        </div>
+        <div class="result-item">
+          <div class="result-label">Net monthly cost</div>
+          <div class="result-value">£{{ "{:,.0f}".format(calc.net_monthly_cost) }}</div>
+          <div class="result-sub">reduction in take-home pay</div>
+        </div>
+        <div class="result-item">
+          <div class="result-label">Employer NI saving</div>
+          <div class="result-value result-value--muted">£{{ "{:,.0f}".format(calc.employer_ni_saving) }}</div>
+          <div class="result-sub">may be passed on as extra pension</div>
+        </div>
+        <div class="result-item">
+          <div class="result-label">Take-home after</div>
+          <div class="result-value">£{{ "{:,.0f}".format(calc.after.take_home_annual) }}/yr</div>
+          <div class="result-sub">£{{ "{:,.0f}".format(calc.after.take_home_monthly) }}/month</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPLANATION -->
+  <section class="page-section">
+    <div class="section-label">How it works</div>
+    <h2>How salary sacrifice works on a £{{ "{:,}".format(salary) }} salary</h2>
+    <div class="prose-card">
+      <p>
+        With a £{{ "{:,}".format(salary) }} gross salary, a £{{ "{:,}".format(sacrifice) }} pension sacrifice reduces your taxable salary to
+        <strong>£{{ "{:,.0f}".format(salary - sacrifice) }}</strong>. You pay income tax and National Insurance on the lower figure,
+        not the original £{{ "{:,}".format(salary) }}.
+      </p>
+      {% if salary <= 50270 %}
+      <p>
+        At £{{ "{:,}".format(salary) }}, your salary sits within the <strong>basic-rate (20%) income tax band</strong>.
+        Each £1,000 sacrificed saves £200 in income tax, plus £80 in employee NI (at the 8% rate below £50,270) —
+        a combined saving of £280 per £1,000 sacrificed.
+      </p>
+      {% elif salary <= 100000 %}
+      <p>
+        At £{{ "{:,}".format(salary) }}, some or all of your sacrifice falls within the <strong>higher-rate (40%) income tax band</strong>.
+        Higher-rate sacrifice saves 40p in income tax per £1 — significantly more efficient than basic-rate relief.
+        {% if salary <= 50270 + sacrifice %}
+        Part of the sacrifice reduces salary from within the basic-rate band (saving 20p per £1 in tax) and part from the higher-rate band (saving 40p per £1).
+        {% endif %}
+        Employee NI above £50,270 is only 2%, so the NI saving is smaller on that portion of salary.
+      </p>
+      {% else %}
+      <p>
+        At £{{ "{:,}".format(salary) }}, your salary exceeds £100,000 and the Personal Allowance begins to taper.
+        Salary sacrifice can be particularly valuable here: reducing your adjusted net income below £100,000 can restore some or all of the £12,570 Personal Allowance,
+        creating an effective marginal rate that can exceed 60% on income in the £100,000–£125,140 range.
+      </p>
+      {% endif %}
+      <p>
+        The £{{ "{:,}".format(sacrifice) }} goes into your pension. You receive the full £{{ "{:,}".format(sacrifice) }} pension contribution,
+        but your take-home pay only falls by £{{ "{:,.0f}".format(calc.net_monthly_cost * 12) }} per year (£{{ "{:,.0f}".format(calc.net_monthly_cost) }}/month) —
+        the difference is the tax and NI you no longer pay.
+      </p>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="page-section" style="padding-top:0;">
+    <div class="cta-card">
+      <div class="cta-text">
+        <strong>Try a different salary or sacrifice amount</strong>
+        <span>Use the interactive calculator to model any scenario — pension, cycle to work, EV car or other.</span>
+      </div>
+      <a href="/calculator" class="cta-btn">Open calculator →</a>
+    </div>
+  </section>
+
+  <!-- OTHER SALARIES -->
+  <section class="page-section" style="padding-top:0;">
+    <div class="section-label">Other salaries</div>
+    <h2>Salary sacrifice estimates for other salaries</h2>
+    <div class="salary-pills">
+      {% for s in all_salaries %}
+      {% if s == salary %}
+      <span class="salary-pill salary-pill--active">£{{ "{:,}".format(s) }}</span>
+      {% else %}
+      <a href="/salary-sacrifice/{{ s }}" class="salary-pill">£{{ "{:,}".format(s) }}</a>
+      {% endif %}
+      {% endfor %}
+    </div>
+  </section>
+
+  <!-- DISCLAIMER -->
+  <section class="page-section" style="padding-top:0;padding-bottom:2rem;">
+    <div class="disclaimer-note">
+      Calculations are estimates for {{ tax_year }} using England/Wales/NI rates, a £{{ "{:,}".format(sacrifice) }} pension sacrifice and no student loan.
+      Results are guides only and are not financial or tax advice. Consult a qualified adviser before making salary sacrifice decisions.
+      <a href="/methodology" style="color:inherit;">Methodology →</a>
+    </div>
+  </section>
+
+</div><!-- /page-wrap -->
+
+<style>
+.page-wrap { max-width: 860px; margin: 0 auto; padding: 0 1.25rem; }
+
+.page-hero { padding: 1.25rem 0 1.5rem; }
+.page-badge { display: inline-flex; align-items: center; gap: 0.4rem; background: var(--accent-light); color: var(--accent); font-size: 0.78rem; font-weight: 700; padding: 0.28rem 0.7rem; border-radius: 100px; margin-bottom: 0.65rem; letter-spacing: 0.02em; }
+.page-hero h1 { font-family: var(--font-display); font-weight: 500; font-size: clamp(1.3rem, 3vw, 1.85rem); line-height: 1.2; letter-spacing: -0.03em; margin-bottom: 0.5rem; }
+.page-lead { color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6; max-width: 620px; }
+
+.page-section { padding: 1.5rem 0; }
+.section-label { font-size: 0.72rem; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.35rem; }
+.page-section h2 { font-family: var(--font-display); font-weight: 500; font-size: 1.3rem; letter-spacing: -0.02em; margin-bottom: 0.9rem; }
+
+.results-card { background: var(--surface); border: 1.5px solid var(--border-strong); border-top: 3px solid var(--accent); border-radius: var(--radius); box-shadow: var(--shadow-md); overflow: hidden; }
+.results-header { padding: 0.7rem 1.2rem; border-bottom: 1px solid var(--border); background: var(--accent-light); }
+.results-badge { font-size: 0.73rem; font-weight: 700; color: var(--accent); letter-spacing: 0.02em; }
+.results-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0; }
+.result-item { padding: 1rem 1.2rem; border-bottom: 1px solid var(--border); border-right: 1px solid var(--border); }
+.result-item:nth-child(4n) { border-right: none; }
+@media (max-width: 600px) { .results-grid { grid-template-columns: 1fr 1fr; } .result-item:nth-child(2n) { border-right: none; } .result-item:nth-child(4n) { border-right: 1px solid var(--border); } }
+@media (max-width: 400px) { .results-grid { grid-template-columns: 1fr; } .result-item { border-right: none !important; } }
+.result-label { font-size: 0.71rem; font-weight: 700; color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 0.25rem; }
+.result-value { font-size: 1.05rem; font-weight: 700; color: var(--text-primary); font-variant-numeric: tabular-nums; }
+.result-value--green { color: #1B6B4A; }
+.result-value--large { font-size: 1.25rem; }
+.result-value--muted { color: var(--text-secondary); }
+.result-sub { font-size: 0.72rem; color: var(--text-tertiary); margin-top: 0.15rem; }
+.result-item--highlight { background: var(--surface-alt); }
+
+.prose-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.2rem 1.4rem; }
+.prose-card p { font-size: 0.88rem; color: var(--text-secondary); line-height: 1.75; margin-bottom: 0.75rem; }
+.prose-card p:last-child { margin-bottom: 0; }
+
+.cta-card { display: flex; align-items: center; justify-content: space-between; gap: 1rem; background: var(--accent-light); border: 1.5px solid rgba(27,107,74,0.2); border-radius: var(--radius); padding: 1.1rem 1.4rem; flex-wrap: wrap; }
+.cta-text { display: flex; flex-direction: column; gap: 0.2rem; }
+.cta-text strong { font-size: 0.92rem; color: var(--text-primary); }
+.cta-text span { font-size: 0.82rem; color: var(--text-secondary); }
+.cta-btn { display: inline-flex; align-items: center; background: var(--accent); color: white; font-size: 0.875rem; font-weight: 600; padding: 0.6rem 1.25rem; border-radius: 100px; text-decoration: none; white-space: nowrap; transition: background var(--transition), transform var(--transition); }
+.cta-btn:hover { background: var(--accent-hover); transform: translateY(-1px); }
+
+.salary-pills { display: flex; flex-wrap: wrap; gap: 0.45rem; margin-top: 0.5rem; }
+.salary-pill { font-size: 0.82rem; font-weight: 500; padding: 0.35rem 0.85rem; border: 1.5px solid var(--border-strong); border-radius: 100px; text-decoration: none; color: var(--text-secondary); transition: all var(--transition); }
+.salary-pill:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-light); }
+.salary-pill--active { background: var(--accent); color: white; border-color: var(--accent); font-weight: 700; cursor: default; }
+
+.disclaimer-note { font-size: 0.78rem; color: var(--text-tertiary); border-top: 1px solid var(--border); padding-top: 0.85rem; line-height: 1.6; }
+</style>
+{% endblock %}

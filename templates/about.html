@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="section">
+  <div class="badge">About</div>
+  <h1>About UK Salary Sacrifice Calculator</h1>
+  <p>UKSalarySacrificeCalculator.co.uk is a free, independent tool for UK employees to estimate the income tax and National Insurance savings from salary sacrifice arrangements — including pension, cycle to work, EV company car and other schemes.</p>
+
+  <article class="card" style="padding:1rem 1.25rem;margin-top:0.9rem;">
+    <h2>What this site is for</h2>
+    <p>Use the <a href="/" style="color:var(--accent);font-weight:600;">salary sacrifice calculator</a> to model the before-and-after impact of any salary sacrifice arrangement on your take-home pay. The calculator shows income tax saving, employee NI saving, employer NI saving, and the real monthly net cost of the sacrifice.</p>
+    <p style="margin-bottom:0;">All calculations use published {{ tax_year }} rates. The calculator supports both England/Wales/NI and Scottish income tax rates.</p>
+  </article>
+
+  <article class="card" style="padding:1rem 1.25rem;margin-top:0.9rem;">
+    <h2>Editorial approach</h2>
+    <p>All content is reviewed against current HMRC and GOV.UK guidance for the active tax year. We prioritise factual accuracy and practical usefulness. Where assumptions are made, they are documented on the <a href="/methodology" style="color:var(--accent);font-weight:600;">methodology page</a>.</p>
+    <p style="margin-bottom:0;">This site does not provide financial, tax or legal advice. For decisions about salary sacrifice, consult your employer's HR team or a qualified financial adviser.</p>
+  </article>
+
+  <article class="card" style="padding:1rem 1.25rem;margin-top:0.9rem;">
+    <h2>Editorial ownership and contact</h2>
+    <p>Editorial owner: <strong>James Whitfield</strong>, a UK personal finance writer with a background in salary sacrifice schemes, NI savings and employee benefits. James writes about pension salary sacrifice, cycle to work and EV schemes against HMRC and GOV.UK guidance.</p>
+    <p>For corrections or data-quality feedback: <a href="mailto:editorial@uksalarysacrificecalculator.co.uk" style="color:var(--accent);font-weight:600;">editorial@uksalarysacrificecalculator.co.uk</a></p>
+    <p style="margin-bottom:0;font-size:0.82rem;color:var(--text-tertiary);">Last reviewed: May 2026. Tax year: {{ tax_year }}.</p>
+  </article>
+</section>
+{% endblock %}

@@ -1,0 +1,124 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="section">
+  <div class="badge">Calculator</div>
+  <h1>Salary Sacrifice Employer NI Saving Calculator 2026/27</h1>
+  <p style="color:var(--text-secondary);margin-bottom:1.25rem;">Estimate how much employer National Insurance a salary sacrifice arrangement saves, and how much could be passed on as extra pension.</p>
+
+  <div class="calc-widget">
+    <div class="calc-widget-header">
+      <h2>Employer NI Saving</h2>
+      <span class="calc-year-badge">2026/27 · 15% rate</span>
+    </div>
+    <div class="calc-widget-body">
+      <div class="calc-grid-2">
+        <div class="field">
+          <label>Annual sacrifice per employee</label>
+          <div class="currency-input">
+            <span class="currency-symbol">£</span>
+            <input type="number" id="sacrifice_amount" value="5000" min="0" oninput="calculate()">
+          </div>
+        </div>
+        <div class="field">
+          <label>Number of employees on the scheme</label>
+          <input type="number" id="num_employees" value="1" min="1" oninput="calculate()">
+        </div>
+        <div class="field">
+          <label>% of employer NI saving passed on as extra pension</label>
+          <input type="number" id="passthrough_pct" value="50" min="0" max="100" oninput="calculate()">
+        </div>
+      </div>
+    </div>
+    <div class="calc-widget-results">
+      <div class="results-row"><span class="results-label">Employer NI saving per employee</span><span class="results-value">£<span id="r_saving_per_emp">0</span></span></div>
+      <div class="results-row results-total"><span class="results-label">Total saving (all employees)</span><span class="results-value">£<span id="r_total_saving">0</span></span></div>
+      <div class="results-row"><span class="results-label">Per-employee pension passthrough</span><span class="results-value">£<span id="r_passthrough_per_emp">0</span></span></div>
+      <div class="results-row"><span class="results-label">Total pension passthrough</span><span class="results-value">£<span id="r_total_passthrough">0</span></span></div>
+      <div class="results-row"><span class="results-label">Net employer NI retained</span><span class="results-value">£<span id="r_net_retained">0</span></span></div>
+    </div>
+  </div>
+
+  <article class="card">
+    <h2>The 15% employer NI rate (from April 2025)</h2>
+    <p>From 6 April 2025, the employer National Insurance rate increased to <strong>15%</strong> (from 13.8%), and the secondary threshold was reduced to <strong>£5,000/year</strong> (from £9,100). This means employer NI is payable at 15% on employee earnings above £5,000 per year.</p>
+    <p>Under a salary sacrifice arrangement, the employee's contractual salary is lower — so the employer pays NI on a reduced gross figure. For each £1,000 of sacrifice, the employer saves <strong>£150</strong> in employer NI (assuming the salary sits above the secondary threshold throughout).</p>
+    <p>This calculation uses a simplified approach: it assumes the full sacrifice amount is above the £5,000 secondary threshold. For very low salaries or large sacrifices that cross the threshold, the actual saving may be slightly lower.</p>
+  </article>
+
+  <article class="card">
+    <h2>Why employers pass on some of the saving</h2>
+    <p>Employers are not required to share their NI saving with employees, but many choose to for several reasons:</p>
+    <ul style="padding-left:1.25rem;font-size:0.9rem;color:var(--text-secondary);line-height:1.8;margin-top:0.25rem;margin-bottom:0.85rem;">
+      <li><strong>Recruitment and retention:</strong> A higher effective pension contribution makes the total remuneration package more attractive.</li>
+      <li><strong>Employer pension commitments:</strong> Some employers use the NI saving to top up contributions to auto-enrolment minimums or beyond.</li>
+      <li><strong>Cost-neutral incentive:</strong> Passing on 100% of the NI saving costs the employer nothing net — the pension contribution replaces the NI that would otherwise have been paid to HMRC.</li>
+    </ul>
+    <p style="margin-bottom:0;">See our guide: <a href="/salary-sacrifice-employer-ni-saving" style="color:var(--accent);">How salary sacrifice saves employer National Insurance</a>.</p>
+  </article>
+
+  <article class="card">
+    <h2>Frequently asked questions</h2>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary>Does every salary sacrifice arrangement save employer NI?</summary>
+        <div class="faq-answer">
+          <p>Yes, for any sacrifice that takes the employee's gross pay below what it would otherwise have been above the secondary threshold (£5,000/year). Employer NI is charged at 15% on the difference, so any reduction in gross pay reduces employer NI proportionally. Benefits-in-kind such as electric cars may be taxed differently, but pension salary sacrifice always produces an employer NI saving.</p>
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary>Is the employer required to pass on the NI saving?</summary>
+        <div class="faq-answer">
+          <p>No — there is no legal requirement. It is entirely at the employer's discretion. Some employers pass on all of it, some pass on a percentage, and some retain it. Many medium and large employers have a policy of passing on 50% or 100% as a matter of course, particularly for pension sacrifice. It is worth asking your HR team what the policy is.</p>
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary>What is the secondary threshold?</summary>
+        <div class="faq-answer">
+          <p>The secondary threshold is the earnings level above which employer NI applies. For 2026/27 it is £5,000 per year (equivalent to £96.15 per week or £416.67 per month). Employer NI of 15% applies to earnings above this threshold. If a sacrifice brings an employee's earnings below £5,000 (extremely unlikely in practice), the employer NI saving on that portion would be zero.</p>
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary>How do I implement a salary sacrifice scheme?</summary>
+        <div class="faq-answer">
+          <p>A salary sacrifice scheme requires a formal variation to each participating employee's contract of employment. HMRC guidance requires the arrangement to be a genuine agreement — not a simple pay deduction. You will need to update employment contracts, payroll systems, and pension contribution records. Many pension providers offer template scheme documentation. See <a href="https://www.gov.uk/guidance/salary-sacrifice-and-the-effects-on-paye" target="_blank" rel="noopener" style="color:var(--accent);">GOV.UK guidance on salary sacrifice</a> for details.</p>
+        </div>
+      </details>
+    </div>
+  </article>
+
+  <article class="card">
+    <h2>Official sources</h2>
+    <ul style="padding-left:1.25rem;font-size:0.9rem;color:var(--text-secondary);line-height:1.8;margin-top:0.25rem;margin-bottom:0;">
+      <li><a href="https://www.gov.uk/guidance/salary-sacrifice-and-the-effects-on-paye" target="_blank" rel="noopener" style="color:var(--accent);">GOV.UK — Salary sacrifice and the effects on PAYE</a></li>
+      <li><a href="https://www.gov.uk/national-insurance-rates-letters" target="_blank" rel="noopener" style="color:var(--accent);">GOV.UK — National Insurance rates and categories</a></li>
+      <li><a href="https://www.gov.uk/employer-national-insurance-rates" target="_blank" rel="noopener" style="color:var(--accent);">GOV.UK — Employer NI rates</a></li>
+    </ul>
+  </article>
+
+  <p style="font-size:0.8rem;color:var(--text-tertiary);margin-top:1.5rem;">This calculator provides estimates only. It does not constitute financial, tax or legal advice. Always check current GOV.UK guidance and consult a qualified adviser before making decisions.</p>
+</section>
+
+<script>
+const EMPLOYER_NI_SECONDARY_THRESHOLD = 5000;
+const EMPLOYER_NI_RATE = 0.15;
+
+function calculate() {
+  const sacrifice = +document.getElementById('sacrifice_amount').value || 0;
+  const numEmps = Math.max(1, Math.round(+document.getElementById('num_employees').value || 1));
+  const passthroughPct = Math.min(100, Math.max(0, +document.getElementById('passthrough_pct').value || 0)) / 100;
+
+  const savingPerEmployee = sacrifice * EMPLOYER_NI_RATE;
+  const totalSaving = savingPerEmployee * numEmps;
+  const passthroughPerEmployee = savingPerEmployee * passthroughPct;
+  const totalPassthrough = passthroughPerEmployee * numEmps;
+
+  const fmt = n => n.toLocaleString('en-GB', {minimumFractionDigits:0,maximumFractionDigits:0});
+  document.getElementById('r_saving_per_emp').textContent = fmt(savingPerEmployee);
+  document.getElementById('r_total_saving').textContent = fmt(totalSaving);
+  document.getElementById('r_passthrough_per_emp').textContent = fmt(passthroughPerEmployee);
+  document.getElementById('r_total_passthrough').textContent = fmt(totalPassthrough);
+  document.getElementById('r_net_retained').textContent = fmt(totalSaving - totalPassthrough);
+}
+window.onload = calculate;
+</script>
+{% endblock %}

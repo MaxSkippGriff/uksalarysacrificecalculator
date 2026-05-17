@@ -1,0 +1,186 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="section">
+  <div class="badge">Calculator</div>
+  <h1>UK Salary Sacrifice Calculator 2026/27</h1>
+  <p style="color:var(--text-secondary);margin-bottom:1.25rem;">Estimate the income tax and NI savings from a pension salary sacrifice arrangement, the total pension value including any employer NI passthrough, and the net monthly cost to your take-home pay.</p>
+
+  <div class="calc-widget">
+    <div class="calc-widget-header">
+      <h2>Salary Sacrifice</h2>
+      <span class="calc-year-badge">2026/27</span>
+    </div>
+    <div class="calc-widget-body">
+      <div class="calc-grid-2">
+        <div class="field">
+          <label>Gross annual salary</label>
+          <div class="currency-input">
+            <span class="currency-symbol">£</span>
+            <input type="number" id="salary" value="50000" min="0" oninput="calculate()">
+          </div>
+        </div>
+        <div class="field">
+          <label>Annual sacrifice amount</label>
+          <div class="currency-input">
+            <span class="currency-symbol">£</span>
+            <input type="number" id="sacrifice_amount" value="5000" min="0" oninput="calculate()">
+          </div>
+        </div>
+        <div class="field">
+          <label>Employer NI saving passed on to pension (%)</label>
+          <input type="number" id="employer_passthrough_pct" value="50" min="0" max="100" oninput="calculate()">
+          <div class="field-hint">0 if employer keeps saving; 100 if all passed to your pension</div>
+        </div>
+      </div>
+    </div>
+    <div class="calc-widget-results">
+      <div class="results-row"><span class="results-label">Salary before sacrifice</span><span class="results-value">£<span id="r_salary_before">0</span></span></div>
+      <div class="results-row"><span class="results-label">Salary after sacrifice</span><span class="results-value">£<span id="r_salary_after">0</span></span></div>
+      <div class="results-row"><span class="results-label">Income tax saving</span><span class="results-value">£<span id="r_tax_saving">0</span></span></div>
+      <div class="results-row"><span class="results-label">Employee NI saving</span><span class="results-value">£<span id="r_ni_saving">0</span></span></div>
+      <div class="results-row results-total"><span class="results-label">Total annual saving</span><span class="results-value">£<span id="r_total_saving">0</span></span></div>
+      <div class="results-row"><span class="results-label">Employer NI saving</span><span class="results-value">£<span id="r_employer_ni">0</span></span></div>
+      <div class="results-row"><span class="results-label">Employer NI passed on to pension</span><span class="results-value">£<span id="r_passthrough">0</span></span></div>
+      <div class="results-row results-total"><span class="results-label">Total pension value</span><span class="results-value">£<span id="r_pension">0</span></span></div>
+      <div class="results-row"><span class="results-label">Net annual cost to take-home</span><span class="results-value">£<span id="r_net_cost_annual">0</span></span></div>
+      <div class="results-row"><span class="results-label">Net monthly cost</span><span class="results-value">£<span id="r_net_cost_monthly">0.00</span></span></div>
+    </div>
+  </div>
+
+  <article class="card">
+    <h2>How salary sacrifice works</h2>
+    <p>Under a pension salary sacrifice arrangement, you give up part of your gross salary and your employer pays an equivalent amount directly into your pension. Because your gross pay is reduced, you pay less income tax and National Insurance. Your employer also saves employer NI (15% from April 2025), and many pass some or all of this back as extra pension contributions.</p>
+    <ul style="padding-left:1.25rem;font-size:0.9rem;color:var(--text-secondary);line-height:1.8;margin-top:0.25rem;margin-bottom:0;">
+      <li><strong>Income tax saving</strong> — 20%, 40% or 45% depending on where the sacrifice falls in your tax band.</li>
+      <li><strong>Employee NI saving</strong> — 8% on sacrifice in the £12,570–£50,270 band, or 2% above £50,270.</li>
+      <li><strong>Employer NI saving</strong> — 15% of the sacrifice above the £5,000 secondary threshold.</li>
+    </ul>
+  </article>
+
+  <article class="card">
+    <h2>Worked example</h2>
+    <p>For a £50,000 salary with £5,000 annual sacrifice and 50% employer passthrough:</p>
+    <ul style="padding-left:1.25rem;font-size:0.9rem;color:var(--text-secondary);line-height:1.8;margin-top:0.25rem;margin-bottom:0.85rem;">
+      <li>Income tax saving: £5,000 × 20% = <strong>£1,000</strong></li>
+      <li>Employee NI saving: £5,000 × 8% = <strong>£400</strong></li>
+      <li>Total saving: <strong>£1,400</strong></li>
+      <li>Employer NI saving: £5,000 × 15% = <strong>£750</strong></li>
+      <li>50% employer passthrough: <strong>£375</strong></li>
+      <li>Total pension value (sacrifice + passthrough): <strong>£5,375</strong></li>
+      <li>Net annual cost to take-home: <strong>£3,600</strong> (£300/month)</li>
+    </ul>
+    <p style="margin-bottom:0;">For every £5,000 into pension, only £3,600 comes from your take-home pay — the rest is tax and NI savings.</p>
+  </article>
+
+  <article class="card">
+    <h2>Frequently asked questions</h2>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary>Does salary sacrifice affect mortgage borrowing?</summary>
+        <div class="faq-answer">
+          <p>Salary sacrifice reduces your contractual salary. Many mortgage lenders use the post-sacrifice figure when assessing affordability. Some lenders add back pension sacrifice — a mortgage broker can identify which lenders are most accommodating.</p>
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary>Is the employer required to pass on their NI saving?</summary>
+        <div class="faq-answer">
+          <p>No — there is no legal requirement. Some employers pass on all of it, some pass on a percentage, and some retain it. It is worth asking your HR or payroll team what your employer's policy is.</p>
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary>What if my salary is above £100,000?</summary>
+        <div class="faq-answer">
+          <p>If your income exceeds £100,000, your personal allowance tapers at £1 for every £2 over, creating an effective 60% marginal rate between £100,000 and £125,140. Salary sacrifice can restore part or all of your personal allowance. Use our <a href="/salary-sacrifice-100k-calculator" style="color:var(--accent);">£100k tax trap calculator</a> for this scenario.</p>
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary>How much can I sacrifice into pension?</summary>
+        <div class="faq-answer">
+          <p>The annual allowance for pension contributions in 2026/27 is £60,000 (or 100% of your earnings, whichever is lower). Total contributions include both employer and employee amounts. Carry forward of unused annual allowance from the previous 3 years may be available.</p>
+        </div>
+      </details>
+    </div>
+  </article>
+
+  <article class="card">
+    <h2>Official sources</h2>
+    <ul style="padding-left:1.25rem;font-size:0.9rem;color:var(--text-secondary);line-height:1.8;margin-top:0.25rem;margin-bottom:0;">
+      <li><a href="https://www.gov.uk/guidance/salary-sacrifice-and-the-effects-on-paye" target="_blank" rel="noopener" style="color:var(--accent);">GOV.UK — Salary sacrifice and the effects on PAYE</a></li>
+      <li><a href="https://www.gov.uk/national-insurance-rates-letters" target="_blank" rel="noopener" style="color:var(--accent);">GOV.UK — National Insurance rates</a></li>
+      <li><a href="https://www.gov.uk/tax-on-your-private-pension/annual-allowance" target="_blank" rel="noopener" style="color:var(--accent);">GOV.UK — Pension annual allowance</a></li>
+    </ul>
+  </article>
+
+  <p style="font-size:0.8rem;color:var(--text-tertiary);margin-top:1.5rem;">This calculator provides estimates only. It does not constitute financial, tax or legal advice. Always check current GOV.UK guidance and consult a qualified adviser before making decisions.</p>
+</section>
+
+<script>
+const PERSONAL_ALLOWANCE = 12570;
+const BASIC_RATE_LIMIT = 50270;
+const ADDITIONAL_RATE_THRESHOLD = 125140;
+const BASIC_RATE = 0.20;
+const HIGHER_RATE = 0.40;
+const ADDITIONAL_RATE = 0.45;
+const EMPLOYEE_NI_PRIMARY_THRESHOLD = 12570;
+const EMPLOYEE_NI_UPPER = 50270;
+const EMPLOYEE_NI_LOWER_RATE = 0.08;
+const EMPLOYEE_NI_UPPER_RATE = 0.02;
+const EMPLOYER_NI_SECONDARY_THRESHOLD = 5000;
+const EMPLOYER_NI_RATE = 0.15;
+
+function calcIncomeTax(income) {
+  if (income <= 0) return 0;
+  const abovePA = Math.max(0, income - PERSONAL_ALLOWANCE);
+  const basic = Math.min(abovePA, BASIC_RATE_LIMIT - PERSONAL_ALLOWANCE);
+  const higher = Math.max(0, Math.min(abovePA - basic, ADDITIONAL_RATE_THRESHOLD - BASIC_RATE_LIMIT));
+  const additional = Math.max(0, abovePA - basic - higher);
+  return basic * BASIC_RATE + higher * HIGHER_RATE + additional * ADDITIONAL_RATE;
+}
+function calcEmployeeNI(gross) {
+  if (gross <= EMPLOYEE_NI_PRIMARY_THRESHOLD) return 0;
+  const lower = (Math.min(gross, EMPLOYEE_NI_UPPER) - EMPLOYEE_NI_PRIMARY_THRESHOLD) * EMPLOYEE_NI_LOWER_RATE;
+  const upper = Math.max(0, gross - EMPLOYEE_NI_UPPER) * EMPLOYEE_NI_UPPER_RATE;
+  return lower + upper;
+}
+function calcEmployerNI(gross) {
+  return Math.max(0, gross - EMPLOYER_NI_SECONDARY_THRESHOLD) * EMPLOYER_NI_RATE;
+}
+
+function calculate() {
+  const salary = +document.getElementById('salary').value || 0;
+  const sacrifice = Math.min(+document.getElementById('sacrifice_amount').value || 0, salary);
+  const passthroughPct = Math.min(100, Math.max(0, +document.getElementById('employer_passthrough_pct').value || 0)) / 100;
+
+  const salaryAfter = salary - sacrifice;
+  const taxBefore = calcIncomeTax(salary);
+  const taxAfter = calcIncomeTax(salaryAfter);
+  const niBefore = calcEmployeeNI(salary);
+  const niAfter = calcEmployeeNI(salaryAfter);
+  const employerNIBefore = calcEmployerNI(salary);
+  const employerNIAfter = calcEmployerNI(salaryAfter);
+
+  const taxSaving = taxBefore - taxAfter;
+  const niSaving = niBefore - niAfter;
+  const employerNISaving = employerNIBefore - employerNIAfter;
+  const passthrough = employerNISaving * passthroughPct;
+
+  const pensionValue = sacrifice + passthrough;
+  const netCostAnnual = sacrifice - taxSaving - niSaving;
+  const netCostMonthly = netCostAnnual / 12;
+
+  const fmt = n => n.toLocaleString('en-GB', {minimumFractionDigits:0,maximumFractionDigits:0});
+  const fmtd = n => n.toLocaleString('en-GB', {minimumFractionDigits:2,maximumFractionDigits:2});
+  document.getElementById('r_salary_before').textContent = fmt(salary);
+  document.getElementById('r_salary_after').textContent = fmt(salaryAfter);
+  document.getElementById('r_tax_saving').textContent = fmt(taxSaving);
+  document.getElementById('r_ni_saving').textContent = fmt(niSaving);
+  document.getElementById('r_total_saving').textContent = fmt(taxSaving + niSaving);
+  document.getElementById('r_employer_ni').textContent = fmt(employerNISaving);
+  document.getElementById('r_passthrough').textContent = fmt(passthrough);
+  document.getElementById('r_pension').textContent = fmt(pensionValue);
+  document.getElementById('r_net_cost_annual').textContent = fmt(netCostAnnual);
+  document.getElementById('r_net_cost_monthly').textContent = fmtd(netCostMonthly);
+}
+window.onload = calculate;
+</script>
+{% endblock %}
