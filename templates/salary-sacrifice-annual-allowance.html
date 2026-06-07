@@ -1,0 +1,51 @@
+{% extends "article_layout.html" %}
+{% block jsonld %}
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"Salary Sacrifice and the Pension Annual Allowance 2026/27","description":"How salary sacrifice counts towards the £60,000 pension annual allowance. Tapered allowance, carry-forward rules and when the limit becomes a practical concern.","url":"{{ site_url }}/salary-sacrifice-annual-allowance","datePublished":"2026-05-27","dateModified":"2026-05-27","author":{"@type":"Person","name":"James Whitfield"},"publisher":{"@type":"Organization","name":"UKSalarySacrificeCalculator.co.uk","url":"{{ site_url }}"},"inLanguage":"en-GB"}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"{{ site_url }}/"},{"@type":"ListItem","position":2,"name":"Salary Sacrifice Annual Allowance","item":"{{ site_url }}/salary-sacrifice-annual-allowance"}]}
+</script>
+{% endblock %}
+{% block article_body %}
+<section class="section">
+  <div class="badge">Guide</div>
+  <h1>Salary Sacrifice and the Pension Annual Allowance 2026/27</h1>
+  <p style="font-size:0.82rem;color:var(--text-tertiary);margin-bottom:1rem;">Published by the UK Money Calculators editorial team. Last updated for the 2026/27 tax year.</p>
+
+  <p>The pension annual allowance caps total pension contributions at £60,000 per year, or 100% of earnings if lower. Salary sacrifice counts towards this limit. So do employer contributions and any other pension inputs. For most employees, the limit is never an issue. For higher earners with generous employer schemes, it can be. This guide covers what counts, how it is calculated, and the tapered allowance for the highest earners.</p>
+
+    <h2>What counts towards the annual allowance?</h2>
+    <p>The annual allowance measures the total increase in pension rights across all schemes in a tax year. For DC schemes — the most common for salary sacrifice — the total pension input is all contributions paid in: employee, employer and sacrifice. Salary sacrifice specifically shows as an employer contribution on the pension statement.</p>
+    <p>For DB schemes (NHS, LGPS, civil service, teachers), annual accrual is converted using a factor of 16. If the annual pension increase from one year's accrual is £1,500, the pension input measure is 16 × £1,500 = £24,000. AVCs made alongside a DB scheme are included at face value.</p>
+    <p style="margin-bottom:0;"><strong>Key point:</strong> salary sacrifice is an employer contribution for pension purposes. It is included in full in the annual allowance calculation. There is no exemption for sacrifice versus standard employer contributions.</p>
+
+    <h2>When does the annual allowance matter?</h2>
+    <p>For most employees, it doesn't. The £60,000 annual allowance is generous relative to typical salaries. Consider:</p>
+    <ul style="padding-left:1.25rem;font-size:0.9rem;color:var(--text-secondary);line-height:1.8;margin-top:0.25rem;margin-bottom:0.85rem;">
+      <li>An employee earning £50,000 with a 5% employer contribution (£2,500) who sacrifices £5,000 has total DC inputs of £7,500, 12.5% of the allowance.</li>
+      <li>A higher earner on £100,000 with a 10% employer contribution (£10,000) who sacrifices £20,000 has total inputs of £30,000, 50% of the allowance.</li>
+      <li>A DB scheme member with 1/49 CARE accrual on £80,000 has a pension input measure of 16 × (£80,000/49) = £26,122, leaving £33,878 of headroom for AVCs or other scheme inputs.</li>
+    </ul>
+    <p style="margin-bottom:0;">The allowance starts to matter for people earning above £80,000 with generous employer contributions, for those approaching the taper threshold, or for DB scheme members who also want to make large sacrifice contributions.</p>
+
+    <h2>Annual allowance excess charge</h2>
+    <p>If total pension inputs exceed the allowance, the excess is taxed as income in the year of the breach. The charge is your marginal income tax rate on the excess. A higher-rate taxpayer with £5,000 of excess would owe 40% × £5,000 = £2,000. You can pay this directly or via 'scheme pays', where the scheme deducts the charge and reduces your pension benefit accordingly.</p>
+    <p style="margin-bottom:0;">If you plan to sacrifice a large amount and aren't sure whether the total (sacrifice + employer contributions) stays below £60,000, ask your HR or pension scheme administrator for a pension input statement before proceeding.</p>
+
+    <h2>Carry-forward: using unused allowance from prior years</h2>
+    <p>Didn't use your full allowance in the previous three tax years? You can carry forward the unused amount. To do so, you must have been a member of a registered pension scheme in the relevant year. You use the current year's full allowance first, then access prior year unused amounts starting with the oldest year.</p>
+    <p>Carry-forward is most useful if you want to make a large one-off sacrifice, or if you've recently joined a scheme and are catching up. For 2026/27, the prior years available are 2023/24, 2024/25 and 2025/26. The allowance for each of those years was £60,000. Maximum available in 2026/27 with carry-forward is £240,000, but this cannot exceed 100% of your earnings in the current year.</p>
+    <p style="margin-bottom:0;">Carry-forward planning requires accurate records of prior-year pension inputs from all schemes. Ask each scheme for a pension input statement for the three prior years before doing any carry-forward calculations.</p>
+
+    <h2>Tapered annual allowance</h2>
+    <p>The tapered annual allowance applies when threshold income exceeds £200,000 and adjusted income exceeds £260,000. The allowance drops by £1 for every £2 of adjusted income above £260,000, down to a minimum of £10,000. Adjusted income for this purpose includes all pension inputs.</p>
+    <p>For most salary sacrifice users these thresholds are irrelevant. But for executives, senior medical consultants and similar high earners with large employer contributions, the taper can catch you off guard. The sacrifice itself can push adjusted income above the threshold if the employer contribution is large enough.</p>
+    <p style="margin-bottom:0;"><strong>Example:</strong> An executive earns £230,000 salary. Employer pension contribution 15% = £34,500. Salary sacrifice £30,000. Adjusted income = £230,000 + £64,500 = £294,500. Taper: (£294,500 − £260,000) ÷ 2 = £17,250 reduction. Tapered allowance: £60,000 − £17,250 = £42,750. Total pension inputs of £64,500 exceed the tapered allowance by £21,750. Annual allowance charge applies on the excess.</p>
+
+  <div style="margin-top:1.5rem;padding:1rem 1.25rem;background:var(--surface-2);border-radius:8px;">
+    <h3 style="margin:0 0 0.5rem;">Related guides</h3>
+    <p style="margin:0;font-size:0.9rem;"><a href="/pension-salary-sacrifice-calculator">Pension sacrifice calculator</a>, <a href="/salary-sacrifice-higher-rate-taxpayer">higher-rate taxpayer guide</a>, <a href="/salary-sacrifice-100k-tax-trap">£100k tax trap guide</a>, <a href="/salary-sacrifice-avc">AVC guide</a>, <a href="/salary-sacrifice-nhs">NHS salary sacrifice</a></p>
+  </div>
+</section>
+{% endblock %}

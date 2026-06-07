@@ -1,57 +1,46 @@
-{% extends "base.html" %}
-{% block content %}
+{% extends "article_layout.html" %}
+{% block article_body %}
 <section class="section">
   <div class="badge">Guide</div>
   <h1>Disadvantages of Salary Sacrifice 2026/27</h1>
   <p style="font-size:0.82rem;color:var(--text-tertiary);margin-bottom:1rem;">Published by the UK Money Calculators editorial team. Last updated for the 2026/27 tax year.</p>
 
-  <p>Salary sacrifice is one of the most tax-efficient ways to save for retirement, but it is not without drawbacks. Before increasing a sacrifice — or starting one — it is worth understanding the potential downsides. For most employees the benefits outweigh the risks, but the disadvantages are real and can be material in certain circumstances.</p>
+  <p>Salary sacrifice is one of the most tax-efficient ways to save for retirement. But it is not without drawbacks. Before increasing a sacrifice — or starting one — understand the potential downsides. For most employees the benefits outweigh the risks, but the disadvantages are real and can matter in certain circumstances.</p>
 
-  <article class="card" style="padding:1rem 1.25rem;margin-top:0.9rem;">
     <h2>1. Mortgage affordability</h2>
-    <p>Mortgage lenders calculate how much they will lend based on your income. Most lenders use your contractual gross salary as the starting point — and many will use the <em>post-sacrifice</em> salary shown on your payslip or confirmed by your employer, not the pre-sacrifice figure.</p>
-    <p>For example: if you earn £50,000 and sacrifice £5,000 to pension, your post-sacrifice contractual salary is £45,000. A lender offering 4.5x income would lend £202,500 rather than £225,000 — a £22,500 difference, which could affect what you can buy.</p>
-    <p>Approaches vary significantly by lender:</p>
+    <p>Mortgage lenders base how much they will lend on your income. Most use your contractual gross salary as the starting point. Many will use the <em>post-sacrifice</em> salary on your payslip, not the pre-sacrifice figure.</p>
+    <p>If you earn £50,000 and sacrifice £5,000, your post-sacrifice contractual salary is £45,000. A lender offering 4.5x income would lend £202,500 rather than £225,000 — a £22,500 difference that could affect what you can buy.</p>
+    <p>Approaches vary by lender:</p>
     <ul style="padding-left:1.25rem;font-size:0.9rem;color:var(--text-secondary);line-height:1.8;margin-top:0.25rem;margin-bottom:0.85rem;">
       <li>Some lenders add back the pension sacrifice when calculating affordability, treating your income as the pre-sacrifice figure.</li>
       <li>Others use the lower post-sacrifice salary without adjustment.</li>
       <li>A mortgage broker familiar with lender criteria can identify which lenders are most accommodating for high-sacrifice arrangements.</li>
     </ul>
-    <p style="margin-bottom:0;">If you are planning to apply for a mortgage, consider temporarily reducing your sacrifice for the period around the application to maximise the income figure used.</p>
-  </article>
+    <p style="margin-bottom:0;">If you are planning a mortgage application, consider temporarily reducing your sacrifice beforehand to maximise the income figure.</p>
 
-  <article class="card" style="padding:1rem 1.25rem;margin-top:0.9rem;">
     <h2>2. State pension entitlement</h2>
-    <p>Your entitlement to the State Pension is based on National Insurance contribution records — specifically, whether you have qualifying years. You gain a qualifying year when your earnings are at or above the Lower Earnings Limit (LEL), which is £6,396 for 2026/27 (equivalent to £123/week).</p>
-    <p>If your post-sacrifice salary falls below the LEL, you would stop accumulating State Pension qualifying years. For most full-time employees this is not a risk — even a significant sacrifice would leave earnings well above £6,396. But it is relevant for:</p>
+    <p>State Pension entitlement is based on NI contribution records — specifically whether you have qualifying years. You earn a qualifying year when your earnings are at or above the Lower Earnings Limit (LEL), £6,396 for 2026/27 (£123/week).</p>
+    <p>If your post-sacrifice salary falls below the LEL you stop accumulating qualifying years. For most full-time employees this is not a risk — even a big sacrifice leaves earnings well above £6,396. But it matters for:</p>
     <ul style="padding-left:1.25rem;font-size:0.9rem;color:var(--text-secondary);line-height:1.8;margin-top:0.25rem;margin-bottom:0.85rem;">
       <li>Part-time workers on lower salaries who sacrifice a high proportion of income</li>
       <li>Employees very close to minimum wage levels</li>
     </ul>
-    <p style="margin-bottom:0;">Provided post-sacrifice earnings remain above the LEL, State Pension entitlement is fully preserved — the amount of NI actually paid above the LEL does not affect the qualifying year or the State Pension amount.</p>
-  </article>
+    <p style="margin-bottom:0;">As long as post-sacrifice earnings stay above the LEL, State Pension entitlement is fully preserved. The amount of NI paid above the LEL doesn't affect whether you get the qualifying year.</p>
 
-  <article class="card" style="padding:1rem 1.25rem;margin-top:0.9rem;">
     <h2>3. Defined benefit pension schemes</h2>
-    <p>In a defined benefit (DB) pension scheme, your pension is based on a formula — typically final or career-average "pensionable pay" multiplied by years of service and an accrual rate. If your employer defines pensionable pay as the <em>post-sacrifice</em> salary, then sacrificing into a DC (money purchase) arrangement could reduce the pensionable pay figure used to calculate your DB pension.</p>
-    <p>Some DB schemes explicitly exclude salary sacrifice amounts and calculate benefits on the pre-sacrifice salary. Others do not. Check your scheme rules carefully — or ask your pension administrator — before sacrificing if you are a DB scheme member. Reducing DB accrual for the sake of a short-term NI saving may not be worthwhile.</p>
-    <p style="margin-bottom:0;">This is less of a concern for schemes that explicitly define pensionable pay as pre-sacrifice earnings, but always verify rather than assume.</p>
-  </article>
+    <p>In a DB pension scheme, your pension is based on "pensionable pay" multiplied by years of service and an accrual rate. If your employer defines pensionable pay as the <em>post-sacrifice</em> salary, sacrificing into a DC arrangement could reduce the pensionable pay figure used to calculate your DB pension.</p>
+    <p>Some DB schemes explicitly exclude sacrifice amounts and calculate benefits on the pre-sacrifice salary. Others don't. Check your scheme rules or ask your pension administrator before sacrificing if you are a DB member. Reducing DB accrual for a short-term NI saving may not be worth it.</p>
+    <p style="margin-bottom:0;">If your scheme defines pensionable pay as pre-sacrifice earnings, you are fine. But always verify rather than assume.</p>
 
-  <article class="card" style="padding:1rem 1.25rem;margin-top:0.9rem;">
     <h2>4. Life assurance and death-in-service benefits</h2>
-    <p>Employer-provided life assurance (death-in-service) typically pays a multiple of salary — commonly 2x to 4x annual salary. If the policy defines "salary" as the post-sacrifice contractual figure, the payout to your dependants could be lower than you expect.</p>
-    <p>Example: a £60,000 employee with £5,000 sacrifice may have death-in-service cover based on £55,000 — a 4x multiple would pay £220,000 rather than £240,000.</p>
-    <p style="margin-bottom:0;">Check your employer's life assurance policy documentation. Some explicitly use the pre-sacrifice figure; others do not. If the policy uses the lower figure, you may wish to take out additional personal life cover to bridge the gap.</p>
-  </article>
+    <p>Employer-provided life assurance typically pays a multiple of salary, commonly 2x to 4x. If the policy defines "salary" as the post-sacrifice contractual figure, the payout to your dependants could be lower than expected.</p>
+    <p>A £60,000 employee with £5,000 sacrifice may have cover based on £55,000. At 4x that pays £220,000 rather than £240,000.</p>
+    <p style="margin-bottom:0;">Check your employer's life assurance documentation. Some explicitly use the pre-sacrifice figure; others don't. If the policy uses the lower figure, consider additional personal life cover to bridge the gap.</p>
 
-  <article class="card" style="padding:1rem 1.25rem;margin-top:0.9rem;">
     <h2>5. Income protection insurance</h2>
-    <p>Employer-provided income protection (long-term disability) insurance often pays a percentage of salary — typically 50–75% — if you cannot work due to illness or injury. If the policy is based on post-sacrifice salary, your income protection benefit will be proportionally lower.</p>
-    <p style="margin-bottom:0;">This is the same issue as with life assurance. Review your income protection policy and consider whether the reduced payout would be sufficient if you were unable to work for an extended period.</p>
-  </article>
+    <p>Employer-provided income protection typically pays 50–75% of salary if you cannot work due to illness or injury. If the policy is based on post-sacrifice salary, your benefit will be proportionally lower.</p>
+    <p style="margin-bottom:0;">The same issue as with life assurance. Review your income protection policy and ask whether the reduced payout would be enough if you couldn't work for a sustained period.</p>
 
-  <article class="card" style="padding:1rem 1.25rem;margin-top:0.9rem;">
     <h2>6. National Minimum Wage</h2>
     <p>Salary sacrifice cannot reduce your cash pay below the National Minimum Wage (NMW). For 2026/27, the main NMW rates are:</p>
     <ul style="padding-left:1.25rem;font-size:0.9rem;color:var(--text-secondary);line-height:1.8;margin-top:0.25rem;margin-bottom:0.85rem;">
@@ -59,21 +48,18 @@
       <li><strong>Age 18–20:</strong> £10.00/hour</li>
       <li><strong>Under 18 and apprentices:</strong> £7.55/hour</li>
     </ul>
-    <p>Employers are responsible for ensuring salary sacrifice does not breach NMW. If it would, the sacrifice must be capped or refused. Employees working variable hours or paid close to NMW should check carefully. A separate guide covers this in more detail: <a href="/salary-sacrifice-minimum-wage" style="color:var(--accent);">Salary Sacrifice and Minimum Wage</a>.</p>
-    <p style="margin-bottom:0;">This is primarily an employer compliance issue, but employees should be aware — if your employer offers sacrifice that would breach NMW, they cannot legally process it.</p>
-  </article>
+    <p>Employers are responsible for ensuring salary sacrifice doesn't breach NMW. If it would, the sacrifice must be capped or refused. Employees on variable hours or earning close to NMW should check before agreeing to any sacrifice. See the <a href="/salary-sacrifice-minimum-wage" style="color:var(--accent);">Salary Sacrifice and Minimum Wage guide</a> for more detail.</p>
+    <p style="margin-bottom:0;">This is an employer compliance issue. But if your employer offers a sacrifice that would breach NMW, they cannot legally process it.</p>
 
-  <article class="card" style="padding:1rem 1.25rem;margin-top:0.9rem;">
     <h2>7. Means-tested benefits and income-linked calculations</h2>
-    <p>Some financial calculations are based on "adjusted net income" — your income after deducting pension contributions. In many cases, salary sacrifice and personal pension contributions both reduce adjusted net income, so salary sacrifice provides no extra benefit over a personal contribution for these purposes. Areas where this matters include:</p>
+    <p>Some financial calculations are based on adjusted net income — your income after deducting pension contributions. Salary sacrifice and personal pension contributions both reduce adjusted net income, so salary sacrifice provides no extra benefit over a personal contribution for these purposes. Areas where this matters:</p>
     <ul style="padding-left:1.25rem;font-size:0.9rem;color:var(--text-secondary);line-height:1.8;margin-top:0.25rem;margin-bottom:0.85rem;">
       <li><strong>Student loan repayments:</strong> Calculated on gross earnings above the threshold. Salary sacrifice reduces gross pay, so it <em>does</em> reduce student loan repayments — this may be a benefit or a consideration depending on your loan balance and repayment strategy.</li>
       <li><strong>Child Benefit high income charge:</strong> Calculated on adjusted net income. Salary sacrifice reduces this, which may help you avoid or reduce the charge if your income is between £60,000 and £80,000.</li>
       <li><strong>Tax-Free Childcare eligibility:</strong> Both parents must earn under £100,000 adjusted net income. Salary sacrifice can help keep income below this threshold.</li>
       <li><strong>Personal allowance tapering:</strong> If your income exceeds £100,000, the personal allowance tapers at £1 for every £2 over — effectively creating a 60% marginal rate. Salary sacrifice reduces adjusted net income and can restore some or all of the personal allowance.</li>
     </ul>
-    <p style="margin-bottom:0;">These interactions can make salary sacrifice more — not less — valuable in certain income ranges. The net effect depends on your individual situation.</p>
-  </article>
+    <p style="margin-bottom:0;">These interactions can make salary sacrifice more valuable in certain income ranges, not less. The net effect depends on your individual situation.</p>
 
   <div class="card" style="padding:1.1rem 1.25rem;margin-top:0.9rem;border-top:3px solid var(--accent);">
     <strong>Try the calculator</strong>
@@ -81,7 +67,6 @@
     <a href="/calculator" style="display:inline-block;font-size:0.87rem;font-weight:700;color:var(--accent);text-decoration:none;padding:0.45rem 1.1rem;border-radius:999px;border:1.5px solid var(--accent);transition:all 0.2s;">Open the calculator &rarr;</a>
   </div>
 
-  <article class="card" style="padding:1rem 1.25rem;margin-top:0.9rem;">
     <h2>Frequently asked questions</h2>
     <div class="faq-list">
       <details class="faq-item">
@@ -115,9 +100,7 @@
         </div>
       </details>
     </div>
-  </article>
 
-  <article class="card" style="padding:1rem 1.25rem;margin-top:0.9rem;">
     <h2>Official sources</h2>
     <ul style="padding-left:1.25rem;font-size:0.9rem;color:var(--text-secondary);line-height:1.8;margin-top:0.25rem;margin-bottom:0;">
       <li><a href="https://www.gov.uk/guidance/salary-sacrifice-and-the-effects-on-paye" target="_blank" rel="noopener" style="color:var(--accent);">GOV.UK — Salary sacrifice and the effects on PAYE</a></li>
@@ -125,7 +108,6 @@
       <li><a href="https://www.gov.uk/state-pension" target="_blank" rel="noopener" style="color:var(--accent);">GOV.UK — New State Pension</a></li>
       <li><a href="https://www.gov.uk/national-insurance-rates-letters" target="_blank" rel="noopener" style="color:var(--accent);">GOV.UK — National Insurance rates and letters</a></li>
     </ul>
-  </article>
 
   <p style="font-size:0.8rem;color:var(--text-tertiary);margin-top:1.5rem;">This guide is for general information only. It does not constitute financial, tax or legal advice. Tax rates and rules can change. Always check current GOV.UK guidance and consult a qualified adviser before making decisions.</p>
 </section>

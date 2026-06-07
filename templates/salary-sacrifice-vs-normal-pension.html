@@ -1,35 +1,32 @@
-{% extends "base.html" %}
-{% block content %}
+{% extends "article_layout.html" %}
+{% block article_body %}
 <section class="section">
   <div class="badge">Guide</div>
   <h1>Salary Sacrifice vs Normal Pension Contributions 2026/27</h1>
   <p style="font-size:0.82rem;color:var(--text-tertiary);margin-bottom:1rem;">Published by the UK Money Calculators editorial team. Last updated for the 2026/27 tax year.</p>
 
-  <p>Salary sacrifice is generally the most tax-efficient way for employees to contribute to a pension — because it saves National Insurance as well as income tax. But not all employers offer it, and it comes with trade-offs around mortgage assessments, state benefit entitlement and other salary-linked calculations. Understanding the difference between salary sacrifice and the two standard pension contribution methods helps you make the most of what your employer offers.</p>
+  <p>Salary sacrifice is generally the most tax-efficient way for employees to contribute to a pension. It saves National Insurance as well as income tax. But not all employers offer it, and it comes with trade-offs around mortgage assessments, state benefit entitlement and other salary-linked calculations. Understanding the difference between salary sacrifice and the two standard methods helps you make the most of what your employer offers.</p>
 
-  <article class="card" style="padding:1rem 1.25rem;margin-top:0.9rem;">
     <h2>The three ways to contribute to a pension</h2>
     <h3>1. Relief at source</h3>
-    <p>You contribute from your net (post-tax) pay. The pension provider automatically claims 20% basic-rate tax relief from HMRC and adds it to your pot. If you are a higher or additional-rate taxpayer, you claim the extra relief (20% or 25% additional) through Self Assessment or by contacting HMRC.</p>
+    <p>You contribute from net pay. The provider automatically claims 20% basic-rate tax relief from HMRC and adds it to your pot. If you are a higher or additional-rate taxpayer, you claim the extra relief (20% or 25% additional) through Self Assessment or by contacting HMRC.</p>
     <ul style="padding-left:1.25rem;font-size:0.9rem;color:var(--text-secondary);line-height:1.8;margin-top:0.25rem;margin-bottom:0.85rem;">
       <li><strong>Good for:</strong> non-taxpayers and basic-rate taxpayers (relief is automatic); those without access to net pay or salary sacrifice.</li>
       <li><strong>Watch out for:</strong> higher-rate taxpayers need to claim extra relief actively, and many don't.</li>
     </ul>
     <h3>2. Net pay arrangement</h3>
-    <p>Contributions are deducted before income tax is calculated, so you automatically get full marginal-rate tax relief. There is no separate claim to make. No National Insurance saving applies to the employee.</p>
+    <p>Contributions are deducted before income tax is calculated. You automatically get full marginal-rate tax relief. No separate claim needed. And no employee National Insurance saving.</p>
     <ul style="padding-left:1.25rem;font-size:0.9rem;color:var(--text-secondary);line-height:1.8;margin-top:0.25rem;margin-bottom:0.85rem;">
       <li><strong>Good for:</strong> higher and additional-rate taxpayers who want automatic full relief without using Self Assessment.</li>
       <li><strong>Watch out for:</strong> historically less beneficial for non-taxpayers (though this gap is now addressed by HMRC through the net pay top-up for low earners).</li>
     </ul>
     <h3>3. Salary sacrifice</h3>
-    <p>Your contractual salary is reduced by the contribution amount. Because you earn less, you pay less income tax <em>and</em> less employee National Insurance. The employer also pays less employer NI, some of which may be passed back to you as an extra pension contribution.</p>
+    <p>Your contractual salary is reduced by the contribution amount. You earn less, so you pay less income tax <em>and</em> less employee National Insurance. The employer also pays less employer NI, some of which may be passed back as an extra pension contribution.</p>
     <ul style="padding-left:1.25rem;font-size:0.9rem;color:var(--text-secondary);line-height:1.8;margin-top:0.25rem;margin-bottom:0.85rem;">
       <li><strong>Good for:</strong> most employees in the basic and higher-rate income tax bands who can access it.</li>
       <li><strong>Watch out for:</strong> impacts on mortgage assessments, salary-linked benefits, and NI record.</li>
     </ul>
-  </article>
 
-  <article class="card" style="padding:1rem 1.25rem;margin-top:0.9rem;">
     <h2>Worked example — £5,000 gross pension contribution</h2>
     <h3>Relief at source — basic-rate taxpayer</h3>
     <ul style="padding-left:1.25rem;font-size:0.9rem;color:var(--text-secondary);line-height:1.8;margin-top:0.25rem;margin-bottom:0.85rem;">
@@ -54,27 +51,21 @@
       <li>Plus any employer NI saving passed back (up to 15% × £5,000 = £750 extra into pension).</li>
     </ul>
     <p style="margin-bottom:0;font-size:0.87rem;color:var(--text-tertiary);">Note: salary sacrifice NI benefits will be partially restricted from April 2029 — see the GOV.UK source below for details. Current 2026/27 figures are unaffected.</p>
-  </article>
 
-  <article class="card" style="padding:1rem 1.25rem;margin-top:0.9rem;">
     <h2>Key trade-offs with salary sacrifice</h2>
     <h3>Mortgage assessments</h3>
-    <p>Many lenders assess mortgage affordability based on contractual salary. Because salary sacrifice reduces your contractual salary, your borrowing capacity may be lower. Some lenders will add the sacrifice back when assessing income — ask your mortgage broker or lender directly.</p>
+    <p>Many lenders assess mortgage affordability on contractual salary. Salary sacrifice reduces your contractual salary, which can reduce your borrowing capacity. Some lenders add the sacrifice back when assessing income. Ask your mortgage broker or lender directly.</p>
     <h3>State pension and NI record</h3>
-    <p>If salary sacrifice reduces your earnings below the Lower Earnings Limit (£6,396 for 2026/27), you may not build a qualifying year for state pension purposes. For most people this is not an issue — but if you sacrifice a large proportion of a modest salary, it is worth checking.</p>
+    <p>If salary sacrifice reduces your earnings below the Lower Earnings Limit (£6,396 for 2026/27), you may not build a qualifying year for State Pension purposes. For most people this is not an issue. But if you sacrifice a large proportion of a modest salary, check before committing.</p>
     <h3>Salary-linked benefits</h3>
-    <p>Life assurance, income protection, maternity/paternity pay and other salary-linked benefits may be calculated on your post-sacrifice contractual salary rather than your original salary. Check with your employer before proceeding.</p>
+    <p>Life assurance, income protection, maternity/paternity pay and other salary-linked benefits may be calculated on your post-sacrifice contractual salary. Check with your employer before proceeding.</p>
     <h3>Not all employers offer it</h3>
-    <p>Salary sacrifice requires your employer to operate the arrangement. If your employer only offers a relief-at-source or net pay scheme, salary sacrifice is not available to you — regardless of how much more efficient it would be.</p>
-  </article>
+    <p>Salary sacrifice requires your employer to operate the arrangement. If your employer only offers relief at source or net pay, salary sacrifice is not available to you regardless of how much more efficient it would be.</p>
 
-  <article class="card" style="padding:1rem 1.25rem;margin-top:0.9rem;">
     <h2>Changes from April 2029</h2>
-    <p>The government has confirmed that from April 2029, the employer NI saving from salary sacrifice pension contributions will be subject to new restrictions. The employee NI saving is also expected to be affected. These changes do not apply for 2026/27 — salary sacrifice remains the most NI-efficient method for the current tax year.</p>
+    <p>From April 2029, the employer NI saving from salary sacrifice pension contributions will be subject to new restrictions. The employee NI saving is also expected to be affected. These changes don't apply to 2026/27 — salary sacrifice remains the most NI-efficient method for the current tax year.</p>
     <p style="margin-bottom:0;">For full detail, see the <a href="https://www.gov.uk/government/publications/changes-to-salary-sacrifice-for-pensions-from-april-2029/changes-to-salary-sacrifice-for-pensions-from-april-2029" target="_blank" rel="noopener" style="color:var(--accent);">GOV.UK guidance on salary sacrifice pension changes from April 2029</a>.</p>
-  </article>
 
-  <article class="card" style="padding:1rem 1.25rem;margin-top:0.9rem;">
     <h2>Common mistakes</h2>
     <ul style="padding-left:1.25rem;font-size:0.9rem;color:var(--text-secondary);line-height:1.8;margin-top:0.25rem;margin-bottom:0;">
       <li><strong>Higher-rate taxpayers not claiming extra relief.</strong> Under relief at source, you must actively claim the additional 20% relief via Self Assessment. Many employees miss this.</li>
@@ -82,7 +73,6 @@
       <li><strong>Not knowing which type of scheme your employer runs.</strong> Relief at source and net pay are not the same. If you switch jobs, the type of scheme can change and the tax treatment differs.</li>
       <li><strong>Ignoring the 2029 changes.</strong> If your employer passes on significant NI savings and you are planning a long-term salary sacrifice arrangement, be aware the rules will change.</li>
     </ul>
-  </article>
 
   <div class="card" style="padding:1.1rem 1.25rem;margin-top:0.9rem;border-top:3px solid var(--accent);">
     <strong>Try the calculator</strong>
@@ -90,7 +80,6 @@
     <a href="/calculator" style="display:inline-block;font-size:0.87rem;font-weight:700;color:var(--accent);text-decoration:none;padding:0.45rem 1.1rem;border-radius:999px;border:1.5px solid var(--accent);transition:all 0.2s;">Open the calculator &rarr;</a>
   </div>
 
-  <article class="card" style="padding:1rem 1.25rem;margin-top:0.9rem;">
     <h2>Frequently asked questions</h2>
     <div class="faq-list">
       <details class="faq-item">
@@ -124,9 +113,7 @@
         </div>
       </details>
     </div>
-  </article>
 
-  <article class="card" style="padding:1rem 1.25rem;margin-top:0.9rem;">
     <h2>Official sources</h2>
     <ul style="padding-left:1.25rem;font-size:0.9rem;color:var(--text-secondary);line-height:1.8;margin-top:0.25rem;margin-bottom:0;">
       <li><a href="https://www.gov.uk/guidance/salary-sacrifice-and-the-effects-on-paye" target="_blank" rel="noopener" style="color:var(--accent);">GOV.UK — Salary sacrifice and the effects on PAYE</a></li>
@@ -134,7 +121,6 @@
       <li><a href="https://www.gov.uk/government/publications/rates-and-allowances-pension-schemes/pension-schemes-rates" target="_blank" rel="noopener" style="color:var(--accent);">GOV.UK — Pension schemes rates</a></li>
       <li><a href="https://www.gov.uk/government/publications/changes-to-salary-sacrifice-for-pensions-from-april-2029/changes-to-salary-sacrifice-for-pensions-from-april-2029" target="_blank" rel="noopener" style="color:var(--accent);">GOV.UK — Changes to salary sacrifice for pensions from April 2029</a></li>
     </ul>
-  </article>
 
   <p style="font-size:0.8rem;color:var(--text-tertiary);margin-top:1.5rem;">This guide is for general information only. It does not constitute financial, tax or legal advice. Tax rules can change. Always check current GOV.UK guidance and consult a qualified financial adviser before making pension decisions.</p>
 </section>

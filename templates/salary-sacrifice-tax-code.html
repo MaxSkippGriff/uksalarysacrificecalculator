@@ -1,0 +1,61 @@
+{% extends "article_layout.html" %}
+{% block jsonld %}
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"Salary Sacrifice and Your Tax Code 2026/27","description":"What salary sacrifice does to your payslip, P60 and tax code. Why your P60 shows a lower salary, how the 1257L code is unaffected and what to do if something looks wrong.","url":"{{ site_url }}/salary-sacrifice-tax-code","datePublished":"2026-05-27","dateModified":"2026-05-27","author":{"@type":"Person","name":"James Whitfield"},"publisher":{"@type":"Organization","name":"UKSalarySacrificeCalculator.co.uk","url":"{{ site_url }}"},"inLanguage":"en-GB"}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"{{ site_url }}/"},{"@type":"ListItem","position":2,"name":"Salary Sacrifice Tax Code","item":"{{ site_url }}/salary-sacrifice-tax-code"}]}
+</script>
+{% endblock %}
+{% block article_body %}
+<section class="section">
+  <div class="badge">Guide</div>
+  <h1>Salary Sacrifice and Your Tax Code 2026/27</h1>
+  <p style="font-size:0.82rem;color:var(--text-tertiary);margin-bottom:1rem;">Published by the UK Money Calculators editorial team. Last updated for the 2026/27 tax year.</p>
+
+  <p>Salary sacrifice reduces your gross pay. Your payslip, P60 and HMRC records all show a lower salary than your original contract. That is normal and intended. But it creates questions: why does your tax code look different? Why does your P60 show less than expected? Why is your self-assessment pre-populated with a salary that seems low? This page explains what you should see and what to do if something looks wrong.</p>
+
+    <h2>What appears on your payslip</h2>
+    <p>Under salary sacrifice, your payslip should show:</p>
+    <ul style="padding-left:1.25rem;font-size:0.9rem;color:var(--text-secondary);line-height:1.8;margin-top:0.25rem;margin-bottom:0.85rem;">
+      <li><strong>Gross pay:</strong> your reduced salary (original salary minus sacrifice amount), this is your taxable gross</li>
+      <li><strong>Employer pension contribution:</strong> the sacrifice amount, listed as an employer contribution (not an employee deduction)</li>
+      <li><strong>Income tax:</strong> calculated on the reduced gross</li>
+      <li><strong>Employee NI:</strong> calculated on the reduced gross</li>
+      <li><strong>Net pay:</strong> gross minus income tax, minus employee NI, minus any other deductions</li>
+    </ul>
+    <p style="margin-bottom:0;">You should <strong>not</strong> see the sacrifice listed as a deduction from net pay. A pre-tax "salary sacrifice" deduction that brings gross down is correct. But if it shows as a post-tax deduction, like a standard employee pension contribution, your payroll may not have set it up correctly as a sacrifice arrangement. Check with HR or payroll.</p>
+
+    <h2>What appears on your P60 and P45</h2>
+    <p>Your P60, or P45 if you leave, shows your total pay for income tax purposes. Under salary sacrifice, that is your reduced gross pay. A salary of £40,000 with a £3,000 annual sacrifice will show £37,000 on the P60. This is correct. HMRC taxes you on the lower figure because that is what was actually paid to you.</p>
+    <p style="margin-bottom:0;">The lower P60 figure can cause problems when you need to evidence your salary — for mortgages, credit applications or benefit assessments. Many lenders accept an employer letter confirming the arrangement, but some only use the P60 gross. Know this before making significant financial decisions during a sacrifice period.</p>
+
+    <h2>How salary sacrifice affects your tax code</h2>
+    <p>For most employees in a straightforward sacrifice arrangement, the tax code doesn't change. The standard personal allowance code (1257L for 2026/27) remains applicable. The income tax saving arises automatically because gross pay is lower. The code doesn't need to change to deliver the benefit.</p>
+    <p>But there are scenarios where the interaction with your tax code matters:</p>
+    <ul style="padding-left:1.25rem;font-size:0.9rem;color:var(--text-secondary);line-height:1.8;margin-top:0.25rem;margin-bottom:0.85rem;">
+      <li><strong>Above £100,000:</strong> if sacrifice reduces adjusted net income below £100,000, you may receive a coding notice restoring the personal allowance. HMRC adjusts codes periodically based on estimated income. If your sacrifice brings you back under the threshold, notify HMRC to ensure your code reflects this.</li>
+      <li><strong>Benefit in kind (EV or other company car):</strong> if you receive a taxable benefit in kind alongside your sacrifice (e.g. company car), HMRC will reduce your tax code to collect the BIK tax through PAYE. A lower tax code on the same lower gross salary collects both the standard tax and the BIK tax.</li>
+      <li><strong>Overpaid or underpaid tax:</strong> if your sacrifice starts or stops mid-year, there may be a reconciliation at year end. HMRC's annual reconciliation (P800 notice) will account for the change. This is routine.</li>
+    </ul>
+
+    <h2>Self Assessment and salary sacrifice</h2>
+    <p>If you complete a Self Assessment return, enter the salary figure from your P60 — that is your post-sacrifice gross. Do not add the sacrifice back. The pension contribution appears as an employer contribution on the pension records, not as an employee contribution you need to declare. If it was genuine salary sacrifice, there is no further Self Assessment entry needed for the pension element.</p>
+    <p>Benefits in kind such as a company car appear on your P11D and are declared separately. The BIK value is added to your income for income tax purposes. That is separate from the sacrifice mechanics.</p>
+    <p style="margin-bottom:0;">Higher-rate taxpayers using standard employee pension contributions (not sacrifice) need to claim additional tax relief via Self Assessment. Under sacrifice, you don't — relief is embedded in the lower gross pay figure. One common mistake is claiming Self Assessment higher-rate relief on a sacrifice contribution. That creates a double benefit. Check whether your contributions are salary sacrifice or relief at source before completing any pension relief claim.</p>
+
+    <h2>What to do if something looks wrong</h2>
+    <ol style="padding-left:1.25rem;font-size:0.9rem;color:var(--text-secondary);line-height:1.8;margin-top:0.25rem;margin-bottom:0.85rem;">
+      <li>Compare your payslip gross to your contract salary minus sacrifice amount. If they do not match, contact payroll.</li>
+      <li>Check that the pension contribution appears as an employer contribution, not a net pay deduction.</li>
+      <li>If you receive a tax code change from HMRC that you do not understand, call HMRC (0300 200 3300) or use your Personal Tax Account online to query it.</li>
+        <li>If your P60 gross looks wrong at year end, ask payroll for a breakdown of your annual sacrifice to reconcile.</li>
+      <li>If you are completing Self Assessment and unsure how to report sacrifice pension contributions, seek advice from an accountant or HMRC's helpline before submitting.</li>
+    </ol>
+
+  <div style="margin-top:1.5rem;padding:1rem 1.25rem;background:var(--surface-2);border-radius:8px;">
+    <h3 style="margin:0 0 0.5rem;">Related guides</h3>
+    <p style="margin:0;font-size:0.9rem;"><a href="/how-does-salary-sacrifice-work">How salary sacrifice works</a>, <a href="/salary-sacrifice-pension">pension sacrifice guide</a>, <a href="/salary-sacrifice-higher-rate-taxpayer">higher-rate taxpayer guide</a>, <a href="/salary-sacrifice-take-home-pay">take-home pay impact</a></p>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends "article_layout.html" %}
+{% block jsonld %}
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"Salary Sacrifice and Universal Credit 2026/27","description":"How salary sacrifice interacts with Universal Credit. The UC taper reduces net earnings used for assessment — understand the combined saving before sacrificing while claiming UC.","url":"{{ site_url }}/salary-sacrifice-universal-credit","datePublished":"2026-05-27","dateModified":"2026-05-27","author":{"@type":"Person","name":"James Whitfield"},"publisher":{"@type":"Organization","name":"UKSalarySacrificeCalculator.co.uk","url":"{{ site_url }}"},"inLanguage":"en-GB"}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"{{ site_url }}/"},{"@type":"ListItem","position":2,"name":"Salary Sacrifice Universal Credit","item":"{{ site_url }}/salary-sacrifice-universal-credit"}]}
+</script>
+{% endblock %}
+{% block article_body %}
+<section class="section">
+  <div class="badge">Guide</div>
+  <h1>Salary Sacrifice and Universal Credit 2026/27</h1>
+  <p style="font-size:0.82rem;color:var(--text-tertiary);margin-bottom:1rem;">Published by the UK Money Calculators editorial team. Last updated for the 2026/27 tax year.</p>
+
+  <p>Universal Credit is calculated on your net earned income, after tax and NI. Salary sacrifice reduces your gross pay, which reduces the tax and NI deducted, which changes what UC treats as your net earnings. The interaction is less straightforward than it looks. This guide explains exactly how it works.</p>
+
+    <h2>How Universal Credit calculates earned income</h2>
+    <p>UC uses a net earnings figure. For employed claimants, this is the gross pay reported by the employer minus income tax and NI as calculated by HMRC. The UC taper then reduces the UC award by 55p for every £1 of net earned income above the work allowance, where applicable. Salary sacrifice reduces gross pay, which reduces taxable income, which reduces the tax and NI deducted, which changes the net earnings figure UC uses.</p>
+    <p style="margin-bottom:0;">But it is not simply "sacrifice reduces net pay, UC goes up." Whether UC rises, falls or stays the same depends on the relative sizes of the NI saving and the UC taper interaction.</p>
+
+    <h2>The key mechanics: gross pay vs net pay for UC</h2>
+    <p>Under UC rules, net earnings are gross employment income minus PAYE income tax and NI. Salary sacrifice reduces gross pay, so both tax and NI are lower. Net UC earnings are therefore: (gross − sacrifice) − income tax on (gross − sacrifice) − NI on (gross − sacrifice).</p>
+    <p>Because both tax and NI fall when sacrifice reduces gross, the net UC earnings figure doesn't fall by the full sacrifice amount. It falls by the sacrifice minus the tax and NI savings. For a basic-rate taxpayer: net earnings fall by sacrifice × (1 − 20% − 8%) = sacrifice × 72%. A £500/month sacrifice reduces net UC earnings by around £360/month.</p>
+    <p style="margin-bottom:0;"><strong>The UC taper effect:</strong> every £1 reduction in net earnings increases UC by 55p. A £360/month reduction increases UC by £360 × 55% = £198/month. Add the income tax and NI saving (£140/month on a £500 sacrifice at 28%), and the total monthly benefit is £338 from a £500 sacrifice. The net take-home plus UC change is positive.</p>
+
+    <h2>Work allowance: does it change the calculation?</h2>
+    <p>Claimants with children or limited capability for work have a work allowance — an amount of earnings before the taper kicks in. If your net earnings are below the work allowance, the 55p taper doesn't apply and a sacrifice won't increase UC. Once you're above the work allowance, the interaction described above applies.</p>
+    <p style="margin-bottom:0;">The work allowance for 2026/27 is approximately £404/month without a housing element, or £673/month with one. Most employed people claiming UC who are considering sacrifice will have earnings above these thresholds, so the taper interaction applies.</p>
+
+    <h2>Does salary sacrifice affect UC housing costs or other elements?</h2>
+    <p>UC's housing cost element, childcare element and other elements are calculated separately. They are not directly affected by salary sacrifice unless the sacrifice changes your net earnings enough to affect means-tested eligibility for specific elements. The maximum housing element is based on the Local Housing Allowance, not earnings. The childcare element is based on eligible childcare costs, not salary.</p>
+    <p style="margin-bottom:0;">One thing to watch: if a large upfront sacrifice creates a period of significantly lower net earnings, this can affect the monthly UC assessment. UC is assessed monthly from PAYE data. If you sacrifice a lump sum in one month, check how it will appear in that assessment period before proceeding.</p>
+
+    <h2>Is salary sacrifice worthwhile while claiming UC?</h2>
+    <p>For most UC claimants, pension salary sacrifice is still financially beneficial. The income tax saving (20%), NI saving (8%) and UC taper partial offset (55% × 72% = ~40%) combine to leave only a small fraction of the sacrifice truly "lost." As a rough guide: for every £1 of pension sacrifice by a basic-rate UC claimant, around £0.33 reaches the pension at zero net cost to take-home.</p>
+    <p>But circumstances vary. If your UC claim is significant or you're unsure how the interaction affects your situation, speak to a benefits adviser at Citizens Advice or the Money and Pensions Service before making large sacrifice decisions while on UC.</p>
+
+  <div style="margin-top:1.5rem;padding:1rem 1.25rem;background:var(--surface-2);border-radius:8px;">
+    <h3 style="margin:0 0 0.5rem;">Related guides and tools</h3>
+    <p style="margin:0;font-size:0.9rem;"><a href="/pension-salary-sacrifice-calculator">Pension sacrifice calculator</a>, <a href="/how-does-salary-sacrifice-work">how salary sacrifice works</a>, <a href="/salary-sacrifice-childcare">salary sacrifice and childcare</a>, <a href="/salary-sacrifice-minimum-wage">minimum wage and sacrifice</a></p>
+  </div>
+</section>
+{% endblock %}

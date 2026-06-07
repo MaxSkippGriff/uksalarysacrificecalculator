@@ -1,9 +1,9 @@
-{% extends "base.html" %}
-{% block content %}
+{% extends "article_layout.html" %}
+{% block article_body %}
 <section class="section">
   <div class="badge">Calculator</div>
   <h1>Pension Salary Sacrifice Calculator 2026/27</h1>
-  <p style="color:var(--text-secondary);margin-bottom:1.25rem;">Estimate the exact income tax and NI savings from a pension salary sacrifice arrangement, and the net cost to your take-home pay.</p>
+  <p style="color:var(--text-secondary);margin-bottom:1.25rem;">This pension salary sacrifice calculator shows the exact income tax saving, employee NI saving and employer NI saving for 2026/27 — plus the net cost to your take-home pay and total pension value if your employer passes on their NI saving.</p>
 
   <div class="calc-widget">
     <div class="calc-widget-header">
@@ -46,7 +46,6 @@
     </div>
   </div>
 
-  <article class="card">
     <h2>How it works</h2>
     <p>Under a pension salary sacrifice arrangement, you give up part of your gross salary and your employer pays an equivalent amount directly into your pension. Because your gross pay is lower, you pay less income tax and National Insurance on that portion. Crucially, the sacrifice is never treated as your income — so the relief is immediate rather than claimed via self-assessment.</p>
     <ul style="padding-left:1.25rem;font-size:0.9rem;color:var(--text-secondary);line-height:1.8;margin-top:0.25rem;margin-bottom:0;">
@@ -54,9 +53,7 @@
       <li><strong>Employee NI saving</strong> is 8% on sacrifice that falls in the £12,570–£50,270 band, or 2% above £50,270.</li>
       <li><strong>Employer NI saving</strong> is 15% of the sacrifice (above the £5,000 secondary threshold). Some employers pass some or all of this back as extra pension contributions.</li>
     </ul>
-  </article>
 
-  <article class="card">
     <h2>Worked example</h2>
     <p>Using the default values — £50,000 salary, £5,000 sacrifice, 50% employer passthrough:</p>
     <ul style="padding-left:1.25rem;font-size:0.9rem;color:var(--text-secondary);line-height:1.8;margin-top:0.25rem;margin-bottom:0.85rem;">
@@ -70,15 +67,11 @@
       <li>Net monthly cost: <strong>£300.00</strong></li>
     </ul>
     <p style="margin-bottom:0;">For every £5,000 put into pension, the actual reduction in take-home pay is only £3,600 — the remaining £1,400 comes from tax and NI savings.</p>
-  </article>
 
-  <article class="card">
     <h2>Mortgage affordability and DB pensions</h2>
     <p>Salary sacrifice reduces your contractual salary. Many mortgage lenders use the post-sacrifice figure when assessing affordability, which can affect how much they will lend. Some lenders add back pension sacrifice — a mortgage broker can identify which lenders are most accommodating.</p>
     <p>If you are a defined benefit (DB) pension scheme member, check whether pensionable pay is defined as your pre- or post-sacrifice salary before making changes. See our <a href="/salary-sacrifice-disadvantages" style="color:var(--accent);">full guide to the disadvantages of salary sacrifice</a> for more detail.</p>
-  </article>
 
-  <article class="card">
     <h2>Frequently asked questions</h2>
     <div class="faq-list">
       <details class="faq-item">
@@ -106,16 +99,13 @@
         </div>
       </details>
     </div>
-  </article>
 
-  <article class="card">
     <h2>Official sources</h2>
     <ul style="padding-left:1.25rem;font-size:0.9rem;color:var(--text-secondary);line-height:1.8;margin-top:0.25rem;margin-bottom:0;">
       <li><a href="https://www.gov.uk/guidance/salary-sacrifice-and-the-effects-on-paye" target="_blank" rel="noopener" style="color:var(--accent);">GOV.UK — Salary sacrifice and the effects on PAYE</a></li>
       <li><a href="https://www.gov.uk/tax-on-your-private-pension/annual-allowance" target="_blank" rel="noopener" style="color:var(--accent);">GOV.UK — Pension annual allowance</a></li>
       <li><a href="https://www.gov.uk/national-insurance-rates-letters" target="_blank" rel="noopener" style="color:var(--accent);">GOV.UK — National Insurance rates</a></li>
     </ul>
-  </article>
 
   <p style="font-size:0.8rem;color:var(--text-tertiary);margin-top:1.5rem;">This calculator provides estimates only. It does not constitute financial, tax or legal advice. Always check current GOV.UK guidance and consult a qualified adviser before making decisions.</p>
 </section>

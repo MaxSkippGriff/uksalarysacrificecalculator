@@ -1,0 +1,143 @@
+{% extends "article_layout.html" %}
+{% block jsonld %}
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"Electric Car Salary Sacrifice Calculator UK 2026/27","description":"Calculate the real monthly net cost of an EV through salary sacrifice. Enter salary, P11D value and monthly sacrifice to see income tax saving, NI saving, BiK charge and net cost.","url":"{{ site_url }}/salary-sacrifice-electric-car-calculator","datePublished":"2026-05-27","dateModified":"2026-05-27","author":{"@type":"Person","name":"James Whitfield"},"publisher":{"@type":"Organization","name":"UKSalarySacrificeCalculator.co.uk","url":"{{ site_url }}"},"inLanguage":"en-GB"}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"{{ site_url }}/"},{"@type":"ListItem","position":2,"name":"Electric Car Salary Sacrifice Calculator","item":"{{ site_url }}/salary-sacrifice-electric-car-calculator"}]}
+</script>
+{% endblock %}
+{% block article_body %}
+<section class="section">
+  <div class="badge">Calculator</div>
+  <h1>Electric Car Salary Sacrifice Calculator UK 2026/27</h1>
+  <p style="font-size:0.82rem;color:var(--text-tertiary);margin-bottom:1rem;">Published by the UK Money Calculators editorial team. Last updated for the 2026/27 tax year.</p>
+
+  <p>Use the calculator below to estimate the real monthly net cost of an EV through salary sacrifice in 2026/27. Enter your gross salary, the car's P11D value and the monthly sacrifice amount. You'll see income tax saving, NI saving, benefit-in-kind tax charge and net monthly cost.</p>
+
+    <h2>EV Salary Sacrifice Calculator</h2>
+    <div id="ev-calc" style="display:grid;gap:1rem;max-width:480px;">
+      <div>
+        <label for="ev-salary" style="display:block;font-size:0.88rem;font-weight:600;margin-bottom:0.25rem;">Gross salary (£ per year)</label>
+        <input type="number" id="ev-salary" value="50000" min="0" step="1000" style="width:100%;padding:0.45rem 0.6rem;border:1px solid var(--border);border-radius:6px;font-size:0.95rem;">
+      </div>
+      <div>
+        <label for="ev-p11d" style="display:block;font-size:0.88rem;font-weight:600;margin-bottom:0.25rem;">Car P11D value (£)</label>
+        <input type="number" id="ev-p11d" value="40000" min="0" step="1000" style="width:100%;padding:0.45rem 0.6rem;border:1px solid var(--border);border-radius:6px;font-size:0.95rem;">
+      </div>
+      <div>
+        <label for="ev-monthly" style="display:block;font-size:0.88rem;font-weight:600;margin-bottom:0.25rem;">Monthly sacrifice amount (£)</label>
+        <input type="number" id="ev-monthly" value="550" min="0" step="10" style="width:100%;padding:0.45rem 0.6rem;border:1px solid var(--border);border-radius:6px;font-size:0.95rem;">
+      </div>
+      <div>
+        <label for="ev-bik" style="display:block;font-size:0.88rem;font-weight:600;margin-bottom:0.25rem;">BiK rate</label>
+        <select id="ev-bik" style="width:100%;padding:0.45rem 0.6rem;border:1px solid var(--border);border-radius:6px;font-size:0.95rem;">
+          <option value="0.04" selected>4% (2026/27, zero-emission EV)</option>
+          <option value="0.05">5% (2027/28)</option>
+          <option value="0.07">7% (2028/29)</option>
+        </select>
+      </div>
+      <button onclick="calcEV()" style="padding:0.55rem 1.2rem;background:var(--primary);color:#fff;border:none;border-radius:6px;font-size:0.95rem;font-weight:600;cursor:pointer;">Calculate</button>
+    </div>
+
+    <div id="ev-result" style="margin-top:1.25rem;display:none;">
+      <h3 style="margin:0 0 0.75rem;font-size:1rem;">Your result</h3>
+      <table style="width:100%;border-collapse:collapse;font-size:0.88rem;">
+        <tbody id="ev-result-rows"></tbody>
+      </table>
+    </div>
+
+  <script>
+  function calcEV() {
+    var salary = parseFloat(document.getElementById('ev-salary').value) || 0;
+    var p11d = parseFloat(document.getElementById('ev-p11d').value) || 0;
+    var monthly = parseFloat(document.getElementById('ev-monthly').value) || 0;
+    var bik = parseFloat(document.getElementById('ev-bik').value) || 0.04;
+
+    var annual = monthly * 12;
+    var taxRate = 0.20;
+    var niRate = 0.08;
+    var pa = 12570;
+    var brl = 50270;
+
+    // Marginal rates on sacrifice amount
+    var sacrificeInHigher = Math.max(0, Math.min(annual, salary - brl));
+    var sacrificeInBasic = annual - sacrificeInHigher;
+    if (sacrificeInBasic < 0) { sacrificeInHigher = annual; sacrificeInBasic = 0; }
+
+    var itSaving = sacrificeInBasic * 0.20 + sacrificeInHigher * 0.40;
+    var niSaving = sacrificeInBasic * 0.08 + sacrificeInHigher * 0.02;
+    var totalSaving = itSaving + niSaving;
+
+    var bikValue = p11d * bik;
+    var marginalIT = (salary > brl) ? 0.40 : 0.20;
+    var bikTax = bikValue * marginalIT;
+
+    var netAnnualCost = annual - totalSaving + bikTax;
+    var netMonthlyCost = netAnnualCost / 12;
+    var employerNI = annual * 0.15;
+
+    var rows = [
+      ['Monthly sacrifice', '£' + monthly.toFixed(2)],
+      ['Annual sacrifice', '£' + annual.toFixed(2)],
+      ['Income tax saving', '£' + itSaving.toFixed(2) + '/year'],
+      ['Employee NI saving', '£' + niSaving.toFixed(2) + '/year'],
+      ['Total personal saving', '£' + totalSaving.toFixed(2) + '/year'],
+      ['BiK value (' + Math.round(bik*100) + '% of P11D)', '£' + bikValue.toFixed(2) + '/year'],
+      ['BiK income tax charge', '£' + bikTax.toFixed(2) + '/year'],
+      ['Net annual cost (after savings + BiK)', '£' + netAnnualCost.toFixed(2) + '/year'],
+      ['Net monthly cost', '£' + netMonthlyCost.toFixed(2) + '/month'],
+      ['Employer NI saving', '£' + employerNI.toFixed(2) + '/year'],
+    ];
+
+    var tbody = document.getElementById('ev-result-rows');
+    tbody.innerHTML = '';
+    rows.forEach(function(r, i) {
+      var tr = document.createElement('tr');
+      if (i % 2 === 0) tr.style.background = 'var(--surface-hover)';
+      var tdLabel = document.createElement('td');
+      tdLabel.style.padding = '0.4rem 0.6rem';
+      tdLabel.textContent = r[0];
+      var tdVal = document.createElement('td');
+      tdVal.style.cssText = 'text-align:right;padding:0.4rem 0.6rem;font-weight:600;';
+      if (r[0].includes('Net monthly') || r[0].includes('Total personal')) {
+        tdVal.style.color = 'var(--green-700)';
+      }
+      tdVal.textContent = r[1];
+      tr.appendChild(tdLabel);
+      tr.appendChild(tdVal);
+      tbody.appendChild(tr);
+    });
+    document.getElementById('ev-result').style.display = 'block';
+  }
+  </script>
+
+    <h2>How to interpret the result</h2>
+    <p>The <strong>net monthly cost</strong> is what the car actually costs you. It accounts for all income tax and NI savings but includes the BiK income tax charge. This is the true cost to your take-home pay. To get the same cash for a private lease you would need to earn significantly more in gross income.</p>
+    <p>The <strong>employer NI saving</strong> (15% of annual sacrifice) is money your employer saves. Some pass this back as a contribution towards the sacrifice cost or as pension contributions. Ask your HR team whether NI passthrough is offered on EV schemes.</p>
+    <p style="margin-bottom:0;"><strong>Note:</strong> this calculator uses marginal rates based on whether your salary is above or below £50,270. For Scottish taxpayers or income above £100,000, actual savings differ. The BiK charge rises each year — 5% in 2027/28, 7% in 2028/29. Use the dropdown to model future years.</p>
+
+    <h2>BiK rates: confirmed schedule</h2>
+    <table style="width:100%;border-collapse:collapse;font-size:0.88rem;margin-top:0.5rem;">
+      <thead>
+        <tr style="background:var(--surface-hover);">
+          <th style="text-align:left;padding:0.4rem 0.6rem;font-weight:600;">Tax year</th>
+          <th style="text-align:center;padding:0.4rem 0.6rem;font-weight:600;">Zero-emission BiK rate</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td style="padding:0.4rem 0.6rem;">2025/26</td><td style="text-align:center;padding:0.4rem 0.6rem;">3%</td></tr>
+        <tr style="background:var(--surface-hover);"><td style="padding:0.4rem 0.6rem;">2026/27</td><td style="text-align:center;padding:0.4rem 0.6rem;font-weight:600;">4%</td></tr>
+        <tr><td style="padding:0.4rem 0.6rem;">2027/28</td><td style="text-align:center;padding:0.4rem 0.6rem;">5%</td></tr>
+        <tr style="background:var(--surface-hover);"><td style="padding:0.4rem 0.6rem;">2028/29</td><td style="text-align:center;padding:0.4rem 0.6rem;">7%</td></tr>
+        <tr><td style="padding:0.4rem 0.6rem;">2029/30</td><td style="text-align:center;padding:0.4rem 0.6rem;">9%</td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:0.6rem;margin-bottom:0;font-size:0.87rem;color:var(--text-secondary);">Even at 9%, the EV BiK rate is well below petrol/diesel (25–37%). EV salary sacrifice remains tax-efficient throughout the 2020s.</p>
+
+  <div style="margin-top:1.5rem;padding:1rem 1.25rem;background:var(--surface-2);border-radius:8px;">
+    <h3 style="margin:0 0 0.5rem;">Related guides and calculators</h3>
+    <p style="margin:0;font-size:0.9rem;"><a href="/salary-sacrifice-electric-car">Electric car salary sacrifice guide</a>, <a href="/salary-sacrifice-higher-rate-taxpayer">higher-rate taxpayer guide</a>, <a href="/pension-salary-sacrifice-calculator">pension sacrifice calculator</a>, <a href="/calculator">main salary sacrifice calculator</a></p>
+  </div>
+</section>
+{% endblock %}

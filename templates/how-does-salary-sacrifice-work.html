@@ -1,0 +1,97 @@
+{% extends "article_layout.html" %}
+{% block jsonld %}
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"How Does Salary Sacrifice Work? UK Guide 2026/27","description":"A complete guide to salary sacrifice: the basic mechanism, what qualifies, worked examples at £35k–£55k, the rules and limits, and how to set it up with your employer.","url":"{{ site_url }}/how-does-salary-sacrifice-work","datePublished":"2026-05-27","dateModified":"2026-05-27","author":{"@type":"Person","name":"James Whitfield"},"publisher":{"@type":"Organization","name":"UKSalarySacrificeCalculator.co.uk","url":"{{ site_url }}"},"inLanguage":"en-GB"}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"{{ site_url }}/"},{"@type":"ListItem","position":2,"name":"How Does Salary Sacrifice Work","item":"{{ site_url }}/how-does-salary-sacrifice-work"}]}
+</script>
+{% endblock %}
+{% block article_body %}
+<section class="section">
+  <div class="badge">Guide</div>
+  <h1>How Does Salary Sacrifice Work? UK Guide 2026/27</h1>
+  <p style="font-size:0.82rem;color:var(--text-tertiary);margin-bottom:1rem;">Published by the UK Money Calculators editorial team. Last updated for the 2026/27 tax year.</p>
+
+  <p>Salary sacrifice, also called salary exchange, is a formal change to your employment contract. You agree with your employer to give up part of your gross salary in exchange for a non-cash benefit. Because your gross pay is lower, you pay less income tax and National Insurance. This page explains the mechanics, the numbers and the key rules for 2026/27.</p>
+
+    <h2>The basic mechanism</h2>
+    <p>Salary sacrifice works at the gross salary level. Your employer records a lower contractual gross, and your payslip shows that reduced figure as the starting point before tax and NI. The sacrificed amount goes directly to the benefit provider, usually the pension scheme, as an employer contribution.</p>
+    <p>PAYE income tax and employee NI are both calculated on gross pay. A lower gross means less of both. That is the core saving. A standard personal pension contribution doesn't work this way — it comes from net pay and only saves income tax, not NI. Salary sacrifice saves both.</p>
+
+    <h2>What qualifies for salary sacrifice?</h2>
+    <p>HMRC permits salary sacrifice for these benefits:</p>
+    <ul style="padding-left:1.25rem;font-size:0.9rem;color:var(--text-secondary);line-height:1.8;margin-top:0.25rem;margin-bottom:0.85rem;">
+      <li><strong>Pension contributions</strong>, the most common and most valuable use. No benefit-in-kind tax applies.</li>
+      <li><strong>Electric vehicles (company cars)</strong>, benefit-in-kind tax applies at just 4% of P11D value in 2026/27, making this highly tax-efficient.</li>
+      <li><strong>Cycle-to-work equipment</strong>, bikes and qualifying safety accessories. No BIK tax. Employer purchases and hires to you.</li>
+      <li><strong>Technology packages</strong>, phones, laptops in some schemes.</li>
+      <li><strong>Annual leave purchase</strong>, some employers allow extra holiday via salary sacrifice.</li>
+    </ul>
+    <p style="margin-bottom:0;">Childcare vouchers closed to new entrants in October 2018. Cash and cash-equivalent vouchers are not permitted under salary sacrifice rules at all.</p>
+
+    <h2>Worked example: £35,000 salary, £2,400 pension sacrifice</h2>
+    <p>An employee earns £35,000 and sacrifices £2,400 per year (£200 per month) into their workplace pension. Here is exactly what changes:</p>
+    <table style="width:100%;border-collapse:collapse;font-size:0.88rem;margin-top:0.5rem;">
+      <thead>
+        <tr style="background:var(--surface-hover);">
+          <th style="text-align:left;padding:0.4rem 0.6rem;font-weight:600;">Item</th>
+          <th style="text-align:right;padding:0.4rem 0.6rem;font-weight:600;">Before sacrifice</th>
+          <th style="text-align:right;padding:0.4rem 0.6rem;font-weight:600;">After sacrifice</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td style="padding:0.4rem 0.6rem;">Gross salary (PAYE)</td><td style="text-align:right;padding:0.4rem 0.6rem;">£35,000</td><td style="text-align:right;padding:0.4rem 0.6rem;">£32,600</td></tr>
+        <tr style="background:var(--surface-hover);"><td style="padding:0.4rem 0.6rem;">Income tax (20%)</td><td style="text-align:right;padding:0.4rem 0.6rem;">£4,486</td><td style="text-align:right;padding:0.4rem 0.6rem;">£4,006</td></tr>
+        <tr><td style="padding:0.4rem 0.6rem;">Employee NI (8%)</td><td style="text-align:right;padding:0.4rem 0.6rem;">£1,794</td><td style="text-align:right;padding:0.4rem 0.6rem;">£1,602</td></tr>
+        <tr style="background:var(--surface-hover);"><td style="padding:0.4rem 0.6rem;"><strong>Tax &amp; NI saving</strong></td><td style="text-align:right;padding:0.4rem 0.6rem;">—</td><td style="text-align:right;padding:0.4rem 0.6rem;color:var(--green-700);font-weight:600;">£672 / year</td></tr>
+        <tr><td style="padding:0.4rem 0.6rem;">Net cost of £2,400 pension contribution</td><td style="text-align:right;padding:0.4rem 0.6rem;">—</td><td style="text-align:right;padding:0.4rem 0.6rem;font-weight:600;">£1,728 / year (£144/mo)</td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:0.75rem;margin-bottom:0;font-size:0.88rem;color:var(--text-secondary);">The employer also saves 15% × £2,400 = £360 in NI, which many employers pass back to the employee's pension as additional contribution.</p>
+
+    <h2>Worked example: £40,000 salary, £3,000 sacrifice</h2>
+    <p>All £3,000 sits in the basic-rate tax (20%) and main NI (8%) band.</p>
+    <ul style="padding-left:1.25rem;font-size:0.9rem;color:var(--text-secondary);line-height:1.8;margin-top:0.25rem;margin-bottom:0.85rem;">
+      <li><strong>Income tax saving:</strong> 20% × £3,000 = £600</li>
+      <li><strong>Employee NI saving:</strong> 8% × £3,000 = £240</li>
+      <li><strong>Total personal saving:</strong> £840 per year</li>
+      <li><strong>Net monthly cost:</strong> (£3,000 − £840) ÷ 12 = <strong>£180/month</strong> instead of £250/month</li>
+      <li><strong>Employer NI saving:</strong> 15% × £3,000 = £450 per year</li>
+    </ul>
+
+    <h2>Worked example: £55,000 salary, higher-rate taxpayer</h2>
+    <p>Salary of £55,000. Sacrifice £4,730, the amount above the £50,270 threshold. The entire sacrifice falls in the 40% tax / 2% NI zone.</p>
+    <ul style="padding-left:1.25rem;font-size:0.9rem;color:var(--text-secondary);line-height:1.8;margin-top:0.25rem;margin-bottom:0.85rem;">
+      <li><strong>Income tax saving:</strong> 40% × £4,730 = £1,892</li>
+      <li><strong>Employee NI saving:</strong> 2% × £4,730 = £94.60</li>
+      <li><strong>Total saving:</strong> £1,986.60 per year</li>
+      <li><strong>Net cost of £4,730 sacrifice:</strong> £2,743.40 per year (£228.62/month)</li>
+    </ul>
+    <p style="margin-bottom:0;">Higher-rate taxpayers save 42p per pound versus 28p for basic-rate. The saving is much larger because the income tax rate is double.</p>
+
+    <h2>Important rules and limits</h2>
+    <ul style="padding-left:1.25rem;font-size:0.9rem;color:var(--text-secondary);line-height:1.8;margin-top:0.25rem;margin-bottom:0.85rem;">
+      <li><strong>National Minimum Wage:</strong> Your post-sacrifice cash salary must not fall below the NMW for your age. For those aged 21+ in 2026/27, NMW is £12.21/hour (approximately £23,600 full-time annual equivalent).</li>
+      <li><strong>Formal contract amendment required:</strong> Salary sacrifice must be documented as a change to your employment contract, it cannot be informal or ad hoc.</li>
+      <li><strong>Pension annual allowance:</strong> Total pension contributions (employee + employer + sacrifice) must not exceed £60,000 per year or 100% of earnings. Most employees are well below this.</li>
+      <li><strong>Mortgage affordability:</strong> Lenders may base affordability on post-sacrifice contractual salary. Consider timing if you are about to apply for a mortgage.</li>
+      <li><strong>Statutory pay:</strong> SMP, SPP and SSP are calculated on pre-sacrifice salary in most cases, but check your employer's specific scheme rules.</li>
+    </ul>
+
+    <h2>How to set it up with your employer</h2>
+    <ol style="padding-left:1.25rem;font-size:0.9rem;color:var(--text-secondary);line-height:1.8;margin-top:0.25rem;margin-bottom:0.85rem;">
+      <li>Check your employer operates a salary sacrifice scheme (ask HR or payroll).</li>
+      <li>Find out the available change windows, most schemes allow changes once or twice per year.</li>
+      <li>Complete the salary sacrifice agreement specifying the benefit type and amount.</li>
+      <li>Confirm the change appears on your first payslip as a reduced gross salary and an employer pension/benefit contribution.</li>
+      <li>Ask HR whether the employer passes on any NI saving as additional pension contribution ("NI passthrough").</li>
+    </ol>
+
+  <div style="margin-top:1.5rem;padding:1rem 1.25rem;background:var(--surface-2);border-radius:8px;">
+    <h3 style="margin:0 0 0.5rem;">Calculate your exact saving</h3>
+    <p style="margin:0 0 0.75rem;font-size:0.9rem;">Use our <a href="/pension-salary-sacrifice-calculator">pension salary sacrifice calculator</a> to enter your exact salary and sacrifice amount and see income tax saving, NI saving and net monthly cost. Or try the <a href="/calculator">main calculator</a> for pension, EV, cycle to work and bonus scenarios.</p>
+    <p style="margin:0;font-size:0.88rem;color:var(--text-secondary);">See also: <a href="/salary-sacrifice-vs-relief-at-source">Salary sacrifice vs relief at source</a>, <a href="/salary-sacrifice-higher-rate-taxpayer">Guide for higher-rate taxpayers</a>, <a href="/salary-sacrifice-pension">Pension salary sacrifice guide</a></p>
+  </div>
+</section>
+{% endblock %}

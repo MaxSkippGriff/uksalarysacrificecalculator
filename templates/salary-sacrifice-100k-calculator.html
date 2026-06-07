@@ -1,5 +1,5 @@
-{% extends "base.html" %}
-{% block content %}
+{% extends "article_layout.html" %}
+{% block article_body %}
 <section class="section">
   <div class="badge">Calculator</div>
   <h1>£100k Salary Sacrifice &amp; Tax Trap Calculator 2026/27</h1>
@@ -43,7 +43,6 @@
     </div>
   </div>
 
-  <article class="card">
     <h2>The £100k–£125,140 60% effective marginal rate</h2>
     <p>Between £100,000 and £125,140, your personal allowance tapers at £1 for every £2 of income above £100,000. The personal allowance is fully withdrawn at £125,140. This means:</p>
     <ul style="padding-left:1.25rem;font-size:0.9rem;color:var(--text-secondary);line-height:1.8;margin-top:0.25rem;margin-bottom:0.85rem;">
@@ -52,16 +51,12 @@
       <li>Above £125,140 the effective rate returns to 45% (additional rate).</li>
     </ul>
     <p>Salary sacrifice reduces your gross pay, which lowers your income within (or below) this band. Each £2 of sacrifice in this zone saves you approximately £1.20 in income tax — plus NI on top — making sacrifice exceptionally valuable here.</p>
-  </article>
 
-  <article class="card">
     <h2>How sacrifice restores the personal allowance</h2>
     <p>If your salary is, say, £110,000, your personal allowance is reduced by (£110,000 − £100,000) / 2 = £5,000. So instead of £12,570, your effective personal allowance is £7,570.</p>
     <p>A sacrifice of £10,000 would bring your income to £100,000 — restoring the full personal allowance of £12,570. The income tax saving on that sacrifice is approximately £6,000 (at the effective 60% rate), plus employee NI saving of £200 (at 2% above £50,270). Total saving: ~£6,200 on a £10,000 sacrifice.</p>
     <p style="margin-bottom:0;">The calculator above models this precisely for your inputs.</p>
-  </article>
 
-  <article class="card">
     <h2>Frequently asked questions</h2>
     <div class="faq-list">
       <details class="faq-item">
@@ -89,16 +84,13 @@
         </div>
       </details>
     </div>
-  </article>
 
-  <article class="card">
     <h2>Official sources</h2>
     <ul style="padding-left:1.25rem;font-size:0.9rem;color:var(--text-secondary);line-height:1.8;margin-top:0.25rem;margin-bottom:0;">
       <li><a href="https://www.gov.uk/income-tax-rates" target="_blank" rel="noopener" style="color:var(--accent);">GOV.UK — Income Tax rates and Personal Allowances</a></li>
       <li><a href="https://www.gov.uk/guidance/salary-sacrifice-and-the-effects-on-paye" target="_blank" rel="noopener" style="color:var(--accent);">GOV.UK — Salary sacrifice and the effects on PAYE</a></li>
       <li><a href="https://www.gov.uk/national-insurance-rates-letters" target="_blank" rel="noopener" style="color:var(--accent);">GOV.UK — National Insurance rates</a></li>
     </ul>
-  </article>
 
   <p style="font-size:0.8rem;color:var(--text-tertiary);margin-top:1.5rem;">This calculator provides estimates only. It does not constitute financial, tax or legal advice. Always check current GOV.UK guidance and consult a qualified adviser before making decisions.</p>
 </section>

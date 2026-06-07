@@ -1,0 +1,71 @@
+{% extends "article_layout.html" %}
+{% block jsonld %}
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"Salary Sacrifice for Higher-Rate Taxpayers 2026/27","description":"How salary sacrifice saves 42p per £1 for higher-rate taxpayers. Worked examples at £55k, £70k and £100k including the £100k personal allowance trap.","url":"{{ site_url }}/salary-sacrifice-higher-rate-taxpayer","datePublished":"2026-05-27","dateModified":"2026-05-27","author":{"@type":"Person","name":"James Whitfield"},"publisher":{"@type":"Organization","name":"UKSalarySacrificeCalculator.co.uk","url":"{{ site_url }}"},"inLanguage":"en-GB"}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"{{ site_url }}/"},{"@type":"ListItem","position":2,"name":"Salary Sacrifice Higher Rate Taxpayer","item":"{{ site_url }}/salary-sacrifice-higher-rate-taxpayer"}]}
+</script>
+{% endblock %}
+{% block article_body %}
+<section class="section">
+  <div class="badge">Guide</div>
+  <h1>Salary Sacrifice for Higher-Rate Taxpayers 2026/27</h1>
+  <p style="font-size:0.82rem;color:var(--text-tertiary);margin-bottom:1rem;">Published by the UK Money Calculators editorial team. Last updated for the 2026/27 tax year.</p>
+
+  <p>Higher-rate taxpayers save 42p for every £1 they sacrifice. That is 40% income tax plus 2% employee NI. Basic-rate taxpayers save 28p. The gap is large enough to matter. This guide works through the numbers at £55k, £70k and £100k, and explains the 60% effective rate trap above £100,000.</p>
+
+    <h2>Why higher-rate taxpayers benefit more</h2>
+    <p>Above the higher-rate threshold of £50,270, income tax jumps to 40%. Employee NI actually drops from 8% to 2% above that same point. But the tax rise more than makes up for it. Net saving per pound of sacrifice above £50,270: 40% + 2% = 42p.</p>
+    <p style="margin-bottom:0;">Employer NI stays at 15% throughout. Many employers pass this back as additional pension contributions. That makes the effective return even higher.</p>
+
+    <h2>Example: £55,000 salary, £3,000 annual sacrifice</h2>
+    <p>At £55,000 you have £4,730 sitting in the higher-rate band. A £3,000 sacrifice sits entirely above £50,270.</p>
+    <ul style="padding-left:1.25rem;font-size:0.9rem;color:var(--text-secondary);line-height:1.8;margin-top:0.25rem;margin-bottom:0.85rem;">
+      <li><strong>Income tax saving:</strong> 40% × £3,000 = £1,200</li>
+      <li><strong>Employee NI saving:</strong> 2% × £3,000 = £60</li>
+      <li><strong>Total personal saving:</strong> £1,260 per year</li>
+      <li><strong>Net monthly cost of £3,000 pension:</strong> £145 per month instead of £250</li>
+      <li><strong>Employer NI saving:</strong> 15% × £3,000 = £450 per year</li>
+    </ul>
+    <p style="margin-bottom:0;">If the employer passes back NI in full, the pension gets £3,450 from a sacrifice costing only £1,740 from take-home. That is nearly a 100% uplift.</p>
+
+    <h2>Example: £70,000 salary, £10,000 annual sacrifice</h2>
+    <p>At £70,000 you are £19,730 above the threshold. All £10,000 falls in the higher-rate band. 40% income tax applies throughout.</p>
+    <ul style="padding-left:1.25rem;font-size:0.9rem;color:var(--text-secondary);line-height:1.8;margin-top:0.25rem;margin-bottom:0.85rem;">
+      <li><strong>Income tax saving:</strong> 40% × £10,000 = £4,000</li>
+      <li><strong>Employee NI saving:</strong> 2% × £10,000 = £200</li>
+      <li><strong>Total personal saving:</strong> £4,200 per year</li>
+      <li><strong>Net cost of £10,000 pension contribution:</strong> £5,800 per year (£483/month)</li>
+      <li><strong>Employer NI saving:</strong> 15% × £10,000 = £1,500</li>
+    </ul>
+    <p style="margin-bottom:0;">Post-sacrifice gross salary: £60,000. The pension receives £10,000, or £11,500 if employer NI is passed back. Net take-home cost is £5,800. Every £1 of reduced take-home delivers £1.98 of pension value with NI passthrough.</p>
+
+    <h2>The £100,000 personal allowance trap, and how sacrifice fixes it</h2>
+    <p>Earn above £100,000 and you start losing your personal allowance. For every £2 above £100,000, £1 of allowance disappears. Between £100,000 and £125,140 the effective marginal tax rate is 60%:</p>
+    <ul style="padding-left:1.25rem;font-size:0.9rem;color:var(--text-secondary);line-height:1.8;margin-top:0.25rem;margin-bottom:0.85rem;">
+      <li>Every £2 above £100,000 is taxed at 40% directly = £0.80 in tax</li>
+      <li>That same £2 causes £1 of personal allowance loss, which costs an additional 40% × £1 = £0.40</li>
+      <li>Total tax on that £2: £1.20, i.e. 60% effective rate</li>
+    </ul>
+    <p>Salary sacrifice reduces your adjusted net income. That is the figure HMRC uses for personal allowance tapering. Sacrifice income above £100,000 and you save tax at 60%, not just 40%.</p>
+    <p><strong>Example:</strong> Salary £108,000. Personal allowance is reduced to £12,570 − (£108,000 − £100,000) ÷ 2 = £12,570 − £4,000 = £8,570. Sacrifice £8,000 into pension. New adjusted net income: £100,000. Personal allowance fully restored to £12,570. Tax saving: (1) 60% effective rate on first £8,000 = £4,800 income tax saving, plus (2) 2% NI = £160. Total: £4,960 saved. Net cost of £8,000 pension contribution: £3,040.</p>
+
+    <h2>Pension annual allowance: check before sacrificing large amounts</h2>
+    <p>The annual allowance is £60,000 for 2026/27. It includes employer contributions and salary sacrifice. A higher earner with a 10% employer contribution on £70,000 (£7,000) who sacrifices a further £25,000 has total inputs of £32,000 — well within the limit. Most employees never get close to £60,000. But if you have large employer contributions or a defined benefit scheme, check before sacrificing big amounts.</p>
+    <p style="margin-bottom:0;">The tapered annual allowance applies when threshold income exceeds £200,000 and adjusted income exceeds £260,000. Very few employees hit this. See our <a href="/salary-sacrifice-annual-allowance">annual allowance guide</a> for full details.</p>
+
+    <h2>30 hours free childcare and child benefit: additional threshold interactions</h2>
+    <p>Two more thresholds are worth knowing about if you have children:</p>
+    <ul style="padding-left:1.25rem;font-size:0.9rem;color:var(--text-secondary);line-height:1.8;margin-top:0.25rem;margin-bottom:0.85rem;">
+      <li><strong>30 hours free childcare:</strong> requires adjusted net income below £100,000. Sacrificing to stay below this threshold restores access to 30 hours, potentially worth £5,000–£10,000+ per year in childcare savings.</li>
+      <li><strong>High Income Child Benefit Charge:</strong> claws back 1% of child benefit per £200 of ANI above £60,000. Salary sacrifice reduces ANI, reducing or eliminating the clawback.</li>
+    </ul>
+    <p style="margin-bottom:0;">For higher earners with children in the £60,000–£125,140 range, the total saving across income tax, NI, childcare costs and child benefit clawback can far exceed the sacrifice amount itself.</p>
+
+  <div style="margin-top:1.5rem;padding:1rem 1.25rem;background:var(--surface-2);border-radius:8px;">
+    <h3 style="margin:0 0 0.5rem;">Calculate your exact saving</h3>
+    <p style="margin:0 0 0.75rem;font-size:0.9rem;">Enter your salary and sacrifice amount in our <a href="/pension-salary-sacrifice-calculator">pension salary sacrifice calculator</a>. For the £100k trap, use the <a href="/salary-sacrifice-100k-calculator">£100k calculator</a>. See also: <a href="/how-does-salary-sacrifice-work">how salary sacrifice works</a>, <a href="/salary-sacrifice-pension">pension guide</a>, <a href="/salary-sacrifice-annual-allowance">annual allowance</a>.</p>
+  </div>
+</section>
+{% endblock %}

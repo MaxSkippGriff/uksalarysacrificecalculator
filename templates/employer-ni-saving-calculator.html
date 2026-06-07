@@ -1,5 +1,5 @@
-{% extends "base.html" %}
-{% block content %}
+{% extends "article_layout.html" %}
+{% block article_body %}
 <section class="section">
   <div class="badge">Calculator</div>
   <h1>Salary Sacrifice Employer NI Saving Calculator 2026/27</h1>
@@ -38,14 +38,11 @@
     </div>
   </div>
 
-  <article class="card">
     <h2>The 15% employer NI rate (from April 2025)</h2>
     <p>From 6 April 2025, the employer National Insurance rate increased to <strong>15%</strong> (from 13.8%), and the secondary threshold was reduced to <strong>£5,000/year</strong> (from £9,100). This means employer NI is payable at 15% on employee earnings above £5,000 per year.</p>
     <p>Under a salary sacrifice arrangement, the employee's contractual salary is lower — so the employer pays NI on a reduced gross figure. For each £1,000 of sacrifice, the employer saves <strong>£150</strong> in employer NI (assuming the salary sits above the secondary threshold throughout).</p>
     <p>This calculation uses a simplified approach: it assumes the full sacrifice amount is above the £5,000 secondary threshold. For very low salaries or large sacrifices that cross the threshold, the actual saving may be slightly lower.</p>
-  </article>
 
-  <article class="card">
     <h2>Why employers pass on some of the saving</h2>
     <p>Employers are not required to share their NI saving with employees, but many choose to for several reasons:</p>
     <ul style="padding-left:1.25rem;font-size:0.9rem;color:var(--text-secondary);line-height:1.8;margin-top:0.25rem;margin-bottom:0.85rem;">
@@ -54,9 +51,7 @@
       <li><strong>Cost-neutral incentive:</strong> Passing on 100% of the NI saving costs the employer nothing net — the pension contribution replaces the NI that would otherwise have been paid to HMRC.</li>
     </ul>
     <p style="margin-bottom:0;">See our guide: <a href="/salary-sacrifice-employer-ni-saving" style="color:var(--accent);">How salary sacrifice saves employer National Insurance</a>.</p>
-  </article>
 
-  <article class="card">
     <h2>Frequently asked questions</h2>
     <div class="faq-list">
       <details class="faq-item">
@@ -84,16 +79,13 @@
         </div>
       </details>
     </div>
-  </article>
 
-  <article class="card">
     <h2>Official sources</h2>
     <ul style="padding-left:1.25rem;font-size:0.9rem;color:var(--text-secondary);line-height:1.8;margin-top:0.25rem;margin-bottom:0;">
       <li><a href="https://www.gov.uk/guidance/salary-sacrifice-and-the-effects-on-paye" target="_blank" rel="noopener" style="color:var(--accent);">GOV.UK — Salary sacrifice and the effects on PAYE</a></li>
       <li><a href="https://www.gov.uk/national-insurance-rates-letters" target="_blank" rel="noopener" style="color:var(--accent);">GOV.UK — National Insurance rates and categories</a></li>
       <li><a href="https://www.gov.uk/employer-national-insurance-rates" target="_blank" rel="noopener" style="color:var(--accent);">GOV.UK — Employer NI rates</a></li>
     </ul>
-  </article>
 
   <p style="font-size:0.8rem;color:var(--text-tertiary);margin-top:1.5rem;">This calculator provides estimates only. It does not constitute financial, tax or legal advice. Always check current GOV.UK guidance and consult a qualified adviser before making decisions.</p>
 </section>

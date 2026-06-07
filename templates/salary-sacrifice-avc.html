@@ -1,0 +1,64 @@
+{% extends "article_layout.html" %}
+{% block jsonld %}
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"Salary Sacrifice AVC, Additional Voluntary Contributions Guide 2026/27","description":"How to make AVC contributions via salary sacrifice in NHS, LGPS and other DB schemes. Saves income tax and NI that standard AVC arrangements do not.","url":"{{ site_url }}/salary-sacrifice-avc","datePublished":"2026-05-27","dateModified":"2026-05-27","author":{"@type":"Person","name":"James Whitfield"},"publisher":{"@type":"Organization","name":"UKSalarySacrificeCalculator.co.uk","url":"{{ site_url }}"},"inLanguage":"en-GB"}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"{{ site_url }}/"},{"@type":"ListItem","position":2,"name":"Salary Sacrifice AVC","item":"{{ site_url }}/salary-sacrifice-avc"}]}
+</script>
+{% endblock %}
+{% block article_body %}
+<section class="section">
+  <div class="badge">Guide</div>
+  <h1>Salary Sacrifice AVC, Additional Voluntary Contributions Guide 2026/27</h1>
+  <p style="font-size:0.82rem;color:var(--text-tertiary);margin-bottom:1rem;">Published by the UK Money Calculators editorial team. Last updated for the 2026/27 tax year.</p>
+
+  <p>AVCs let members of defined benefit schemes — NHS, LGPS, teachers' pensions — build a defined contribution top-up alongside their main pension. Where your employer allows it, you can make AVCs via salary sacrifice. That adds the NI saving that standard DB contributions don't provide. This guide covers how it works, the numbers and the annual allowance interaction.</p>
+
+    <h2>What are AVCs?</h2>
+    <p>AVCs are extra contributions to a separate defined contribution pot alongside your main workplace pension. Unlike the DB scheme, AVC funds grow based on investment performance and contributions. At retirement you can use the AVC pot for a tax-free lump sum (up to 25%, within the £268,275 lump sum allowance), to buy an annuity, or to draw flexibly under pension freedoms rules.</p>
+    <p style="margin-bottom:0;">In-house AVCs come from the scheme itself, often through an insurer like Prudential or Standard Life. They tend to have lower charges and, where permitted, can be made via salary sacrifice. FSAVCs are independent personal pensions and typically use relief at source. Salary sacrifice isn't available on FSAVCs.</p>
+
+    <h2>How AVC salary sacrifice works</h2>
+    <p>Where your employer has set up an AVC salary sacrifice arrangement, the mechanics are the same as any other pension sacrifice. Your gross pay is reduced by the AVC amount. Your employer pays the AVC to the provider as an employer contribution. Income tax and NI are assessed on the lower gross. You save income tax at your marginal rate plus NI, typically 8% in the main band or 2% above £50,270.</p>
+    <p style="margin-bottom:0;">The advantage over relief at source or NPA is the NI saving. A standard AVC under RaS saves income tax but not NI. A salary sacrifice AVC saves both.</p>
+
+    <h2>Worked example: LGPS member, £38,000 salary, £2,000 AVC sacrifice</h2>
+    <p>An LGPS member earning £38,000 makes a £2,000 annual AVC via salary sacrifice through their council employer. All of it sits in the basic-rate tax and main NI band.</p>
+    <ul style="padding-left:1.25rem;font-size:0.9rem;color:var(--text-secondary);line-height:1.8;margin-top:0.25rem;margin-bottom:0.85rem;">
+      <li><strong>Gross salary after sacrifice:</strong> £36,000</li>
+      <li><strong>Income tax saving:</strong> 20% × £2,000 = £400</li>
+      <li><strong>Employee NI saving:</strong> 8% × £2,000 = £160</li>
+      <li><strong>Total personal saving:</strong> £560 per year</li>
+      <li><strong>Net cost of £2,000 AVC:</strong> £1,440 per year (£120 per month)</li>
+      <li><strong>Employer NI saving:</strong> 15% × £2,000 = £300 (check whether employer passes this on)</li>
+    </ul>
+    <p style="margin-bottom:0;">The same £2,000 AVC under relief at source would cost £1,600 — no NI saving. The salary sacrifice route saves an extra £160 per year. Over 20 years that is £3,200 in cumulative NI savings, plus any employer NI passthrough on top.</p>
+
+    <h2>Annual allowance interaction: AVC + DB accrual</h2>
+    <p>The annual allowance covers all pension inputs. For DB schemes, HMRC values annual accrual as 16 times the increase in annual pension entitlement. For a 1/49 CARE scheme (LGPS and NHS): pensionable pay of £38,000 gives a pension increase of £38,000 ÷ 49 = £775.51. HMRC values that as 16 × £775.51 = £12,408.16 for annual allowance purposes.</p>
+    <p>Add £2,000 AVC and the total pension input is £14,408. Well within the £60,000 allowance. For most DB members making modest AVCs, this limit never becomes a problem. It only starts to matter for those with long service, large employer contributions and large AVCs combining to approach £60,000.</p>
+    <p style="margin-bottom:0;"><strong>Tapered annual allowance:</strong> applies when threshold income exceeds £200,000 and adjusted income exceeds £260,000, reducing the allowance to a minimum of £10,000. Very few DB scheme members are affected. See our <a href="/salary-sacrifice-annual-allowance">annual allowance guide</a> for full detail.</p>
+
+    <h2>In-house AVC vs FSAVC: which to use?</h2>
+    <ul style="padding-left:1.25rem;font-size:0.9rem;color:var(--text-secondary);line-height:1.8;margin-top:0.25rem;margin-bottom:0.85rem;">
+      <li><strong>In-house AVC:</strong> offered by your scheme's AVC provider. Typically lower charges. May allow tax-free cash via the 25% lump sum route. Can be salary sacrificed if your employer has set up the arrangement. Fund choice may be limited.</li>
+      <li><strong>FSAVC / personal pension (SIPP):</strong> independent plan, full fund choice, higher charges, must be made under relief at source (not salary sacrifice). Suitable for self-employed or those whose employer does not offer in-house AVC salary sacrifice.</li>
+    </ul>
+    <p style="margin-bottom:0;">For employed DB scheme members whose employer offers in-house AVC salary sacrifice, that is usually the better route. You get the NI saving and potentially lower charges. The SIPP or FSAVC route makes more sense if you want full investment flexibility, or if your employer doesn't offer salary sacrifice AVCs.</p>
+
+    <h2>How to set up AVC salary sacrifice</h2>
+    <ol style="padding-left:1.25rem;font-size:0.9rem;color:var(--text-secondary);line-height:1.8;margin-top:0.25rem;margin-bottom:0.85rem;">
+      <li>Confirm with HR or payroll that your employer offers AVC salary sacrifice (not all DB scheme employers do).</li>
+      <li>Contact the in-house AVC provider to open an account or increase contributions. Get confirmation of the investment options available.</li>
+      <li>Complete the salary sacrifice agreement with your employer, specifying the AVC amount and start date.</li>
+      <li>Verify the change on your first payslip, your gross should be reduced and the AVC confirmed as an employer contribution.</li>
+      <li>Check annually that the sacrifice amount is still appropriate, adjust at your employer's change window if needed.</li>
+    </ol>
+
+  <div style="margin-top:1.5rem;padding:1rem 1.25rem;background:var(--surface-2);border-radius:8px;">
+    <h3 style="margin:0 0 0.5rem;">Calculate your AVC saving</h3>
+    <p style="margin:0 0 0.5rem;font-size:0.9rem;">Enter your gross salary and AVC amount in our <a href="/pension-salary-sacrifice-calculator">pension salary sacrifice calculator</a> to see income tax saving, NI saving and net monthly cost. See also: <a href="/salary-sacrifice-nhs">NHS salary sacrifice guide</a>, <a href="/salary-sacrifice-annual-allowance">annual allowance guide</a>, <a href="/salary-sacrifice-pension">pension salary sacrifice guide</a>.</p>
+  </div>
+</section>
+{% endblock %}
