@@ -174,6 +174,17 @@ def sitemap():
         (f"{SITE_URL}/bonus-sacrifice-calculator", "0.7", "monthly"),
         (f"{SITE_URL}/salary-sacrifice-100k-calculator", "0.7", "monthly"),
         (f"{SITE_URL}/employer-ni-saving-calculator", "0.7", "monthly"),
+        (f"{SITE_URL}/salary-sacrifice-electric-car-calculator", "0.7", "monthly"),
+        (f"{SITE_URL}/how-does-salary-sacrifice-work", "0.7", "monthly"),
+        (f"{SITE_URL}/salary-sacrifice-higher-rate-taxpayer", "0.7", "monthly"),
+        (f"{SITE_URL}/salary-sacrifice-vs-relief-at-source", "0.7", "monthly"),
+        (f"{SITE_URL}/salary-sacrifice-nhs", "0.7", "monthly"),
+        (f"{SITE_URL}/salary-sacrifice-avc", "0.6", "monthly"),
+        (f"{SITE_URL}/salary-sacrifice-take-home-pay", "0.7", "monthly"),
+        (f"{SITE_URL}/salary-sacrifice-annual-allowance", "0.6", "monthly"),
+        (f"{SITE_URL}/salary-sacrifice-100k-tax-trap", "0.7", "monthly"),
+        (f"{SITE_URL}/salary-sacrifice-universal-credit", "0.6", "monthly"),
+        (f"{SITE_URL}/salary-sacrifice-tax-code", "0.6", "monthly"),
         (f"{SITE_URL}/blog", "0.6", "weekly"),
     ] + [(f"{SITE_URL}/blog/{p['slug']}", "0.6", "monthly") for p in BLOG_POSTS] \
       + [(f"{SITE_URL}/salary-sacrifice/{s}", "0.5", "monthly") for s in SACRIFICE_SALARY_AMOUNTS]
@@ -189,7 +200,7 @@ def landing():
     faq_items = [
         {
             "q": "What is salary sacrifice?",
-            "a": "Salary sacrifice is a HMRC-approved arrangement where you give up part of your gross salary in exchange for a non-cash benefit — typically pension contributions, a cycle-to-work scheme or an EV company car. Because your gross salary is reduced, you pay less income tax and National Insurance."
+            "a": "Salary sacrifice is a HMRC-approved arrangement where you give up part of your gross salary in exchange for a non-cash benefit, typically pension contributions, a cycle-to-work scheme or an EV company car. Because your gross salary is reduced, you pay less income tax and National Insurance."
         },
         {
             "q": "How much National Insurance do I save with salary sacrifice?",
@@ -201,7 +212,7 @@ def landing():
         },
         {
             "q": "Is salary sacrifice different for Scottish taxpayers?",
-            "a": "The NI saving is the same UK-wide. Income tax savings differ because Scotland has its own bands — the intermediate rate is 21% and the higher rate starts at a different point. Our calculator lets you select Scottish rates."
+            "a": "The NI saving is the same UK-wide. Income tax savings differ because Scotland has its own bands, the intermediate rate is 21% and the higher rate starts at a different point. Our calculator lets you select Scottish rates."
         },
         {
             "q": "Can my employer pass on their NI saving to me?",
@@ -215,8 +226,8 @@ def landing():
     return render_template(
         "landing.html",
         **_ctx(
-            title="Salary Sacrifice Calculator UK 2026/27 | Estimate Tax, NI & Take-Home Impact",
-            meta_description="Calculate the 2026/27 tax, National Insurance and take-home impact of salary sacrifice for pensions, cycle to work, EV cars and other schemes.",
+            title="Salary Sacrifice Calculator UK 2026/27 | Tax & NI Savings",
+            meta_description="Salary sacrifice calculator 2026/27, see exact tax, NI and take-home impact for pension, electric car, cycle-to-work or bonus sacrifice. Employer NI savings shown too.",
             canonical_url=canonical_url,
             calc=calc,
             faq_items=faq_items,
@@ -248,7 +259,7 @@ def methodology():
     return render_template(
         "methodology.html",
         **_ctx(
-            title="Methodology — How We Calculate Salary Sacrifice Savings (2026/27)",
+            title="Methodology, How We Calculate Salary Sacrifice Savings (2026/27)",
             meta_description="How UKSalarySacrificeCalculator.co.uk calculates salary sacrifice tax and NI savings: 2026/27 rates, Scottish bands, PA tapering and what we don't model.",
             canonical_url=canonical_url,
             breadcrumbs=[
@@ -265,8 +276,8 @@ def about():
     return render_template(
         "about.html",
         **_ctx(
-            title="About UK Salary Sacrifice Calculator — Free Tool for Employees",
-            meta_description="About UKSalarySacrificeCalculator.co.uk — a free, independent tool to estimate salary sacrifice tax and NI savings for 2026/27.",
+            title="About UK Salary Sacrifice Calculator, Free Tool for Employees",
+            meta_description="About UKSalarySacrificeCalculator.co.uk, a free, independent tool to estimate salary sacrifice tax and NI savings for 2026/27.",
             canonical_url=canonical_url,
             breadcrumbs=[
                 {"name": "Home", "url": SITE_URL + "/"},
@@ -282,7 +293,7 @@ def privacy():
     return render_template(
         "privacy.html",
         **_ctx(
-            title="Privacy Policy — UKSalarySacrificeCalculator.co.uk",
+            title="Privacy Policy, UKSalarySacrificeCalculator.co.uk",
             meta_description="Privacy policy for UKSalarySacrificeCalculator.co.uk. We don't store your financial data.",
             canonical_url=canonical_url,
             breadcrumbs=[
@@ -299,7 +310,7 @@ def contact():
     return render_template(
         "contact.html",
         **_ctx(
-            title="Contact — UKSalarySacrificeCalculator.co.uk",
+            title="Contact, UKSalarySacrificeCalculator.co.uk",
             meta_description="Get in touch with UKSalarySacrificeCalculator.co.uk.",
             canonical_url=canonical_url,
             breadcrumbs=[
@@ -316,7 +327,7 @@ def disclaimer():
     return render_template(
         "disclaimer.html",
         **_ctx(
-            title="Disclaimer — UKSalarySacrificeCalculator.co.uk",
+            title="Disclaimer, UKSalarySacrificeCalculator.co.uk",
             meta_description="Disclaimer for UKSalarySacrificeCalculator.co.uk. All results are estimates only and not financial or tax advice.",
             canonical_url=canonical_url,
             breadcrumbs=[
@@ -391,7 +402,7 @@ def guide_bonus():
 def guide_scotland():
     return render_template("salary-sacrifice-scotland.html", **_ctx(
         title="Salary Sacrifice in Scotland 2026/27 | UK Guide",
-        meta_description="How salary sacrifice works for Scottish taxpayers in 2026/27 — Scottish income tax rates, intermediate and higher rate thresholds, and NI savings.",
+        meta_description="How salary sacrifice works for Scottish taxpayers in 2026/27, Scottish income tax rates, intermediate and higher rate thresholds, and NI savings.",
         canonical_url=SITE_URL + "/salary-sacrifice-scotland",
         breadcrumbs=[{"name": "Home", "url": SITE_URL + "/"}, {"name": "Salary Sacrifice in Scotland", "url": SITE_URL + "/salary-sacrifice-scotland"}],
     ))
@@ -401,7 +412,7 @@ def guide_scotland():
 def guide_childcare():
     return render_template("salary-sacrifice-childcare.html", **_ctx(
         title="Salary Sacrifice for Childcare 2026/27 | UK Guide",
-        meta_description="Childcare vouchers vs Tax-Free Childcare in 2026/27 — what salary sacrifice options are available, who qualifies and how much you can save.",
+        meta_description="Childcare vouchers vs Tax-Free Childcare in 2026/27, what salary sacrifice options are available, who qualifies and how much you can save.",
         canonical_url=SITE_URL + "/salary-sacrifice-childcare",
         breadcrumbs=[{"name": "Home", "url": SITE_URL + "/"}, {"name": "Salary Sacrifice for Childcare", "url": SITE_URL + "/salary-sacrifice-childcare"}],
     ))
@@ -421,7 +432,7 @@ def guide_maternity_pay():
 def guide_disadvantages():
     return render_template("salary-sacrifice-disadvantages.html", **_ctx(
         title="Disadvantages of Salary Sacrifice 2026/27 | UK Guide",
-        meta_description="The downsides of salary sacrifice in 2026/27 — mortgage affordability, state pension, defined benefit schemes, death-in-service and minimum wage considerations.",
+        meta_description="The downsides of salary sacrifice in 2026/27, mortgage affordability, state pension, defined benefit schemes, death-in-service and minimum wage considerations.",
         canonical_url=SITE_URL + "/salary-sacrifice-disadvantages",
         breadcrumbs=[{"name": "Home", "url": SITE_URL + "/"}, {"name": "Disadvantages of Salary Sacrifice", "url": SITE_URL + "/salary-sacrifice-disadvantages"}],
     ))
@@ -430,7 +441,7 @@ def guide_disadvantages():
 @app.route("/salary-sacrifice-pension")
 def guide_pension_scheme():
     return render_template("salary-sacrifice-pension.html", **_ctx(
-        title="Salary Sacrifice for Pensions — How It Works 2026/27 | UK Guide",
+        title="Salary Sacrifice for Pensions, How It Works 2026/27 | UK Guide",
         meta_description="How pension salary sacrifice works in 2026/27: income tax and NI savings, employer NI passthrough, the annual allowance and opting in via your employer.",
         canonical_url=SITE_URL + "/salary-sacrifice-pension",
         breadcrumbs=[{"name": "Home", "url": SITE_URL + "/"}, {"name": "Salary Sacrifice for Pensions", "url": SITE_URL + "/salary-sacrifice-pension"}],
@@ -460,8 +471,8 @@ def calculators_index():
 @app.route("/pension-salary-sacrifice-calculator")
 def pension_salary_sacrifice_calculator():
     return render_template("pension-salary-sacrifice-calculator.html", **_ctx(
-        title="Pension Salary Sacrifice Calculator 2026/27 | UKSalarySacrificeCalculator.co.uk",
-        meta_description="Estimate income tax and NI savings from pension salary sacrifice in 2026/27, including employer NI passthrough.",
+        title="Pension Salary Sacrifice Calculator 2026/27 | Tax & NI",
+        meta_description="Pension salary sacrifice calculator 2026/27, enter your salary and sacrifice amount to see income tax saved, NI saved, employer NI saving and net take-home cost.",
         canonical_url=SITE_URL + "/pension-salary-sacrifice-calculator",
         breadcrumbs=[
             {"name": "Home", "url": SITE_URL + "/"},
@@ -474,8 +485,8 @@ def pension_salary_sacrifice_calculator():
 @app.route("/bonus-sacrifice-calculator")
 def bonus_sacrifice_calculator():
     return render_template("bonus-sacrifice-calculator.html", **_ctx(
-        title="Bonus Sacrifice Calculator 2026/27 | UKSalarySacrificeCalculator.co.uk",
-        meta_description="Estimate the tax saving from sacrificing a bonus into pension instead of taking it as cash in 2026/27.",
+        title="Bonus Sacrifice Calculator UK 2026/27 | Tax & NI Savings",
+        meta_description="Bonus sacrifice calculator UK 2026/27, see how much tax and NI you save by sacrificing a bonus into pension vs taking it as cash. Basic-rate and higher-rate examples included.",
         canonical_url=SITE_URL + "/bonus-sacrifice-calculator",
         breadcrumbs=[
             {"name": "Home", "url": SITE_URL + "/"},
@@ -513,6 +524,290 @@ def employer_ni_saving_calculator():
     ))
 
 
+@app.route("/salary-exchange-calculator")
+def salary_exchange_calculator_redirect():
+    return redirect("/", code=301)
+
+
+@app.route("/pension-sacrifice-calculator")
+def pension_sacrifice_calculator_redirect():
+    return redirect("/pension-salary-sacrifice-calculator", code=301)
+
+
+@app.route("/bonus-sacrifice-calculator-uk")
+def bonus_sacrifice_calculator_uk_redirect():
+    return redirect("/bonus-sacrifice-calculator", code=301)
+
+
+@app.route("/salary-sacrifice-hmrc")
+def salary_sacrifice_hmrc_redirect():
+    return redirect("/", code=301)
+
+
+# ---------------------------------------------------------------------------
+# Redirect aliases for common URL variants
+# ---------------------------------------------------------------------------
+
+@app.route("/salary-sacrifice-pension-calculator")
+def salary_sacrifice_pension_calculator_redirect():
+    return redirect("/pension-salary-sacrifice-calculator", code=301)
+
+@app.route("/salary-sacrifice-calculator")
+def salary_sacrifice_calculator_redirect():
+    return redirect("/calculator", code=301)
+
+@app.route("/salary-sacrifice-calculator-uk")
+def salary_sacrifice_calculator_uk_redirect():
+    return redirect("/calculator", code=301)
+
+@app.route("/uk-salary-sacrifice-calculator")
+def uk_salary_sacrifice_calculator_redirect():
+    return redirect("/calculator", code=301)
+
+@app.route("/salary-sacrifice-tool")
+def salary_sacrifice_tool_redirect():
+    return redirect("/calculator", code=301)
+
+@app.route("/salary-sacrifice-tax-calculator")
+def salary_sacrifice_tax_calculator_redirect():
+    return redirect("/calculator", code=301)
+
+@app.route("/salary-sacrifice-calc")
+def salary_sacrifice_calc_redirect():
+    return redirect("/calculator", code=301)
+
+@app.route("/salary-sacrifice-ni-savings-calculator")
+def salary_sacrifice_ni_savings_calculator_redirect():
+    return redirect("/employer-ni-saving-calculator", code=301)
+
+@app.route("/calculate-employer-ni-saving")
+def calculate_employer_ni_redirect():
+    return redirect("/employer-ni-saving-calculator", code=301)
+
+@app.route("/salary-sacrifice-employer-ni-calculator")
+def salary_sacrifice_employer_ni_calculator_redirect():
+    return redirect("/employer-ni-saving-calculator", code=301)
+
+@app.route("/bonus-salary-sacrifice-calculator")
+def bonus_salary_sacrifice_calculator_redirect():
+    return redirect("/bonus-sacrifice-calculator", code=301)
+
+@app.route("/salary-sacrifice-car")
+def salary_sacrifice_car_redirect():
+    return redirect("/salary-sacrifice-electric-car", code=301)
+
+@app.route("/salary-sacrifice-car-scheme")
+def salary_sacrifice_car_scheme_redirect():
+    return redirect("/salary-sacrifice-electric-car", code=301)
+
+@app.route("/salary-sacrifice-ev")
+def salary_sacrifice_ev_redirect():
+    return redirect("/salary-sacrifice-electric-car", code=301)
+
+@app.route("/hmrc-salary-sacrifice-calculator")
+def hmrc_salary_sacrifice_calculator_redirect():
+    return redirect("/calculator", code=301)
+
+@app.route("/salary-sacrifice-comparison")
+def salary_sacrifice_comparison_redirect():
+    return redirect("/salary-sacrifice-vs-relief-at-source", code=301)
+
+
+# ---------------------------------------------------------------------------
+# New guide pages
+# ---------------------------------------------------------------------------
+
+@app.route("/how-does-salary-sacrifice-work")
+def guide_how_it_works():
+    canonical_url = SITE_URL + "/how-does-salary-sacrifice-work"
+    return render_template("how-does-salary-sacrifice-work.html", **_ctx(
+        title="How Does Salary Sacrifice Work? UK Guide 2026/27",
+        meta_description="Salary sacrifice explained: how it reduces income tax and NI, what qualifies, worked examples at £30k, £40k and £50k salaries, and the key rules for 2026/27.",
+        canonical_url=canonical_url,
+        breadcrumbs=[
+            {"name": "Home", "url": SITE_URL + "/"},
+            {"name": "How Does Salary Sacrifice Work", "url": canonical_url},
+        ],
+    ))
+
+
+@app.route("/salary-sacrifice-higher-rate-taxpayer")
+def guide_higher_rate():
+    canonical_url = SITE_URL + "/salary-sacrifice-higher-rate-taxpayer"
+    return render_template("salary-sacrifice-higher-rate-taxpayer.html", **_ctx(
+        title="Salary Sacrifice for Higher Rate Taxpayers 2026/27",
+        meta_description="At 40% tax plus 2% NI, higher-rate taxpayers save £420 per £1,000 sacrificed. Guide with worked examples at £55k, £70k and £100k salary, plus the £100k trap.",
+        canonical_url=canonical_url,
+        breadcrumbs=[
+            {"name": "Home", "url": SITE_URL + "/"},
+            {"name": "Higher Rate Taxpayer Guide", "url": canonical_url},
+        ],
+    ))
+
+
+@app.route("/salary-sacrifice-vs-relief-at-source")
+def guide_vs_relief_at_source():
+    canonical_url = SITE_URL + "/salary-sacrifice-vs-relief-at-source"
+    return render_template("salary-sacrifice-vs-relief-at-source.html", **_ctx(
+        title="Salary Sacrifice vs Relief at Source 2026/27 | UK Guide",
+        meta_description="Salary sacrifice vs relief at source vs net pay arrangement: how each method works, which saves more NI, and when salary sacrifice is the better choice in 2026/27.",
+        canonical_url=canonical_url,
+        breadcrumbs=[
+            {"name": "Home", "url": SITE_URL + "/"},
+            {"name": "Salary Sacrifice vs Relief at Source", "url": canonical_url},
+        ],
+    ))
+
+
+@app.route("/salary-sacrifice-nhs")
+def guide_nhs():
+    canonical_url = SITE_URL + "/salary-sacrifice-nhs"
+    return render_template("salary-sacrifice-nhs.html", **_ctx(
+        title="Salary Sacrifice for NHS Staff 2026/27 | UK Guide",
+        meta_description="NHS salary sacrifice: pension, cycle to work and EV schemes for NHS employees. How NHS pension membership affects sacrifice, and the Agenda for Change pay implications.",
+        canonical_url=canonical_url,
+        breadcrumbs=[
+            {"name": "Home", "url": SITE_URL + "/"},
+            {"name": "NHS Salary Sacrifice Guide", "url": canonical_url},
+        ],
+    ))
+
+
+@app.route("/salary-sacrifice-avc")
+def guide_avc():
+    canonical_url = SITE_URL + "/salary-sacrifice-avc"
+    return render_template("salary-sacrifice-avc.html", **_ctx(
+        title="Salary Sacrifice AVC, Additional Voluntary Contributions Guide",
+        meta_description="AVC salary sacrifice for defined benefit and NHS pension members: how it works, the tax saving, FSAVC vs in-house AVC, and the annual allowance interaction in 2026/27.",
+        canonical_url=canonical_url,
+        breadcrumbs=[
+            {"name": "Home", "url": SITE_URL + "/"},
+            {"name": "Salary Sacrifice AVC Guide", "url": canonical_url},
+        ],
+    ))
+
+
+@app.route("/salary-sacrifice-take-home-pay")
+def guide_take_home_pay():
+    canonical_url = SITE_URL + "/salary-sacrifice-take-home-pay"
+    return render_template("salary-sacrifice-take-home-pay.html", **_ctx(
+        title="Salary Sacrifice Take-Home Pay: What Actually Changes?",
+        meta_description="How salary sacrifice affects take-home pay: worked examples at £25k, £35k, £50k showing exact net pay after income tax, NI and sacrifice for 2026/27.",
+        canonical_url=canonical_url,
+        breadcrumbs=[
+            {"name": "Home", "url": SITE_URL + "/"},
+            {"name": "Salary Sacrifice Take-Home Pay", "url": canonical_url},
+        ],
+    ))
+
+
+@app.route("/salary-sacrifice-annual-allowance")
+def guide_annual_allowance():
+    canonical_url = SITE_URL + "/salary-sacrifice-annual-allowance"
+    return render_template("salary-sacrifice-annual-allowance.html", **_ctx(
+        title="Salary Sacrifice and the Pension Annual Allowance 2026/27",
+        meta_description="How salary sacrifice pension contributions count towards the £60,000 annual allowance, tapered allowance for high earners, and carry-forward rules explained.",
+        canonical_url=canonical_url,
+        breadcrumbs=[
+            {"name": "Home", "url": SITE_URL + "/"},
+            {"name": "Annual Allowance Guide", "url": canonical_url},
+        ],
+    ))
+
+
+@app.route("/salary-sacrifice-100k-tax-trap")
+def guide_100k_trap():
+    canonical_url = SITE_URL + "/salary-sacrifice-100k-tax-trap"
+    return render_template("salary-sacrifice-100k-tax-trap.html", **_ctx(
+        title="Salary Sacrifice and the £100k Tax Trap 2026/27",
+        meta_description="Income over £100k loses your personal allowance, creating a 60% effective tax rate. Pension salary sacrifice is the main solution. Worked examples for 2026/27.",
+        canonical_url=canonical_url,
+        breadcrumbs=[
+            {"name": "Home", "url": SITE_URL + "/"},
+            {"name": "£100k Tax Trap Guide", "url": canonical_url},
+        ],
+    ))
+
+
+@app.route("/salary-sacrifice-universal-credit")
+def guide_universal_credit():
+    canonical_url = SITE_URL + "/salary-sacrifice-universal-credit"
+    return render_template("salary-sacrifice-universal-credit.html", **_ctx(
+        title="Salary Sacrifice and Universal Credit 2026/27 | UK Guide",
+        meta_description="Salary sacrifice reduces gross pay, which affects Universal Credit calculations. How the UC taper and work allowance interact with pension sacrifice in 2026/27.",
+        canonical_url=canonical_url,
+        breadcrumbs=[
+            {"name": "Home", "url": SITE_URL + "/"},
+            {"name": "Universal Credit and Salary Sacrifice", "url": canonical_url},
+        ],
+    ))
+
+
+@app.route("/salary-sacrifice-tax-code")
+def guide_tax_code():
+    canonical_url = SITE_URL + "/salary-sacrifice-tax-code"
+    return render_template("salary-sacrifice-tax-code.html", **_ctx(
+        title="Salary Sacrifice and Your Tax Code Explained 2026/27",
+        meta_description="How salary sacrifice affects your PAYE tax code, what appears on your payslip, why your P60 shows a lower salary, and what to do if HMRC adjusts your code incorrectly.",
+        canonical_url=canonical_url,
+        breadcrumbs=[
+            {"name": "Home", "url": SITE_URL + "/"},
+            {"name": "Salary Sacrifice Tax Code Guide", "url": canonical_url},
+        ],
+    ))
+
+
+@app.route("/salary-sacrifice-electric-car-calculator")
+def salary_sacrifice_ev_calculator():
+    canonical_url = SITE_URL + "/salary-sacrifice-electric-car-calculator"
+    return render_template("salary-sacrifice-electric-car-calculator.html", **_ctx(
+        title="Electric Car Salary Sacrifice Calculator UK 2026/27",
+        meta_description="Calculate your real monthly cost for an EV through salary sacrifice. Includes BiK tax at 4%, income tax saving, NI saving and employer NI passthrough for 2026/27.",
+        canonical_url=canonical_url,
+        breadcrumbs=[
+            {"name": "Home", "url": SITE_URL + "/"},
+            {"name": "Calculators", "url": SITE_URL + "/calculators"},
+            {"name": "EV Salary Sacrifice Calculator", "url": canonical_url},
+        ],
+    ))
+
+
+@app.route("/ev-salary-sacrifice-calculator")
+def redirect_ev_sacrifice_calc():
+    return redirect(SITE_URL + "/salary-sacrifice-electric-car-calculator", code=301)
+
+@app.route("/salary-sacrifice-pension-contribution")
+def redirect_sacrifice_pension_contribution():
+    return redirect(SITE_URL + "/salary-sacrifice-pension", code=301)
+
+@app.route("/pension-sacrifice-take-home")
+def redirect_pension_sacrifice_take_home():
+    return redirect(SITE_URL + "/salary-sacrifice-take-home-pay", code=301)
+
+@app.route("/salary-sacrifice-40-percent")
+@app.route("/salary-sacrifice-40-percent-taxpayer")
+def redirect_sacrifice_40_percent():
+    return redirect(SITE_URL + "/salary-sacrifice-higher-rate-taxpayer", code=301)
+
+@app.route("/salary-sacrifice-for-employers")
+@app.route("/salary-sacrifice-employer-nic")
+def redirect_sacrifice_employers():
+    return redirect(SITE_URL + "/salary-sacrifice-employer-ni-saving", code=301)
+
+@app.route("/is-salary-sacrifice-worth-it")
+@app.route("/salary-sacrifice-state-pension")
+def redirect_salary_sacrifice_worth_it():
+    return redirect(SITE_URL + "/how-does-salary-sacrifice-work", code=301)
+
+@app.route("/salary-sacrifice-vs-regular-pension")
+def redirect_sacrifice_vs_regular():
+    return redirect(SITE_URL + "/salary-sacrifice-vs-relief-at-source", code=301)
+
+@app.route("/uk-salary-sacrifice-2026")
+@app.route("/salary-sacrifice-2026-27")
+def redirect_sacrifice_2026():
+    return redirect(SITE_URL + "/", code=301)
+
 SACRIFICE_SALARY_AMOUNTS = [20000, 25000, 30000, 35000, 40000, 45000, 50000, 55000, 60000, 70000, 75000, 80000, 100000]
 
 
@@ -549,7 +844,7 @@ def salary_sacrifice_page(salary: int):
 BLOG_POSTS = [
     {
         "slug": "salary-sacrifice-explained",
-        "title": "Salary Sacrifice Explained — How It Works in the UK",
+        "title": "Salary Sacrifice Explained, How It Works in the UK",
         "description": "A complete guide to salary sacrifice: how a formal contract change saves income tax and National Insurance, what benefits qualify, and the important considerations before you sacrifice.",
         "date": "26 May 2026",
         "date_iso": "2026-05-26",
@@ -558,35 +853,35 @@ BLOG_POSTS = [
             {
                 "heading": "What Salary Sacrifice Is",
                 "paragraphs": [
-                    "Salary sacrifice is a formal change to your employment contract. You agree with your employer to give up a portion of your gross cash salary in exchange for a non-cash benefit — typically a pension contribution, a company electric car, cycle-to-work equipment or a technology package. HMRC approves this arrangement, and the tax savings arise because income tax and National Insurance are both calculated on your reduced gross salary, not on the original figure.",
-                    "The key word is formal. A salary sacrifice arrangement must genuinely amend your employment contract — it is not simply a request to have your pension contribution handled differently. HMRC scrutinises arrangements that appear to allow flexible switching in and out at will, since that would resemble a salary supplement rather than a genuine contract change. Most employers set specific windows for joining or altering the scheme.",
+                    "Salary sacrifice is a formal change to your employment contract. You agree with your employer to give up a portion of your gross cash salary in exchange for a non-cash benefit, typically a pension contribution, a company electric car, cycle-to-work equipment or a technology package. HMRC approves this arrangement, and the tax savings arise because income tax and National Insurance are both calculated on your reduced gross salary, not on the original figure.",
+                    "The key word is formal. A salary sacrifice arrangement must genuinely amend your employment contract, it is not simply a request to have your pension contribution handled differently. HMRC scrutinises arrangements that appear to allow flexible switching in and out at will, since that would resemble a salary supplement rather than a genuine contract change. Most employers set specific windows for joining or altering the scheme.",
                 ],
             },
             {
                 "heading": "How the Mechanics Work",
                 "paragraphs": [
-                    "Under salary sacrifice, your contractual gross salary reduces by the sacrifice amount. Your employer then provides the benefit — usually by paying the pension contribution directly, or by leasing a car and making it available to you. Because your gross salary is lower, PAYE income tax is assessed on a smaller figure, and employee National Insurance contributions are assessed on a smaller figure too.",
-                    "Your employer also benefits: employer NI (15% in 2026/27 on earnings above £5,000) is calculated on your reduced salary, saving the employer money on every pound sacrificed. This employer NI saving is real cash — it is not simply redistributed to you automatically, but many employers pass some or all of it back as additional pension contributions or enhanced scheme terms. The net effect is that a £1,000 salary sacrifice typically costs a basic-rate employee only around £720 in reduced take-home pay, because the income tax and NI savings absorb the rest.",
+                    "Under salary sacrifice, your contractual gross salary reduces by the sacrifice amount. Your employer then provides the benefit, usually by paying the pension contribution directly, or by leasing a car and making it available to you. Because your gross salary is lower, PAYE income tax is assessed on a smaller figure, and employee National Insurance contributions are assessed on a smaller figure too.",
+                    "Your employer also benefits: employer NI (15% in 2026/27 on earnings above £5,000) is calculated on your reduced salary, saving the employer money on every pound sacrificed. This employer NI saving is real cash, it is not simply redistributed to you automatically, but many employers pass some or all of it back as additional pension contributions or enhanced scheme terms. The net effect is that a £1,000 salary sacrifice typically costs a basic-rate employee only around £720 in reduced take-home pay, because the income tax and NI savings absorb the rest.",
                 ],
             },
             {
                 "heading": "What Benefits Can Be Salary Sacrificed",
                 "paragraphs": [
-                    "HMRC permits salary sacrifice for a range of benefits. Pension contributions are the most common and most valuable — the employee and employer NI savings make them significantly more efficient than standard pension contributions. Company electric vehicles are highly tax-efficient thanks to the low BIK rate (4% for zero-emission cars in 2026/27). Cycle-to-work equipment is fully exempt from BIK tax, so the entire sacrifice is a tax saving with no offsetting charge. Technology packages (phones, laptops) can also qualify in some schemes.",
+                    "HMRC permits salary sacrifice for a range of benefits. Pension contributions are the most common and most valuable, the employee and employer NI savings make them significantly more efficient than standard pension contributions. Company electric vehicles are highly tax-efficient thanks to the low BIK rate (4% for zero-emission cars in 2026/27). Cycle-to-work equipment is fully exempt from BIK tax, so the entire sacrifice is a tax saving with no offsetting charge. Technology packages (phones, laptops) can also qualify in some schemes.",
                     "What cannot be salary sacrificed: cash bonuses once they have been paid (though a pre-payment election to sacrifice a forthcoming bonus is possible under specific rules), contractual overtime pay, and any benefit that is itself cash or a cash voucher. Childcare vouchers closed to new entrants in October 2018 and are no longer available for new joiners, though existing members of grandfathered schemes may still be receiving them.",
                 ],
             },
             {
                 "heading": "Important Considerations Before You Sacrifice",
                 "paragraphs": [
-                    "The reduced gross salary created by sacrifice affects several other calculations that use salary as an input. Mortgage lenders may assess affordability on your contractual (post-sacrifice) salary — if you are planning to apply for a mortgage in the near term, discuss this with a mortgage broker before altering your sacrifice level. Some lenders accept a letter from your employer confirming the true gross pay, but others simply use the P60 figure.",
-                    "Statutory Maternity Pay (SMP) and Statutory Paternity Pay are both calculated on average earnings. If your salary is reduced by sacrifice during the relevant reference period (typically the 8 weeks before the 25th week of pregnancy for SMP), your statutory entitlement may be lower. Some employers top up statutory payments to full salary, rendering this moot — but check your employer's policy before committing to a sacrifice that spans a period near a planned or possible maternity leave.",
+                    "The reduced gross salary created by sacrifice affects several other calculations that use salary as an input. Mortgage lenders may assess affordability on your contractual (post-sacrifice) salary, if you are planning to apply for a mortgage in the near term, discuss this with a mortgage broker before altering your sacrifice level. Some lenders accept a letter from your employer confirming the true gross pay, but others simply use the P60 figure.",
+                    "Statutory Maternity Pay (SMP) and Statutory Paternity Pay are both calculated on average earnings. If your salary is reduced by sacrifice during the relevant reference period (typically the 8 weeks before the 25th week of pregnancy for SMP), your statutory entitlement may be lower. Some employers top up statutory payments to full salary, rendering this moot, but check your employer's policy before committing to a sacrifice that spans a period near a planned or possible maternity leave.",
                 ],
             },
         ],
         "faqs": [
             {"q": "What is the difference between salary sacrifice and a normal pension contribution?", "a": "Salary sacrifice reduces your gross salary and saves both income tax and National Insurance on the sacrificed amount. A normal employee contribution under relief at source only saves income tax. The NI saving (8% for most employees) is the additional benefit of salary sacrifice."},
-            {"q": "Can my employer refuse to let me use salary sacrifice?", "a": "Yes. Salary sacrifice must be offered by the employer — you cannot set it up unilaterally. If your employer does not offer a scheme, you can ask them to consider introducing one, noting that they also save 15% employer NI on the sacrificed amount."},
+            {"q": "Can my employer refuse to let me use salary sacrifice?", "a": "Yes. Salary sacrifice must be offered by the employer, you cannot set it up unilaterally. If your employer does not offer a scheme, you can ask them to consider introducing one, noting that they also save 15% employer NI on the sacrificed amount."},
             {"q": "Does salary sacrifice reduce my take-home pay?", "a": "Your gross salary falls, but your take-home pay typically falls by less than the sacrifice amount because you save income tax and NI. For a basic-rate taxpayer, a £1,000 sacrifice reduces take-home pay by approximately £720."},
         ],
         "sources": [
@@ -596,7 +891,7 @@ BLOG_POSTS = [
     },
     {
         "slug": "salary-sacrifice-pension-guide",
-        "title": "Salary Sacrifice for Pensions — Full Guide 2026/27",
+        "title": "Salary Sacrifice for Pensions, Full Guide 2026/27",
         "description": "Why pension salary sacrifice saves more than standard contributions, the NI saving, employer passthrough, the annual allowance limit and how to opt in.",
         "date": "26 May 2026",
         "date_iso": "2026-05-26",
@@ -605,35 +900,35 @@ BLOG_POSTS = [
             {
                 "heading": "Why Pension Salary Sacrifice Saves More Than Standard Contributions",
                 "paragraphs": [
-                    "A standard employee pension contribution made under relief at source saves income tax on the contribution but not National Insurance. The provider claims 20% basic-rate relief from HMRC; higher-rate taxpayers then claim additional relief via Self Assessment. NI is not affected — you pay NI on your full gross salary whether or not you make pension contributions.",
-                    "Salary sacrifice works differently: your gross salary is reduced, so employee NI is assessed on a lower figure. A £3,000 annual pension sacrifice for someone earning £35,000 saves 20% × £3,000 = £600 in income tax plus 8% × £3,000 = £240 in NI — a total saving of £840 per year. The same £3,000 contribution under relief at source saves only £600. Over a career of 30 years at that sacrifice level, the NI saving alone amounts to £7,200 in additional retirement savings at no extra cost to the employee.",
+                    "A standard employee pension contribution made under relief at source saves income tax on the contribution but not National Insurance. The provider claims 20% basic-rate relief from HMRC; higher-rate taxpayers then claim additional relief via Self Assessment. NI is not affected, you pay NI on your full gross salary whether or not you make pension contributions.",
+                    "Salary sacrifice works differently: your gross salary is reduced, so employee NI is assessed on a lower figure. A £3,000 annual pension sacrifice for someone earning £35,000 saves 20% × £3,000 = £600 in income tax plus 8% × £3,000 = £240 in NI, a total saving of £840 per year. The same £3,000 contribution under relief at source saves only £600. Over a career of 30 years at that sacrifice level, the NI saving alone amounts to £7,200 in additional retirement savings at no extra cost to the employee.",
                 ],
             },
             {
                 "heading": "Employer NI Sharing",
                 "paragraphs": [
                     "Your employer saves 15% employer NI on every pound sacrificed. On a £3,000 annual sacrifice, that is £450 per year that the employer no longer pays to HMRC. Many employers share this saving with employees by directing it into the pension as additional employer contribution. If your employer passes back 100%, your pension receives £3,450 from a £3,000 sacrifice. If they pass back 50%, your pension receives £3,225.",
-                    "There is no legal requirement for employers to pass on the NI saving, so practice varies. Ask HR directly — specifically whether 'NI matching' or 'NI passthrough' applies to your scheme and what the percentage is. For a scheme where the employer passes back 100% of their NI saving, salary sacrifice into a pension is significantly more efficient than any other pension contribution method available to employed workers.",
+                    "There is no legal requirement for employers to pass on the NI saving, so practice varies. Ask HR directly, specifically whether 'NI matching' or 'NI passthrough' applies to your scheme and what the percentage is. For a scheme where the employer passes back 100% of their NI saving, salary sacrifice into a pension is significantly more efficient than any other pension contribution method available to employed workers.",
                 ],
             },
             {
                 "heading": "The Limits",
                 "paragraphs": [
-                    "The pension annual allowance is £60,000 for 2026/27. All pension inputs count — your sacrifice, employer contributions (including NI passthrough), and any contributions to other pensions. For most employees making modest sacrifices, the £60,000 limit is never an issue. For higher earners making large sacrifices with substantial employer contributions, it can become relevant — particularly for those who are also members of defined benefit schemes where annual accrual counts towards the allowance.",
+                    "The pension annual allowance is £60,000 for 2026/27. All pension inputs count, your sacrifice, employer contributions (including NI passthrough), and any contributions to other pensions. For most employees making modest sacrifices, the £60,000 limit is never an issue. For higher earners making large sacrifices with substantial employer contributions, it can become relevant, particularly for those who are also members of defined benefit schemes where annual accrual counts towards the allowance.",
                     "The National Minimum Wage floor is the other constraint: your post-sacrifice cash salary must not fall below NMW for your age. For a full-time worker aged 21+ on NMW (£12.21 per hour in 2026/27), the full-time annual equivalent is approximately £23,600. Any sacrifice that takes cash pay below this level is not permitted. Most employees sacrificing typical pension amounts are not near this floor, but it limits how aggressively lower-paid workers can use the scheme.",
                 ],
             },
             {
                 "heading": "Opting In via Your Employer",
                 "paragraphs": [
-                    "Salary sacrifice is a contractual arrangement — you need your employer to operate the scheme and you need to sign a salary sacrifice agreement. The agreement specifies the amount to be sacrificed, the benefit to be provided (pension contribution), and typically the period. Some agreements are open-ended (the sacrifice continues until you cancel), others are fixed for a tax year.",
-                    "Most employers process changes at specific points — often the start of the tax year, January, or during an annual benefits review window. Once signed, the change should appear on your next payslip as a reduced gross salary and an employer pension contribution of the equivalent amount. If you later want to change the sacrifice level, you normally need to wait until the next available window. Keep a copy of your salary sacrifice agreement and check that your P60 at the end of the year reflects the arrangement correctly.",
+                    "Salary sacrifice is a contractual arrangement, you need your employer to operate the scheme and you need to sign a salary sacrifice agreement. The agreement specifies the amount to be sacrificed, the benefit to be provided (pension contribution), and typically the period. Some agreements are open-ended (the sacrifice continues until you cancel), others are fixed for a tax year.",
+                    "Most employers process changes at specific points, often the start of the tax year, January, or during an annual benefits review window. Once signed, the change should appear on your next payslip as a reduced gross salary and an employer pension contribution of the equivalent amount. If you later want to change the sacrifice level, you normally need to wait until the next available window. Keep a copy of your salary sacrifice agreement and check that your P60 at the end of the year reflects the arrangement correctly.",
                 ],
             },
         ],
         "faqs": [
             {"q": "How much more do I save with salary sacrifice vs a normal pension contribution?", "a": "On a £3,000 annual contribution, salary sacrifice saves approximately £240 more per year for a basic-rate taxpayer (the 8% NI saving). For higher-rate taxpayers (2% NI above £50,270), the difference is smaller. The gap widens further if the employer passes back their NI saving."},
-            {"q": "Does my employer have to match their NI saving?", "a": "No — there is no legal obligation. But many employers do pass back at least part of their NI saving because it is a recruitment and retention tool that costs them nothing (they are sharing a saving, not creating an expense)."},
+            {"q": "Does my employer have to match their NI saving?", "a": "No, there is no legal obligation. But many employers do pass back at least part of their NI saving because it is a recruitment and retention tool that costs them nothing (they are sharing a saving, not creating an expense)."},
             {"q": "Can I sacrifice my entire salary into a pension?", "a": "No. Your post-sacrifice cash salary must not fall below National Minimum Wage. You also cannot contribute more than 100% of your earnings to a pension, and the annual allowance caps total inputs at £60,000."},
         ],
         "sources": [
@@ -643,7 +938,7 @@ BLOG_POSTS = [
     },
     {
         "slug": "electric-car-salary-sacrifice-guide",
-        "title": "Electric Car Salary Sacrifice — Is It Worth It?",
+        "title": "Electric Car Salary Sacrifice, Is It Worth It?",
         "description": "How EV salary sacrifice works, the numbers compared to buying on finance, the risks if you leave the company, and who benefits most from the scheme.",
         "date": "26 May 2026",
         "date_iso": "2026-05-26",
@@ -652,46 +947,46 @@ BLOG_POSTS = [
             {
                 "heading": "How EV Salary Sacrifice Works",
                 "paragraphs": [
-                    "Under an electric car salary sacrifice scheme, your employer takes out a lease on a vehicle and provides it to you as a company car. You sacrifice enough salary to cover the monthly lease cost (typically including insurance and maintenance). Your gross salary reduces, so you pay less income tax and employee NI. The car is provided as a benefit in kind — you owe BIK income tax on 4% of the car's P11D value for 2026/27 (the 'appropriate percentage' for zero-emission vehicles).",
-                    "For example: a £40,000 P11D EV generates a BIK value of £40,000 × 4% = £1,600. A basic-rate taxpayer pays 20% × £1,600 = £320 in annual BIK income tax. A higher-rate taxpayer pays 40% × £1,600 = £640. Against this, the salary sacrifice itself saves income tax and NI — so the net cost depends on the size of the sacrifice versus the BIK charge. For most EVs in 2026/27 the NI and income tax savings substantially exceed the BIK charge, making the scheme financially attractive.",
+                    "Under an electric car salary sacrifice scheme, your employer takes out a lease on a vehicle and provides it to you as a company car. You sacrifice enough salary to cover the monthly lease cost (typically including insurance and maintenance). Your gross salary reduces, so you pay less income tax and employee NI. The car is provided as a benefit in kind, you owe BIK income tax on 4% of the car's P11D value for 2026/27 (the 'appropriate percentage' for zero-emission vehicles).",
+                    "For example: a £40,000 P11D EV generates a BIK value of £40,000 × 4% = £1,600. A basic-rate taxpayer pays 20% × £1,600 = £320 in annual BIK income tax. A higher-rate taxpayer pays 40% × £1,600 = £640. Against this, the salary sacrifice itself saves income tax and NI, so the net cost depends on the size of the sacrifice versus the BIK charge. For most EVs in 2026/27 the NI and income tax savings substantially exceed the BIK charge, making the scheme financially attractive.",
                 ],
             },
             {
                 "heading": "The Numbers: Salary Sacrifice vs Buying on Finance",
                 "paragraphs": [
-                    "Consider a higher-rate taxpayer (income £55,000) using EV salary sacrifice for a £35,000 P11D car with a monthly lease cost of £550 (£6,600 per year). Annual sacrifice: £6,600. Income tax saving (40%): £2,640. Employee NI saving (2% — income is above UEL): £132. Total personal annual saving: £2,772. BIK tax owed: 40% × (£35,000 × 4%) = 40% × £1,400 = £560. Net annual cost: £6,600 − £2,772 + £560 = £4,388, or approximately £366 per month including insurance and maintenance.",
-                    "An equivalent private lease of the same car (£550/month, excluding insurance and maintenance which would be additional) comes from post-tax income. At 40% tax and 2% NI, the employee needs to earn approximately £942 in gross income to have £550 of net pay to spend on the lease. The effective gross cost of the private lease is approximately £11,300 per year versus £4,388 net through salary sacrifice — a saving of approximately £6,912 per year for a higher-rate taxpayer. The saving is lower for basic-rate taxpayers but still very significant.",
+                    "Consider a higher-rate taxpayer (income £55,000) using EV salary sacrifice for a £35,000 P11D car with a monthly lease cost of £550 (£6,600 per year). Annual sacrifice: £6,600. Income tax saving (40%): £2,640. Employee NI saving (2%, income is above UEL): £132. Total personal annual saving: £2,772. BIK tax owed: 40% × (£35,000 × 4%) = 40% × £1,400 = £560. Net annual cost: £6,600 − £2,772 + £560 = £4,388, or approximately £366 per month including insurance and maintenance.",
+                    "An equivalent private lease of the same car (£550/month, excluding insurance and maintenance which would be additional) comes from post-tax income. At 40% tax and 2% NI, the employee needs to earn approximately £942 in gross income to have £550 of net pay to spend on the lease. The effective gross cost of the private lease is approximately £11,300 per year versus £4,388 net through salary sacrifice, a saving of approximately £6,912 per year for a higher-rate taxpayer. The saving is lower for basic-rate taxpayers but still very significant.",
                 ],
             },
             {
                 "heading": "The Risks",
                 "paragraphs": [
-                    "The main risk is leaving the company before the lease ends. You are party to a salary sacrifice agreement that runs for the lease term — typically 2–4 years. If you resign or are made redundant, your employer may hold you responsible for early termination costs, which can be substantial (often 50–80% of remaining lease payments). Read the early termination clause in your scheme agreement before signing — it is the single most important piece of small print.",
-                    "Excess mileage charges apply if you exceed the agreed annual mileage at lease end. These can be significant on EVs that are driven heavily for business. Insurance excesses and damage charges follow the scheme's terms rather than personal insurance terms, which may differ from what you are used to. The BIK rate is rising each year — 4% in 2026/27, 5% in 2027/28, 7% in 2028/29 — so the net savings over a 3-year lease are lower in years 2 and 3 than in year 1.",
+                    "The main risk is leaving the company before the lease ends. You are party to a salary sacrifice agreement that runs for the lease term, typically 2–4 years. If you resign or are made redundant, your employer may hold you responsible for early termination costs, which can be substantial (often 50–80% of remaining lease payments). Read the early termination clause in your scheme agreement before signing, it is the single most important piece of small print.",
+                    "Excess mileage charges apply if you exceed the agreed annual mileage at lease end. These can be significant on EVs that are driven heavily for business. Insurance excesses and damage charges follow the scheme's terms rather than personal insurance terms, which may differ from what you are used to. The BIK rate is rising each year, 4% in 2026/27, 5% in 2027/28, 7% in 2028/29, so the net savings over a 3-year lease are lower in years 2 and 3 than in year 1.",
                 ],
             },
             {
                 "heading": "Who It Works Best For",
                 "paragraphs": [
-                    "Higher-rate taxpayers benefit significantly more than basic-rate taxpayers. The income tax saving is 40% versus 20%, and the BIK charge is at the same rate — so the net benefit is proportionally larger at higher income. The NI saving is smaller above £50,270 (2% rather than 8%), which slightly narrows the advantage for the highest earners, but the income tax differential still makes EV sacrifice highly attractive.",
-                    "People who drive enough miles to justify an EV's range but not so many that excess mileage charges become a concern are the ideal candidates. Those in stable employment who do not anticipate changing jobs within the lease term avoid the early termination risk. And those for whom the 4% BIK rate represents good value relative to the car they would otherwise drive on personal funds — which for most people is a cheaper second-hand car — will get the most from the scheme.",
+                    "Higher-rate taxpayers benefit significantly more than basic-rate taxpayers. The income tax saving is 40% versus 20%, and the BIK charge is at the same rate, so the net benefit is proportionally larger at higher income. The NI saving is smaller above £50,270 (2% rather than 8%), which slightly narrows the advantage for the highest earners, but the income tax differential still makes EV sacrifice highly attractive.",
+                    "People who drive enough miles to justify an EV's range but not so many that excess mileage charges become a concern are the ideal candidates. Those in stable employment who do not anticipate changing jobs within the lease term avoid the early termination risk. And those for whom the 4% BIK rate represents good value relative to the car they would otherwise drive on personal funds, which for most people is a cheaper second-hand car, will get the most from the scheme.",
                 ],
             },
         ],
         "faqs": [
             {"q": "What is the BIK rate for electric cars in 2026/27?", "a": "4% of the P11D value. This is the annual income tax charge: multiply P11D by 4% to get the BIK value, then multiply by your income tax rate. A £40,000 EV costs a higher-rate taxpayer £640 per year in BIK tax."},
-            {"q": "What happens if I leave my job while on an EV scheme?", "a": "You may be liable for early termination costs under the salary sacrifice agreement. These can be substantial. Always read the early termination clause before signing — it is the key risk of EV salary sacrifice."},
-            {"q": "Is EV salary sacrifice worth it for a basic-rate taxpayer?", "a": "Yes, usually — the income tax saving (20%) and NI saving (8%) together typically outweigh the BIK charge. But the saving is larger for higher-rate taxpayers because the income tax saving is 40%."},
+            {"q": "What happens if I leave my job while on an EV scheme?", "a": "You may be liable for early termination costs under the salary sacrifice agreement. These can be substantial. Always read the early termination clause before signing, it is the key risk of EV salary sacrifice."},
+            {"q": "Is EV salary sacrifice worth it for a basic-rate taxpayer?", "a": "Yes, usually, the income tax saving (20%) and NI saving (8%) together typically outweigh the BIK charge. But the saving is larger for higher-rate taxpayers because the income tax saving is 40%."},
         ],
         "sources": [
-            {"label": "HMRC: Company car tax — benefit in kind rates", "url": "https://www.gov.uk/government/publications/rates-and-allowances-hmrc-company-car-tax"},
+            {"label": "HMRC: Company car tax, benefit in kind rates", "url": "https://www.gov.uk/government/publications/rates-and-allowances-hmrc-company-car-tax"},
             {"label": "HMRC: Salary sacrifice for employees", "url": "https://www.gov.uk/salary-sacrifice-and-the-effects-on-pensions"},
         ],
     },
     {
         "slug": "salary-sacrifice-student-loans",
-        "title": "Salary Sacrifice and Student Loans — Does It Reduce Repayments?",
-        "description": "Salary sacrifice reduces gross pay — which is the figure used for student loan repayments. But HMRC's confirmed position is more nuanced than it first appears. Here is what you need to know.",
+        "title": "Salary Sacrifice and Student Loans, Does It Reduce Repayments?",
+        "description": "Salary sacrifice reduces gross pay, which is the figure used for student loan repayments. But HMRC's confirmed position is more nuanced than it first appears. Here is what you need to know.",
         "date": "26 May 2026",
         "date_iso": "2026-05-26",
         "reading_time": "6 min read",
@@ -699,35 +994,35 @@ BLOG_POSTS = [
             {
                 "heading": "How Student Loan Repayments Are Calculated",
                 "paragraphs": [
-                    "Student loan repayments for Plans 1, 2, 4 and 5 are calculated as a percentage of income above the relevant threshold. For Plan 2 (the most common for graduates from 2012 onwards), the threshold is £27,295 for 2026/27. The repayment rate is 9% on income above this level. The income figure used is effectively gross employment income — specifically, the annual equivalent of the PAYE income reported to HMRC.",
+                    "Student loan repayments for Plans 1, 2, 4 and 5 are calculated as a percentage of income above the relevant threshold. For Plan 2 (the most common for graduates from 2012 onwards), the threshold is £27,295 for 2026/27. The repayment rate is 9% on income above this level. The income figure used is effectively gross employment income, specifically, the annual equivalent of the PAYE income reported to HMRC.",
                     "Salary sacrifice reduces the gross salary that is reported to HMRC under PAYE. A salary of £35,000 with a £3,000 annual pension sacrifice produces a PAYE income figure of £32,000. Student loan repayments are then 9% × (£32,000 − £27,295) = 9% × £4,705 = approximately £423 per year, instead of 9% × (£35,000 − £27,295) = 9% × £7,705 = approximately £693 per year. The sacrifice reduces repayments by approximately £270 per year.",
                 ],
             },
             {
                 "heading": "The Rare Exception",
                 "paragraphs": [
-                    "In the vast majority of cases, salary sacrifice genuinely reduces the PAYE income figure that is used for student loan repayments. The calculation operates on taxable pay, and salary sacrifice reduces taxable pay. There is no specific add-back or adjustment for pension sacrifice in the student loan calculation — HMRC applies the repayment to the PAYE income figure as submitted.",
+                    "In the vast majority of cases, salary sacrifice genuinely reduces the PAYE income figure that is used for student loan repayments. The calculation operates on taxable pay, and salary sacrifice reduces taxable pay. There is no specific add-back or adjustment for pension sacrifice in the student loan calculation, HMRC applies the repayment to the PAYE income figure as submitted.",
                     "The scenario where this might not hold is where an employer incorrectly calculates PAYE on the pre-sacrifice salary or where a PAYE coding notice overrides the calculation in an unusual way. These are edge cases involving payroll errors rather than a policy exception. In normal operation, pension salary sacrifice does reduce the income figure used for student loan repayments.",
                 ],
             },
             {
                 "heading": "When This Advice Matters",
                 "paragraphs": [
-                    "The interaction becomes significant for people on Plan 2 with income near the £27,295 threshold. If your income (after sacrifice) falls below the threshold, your repayments stop entirely. A small sacrifice of £1,000 for someone earning £28,000 could eliminate their Plan 2 repayments altogether — a saving of 9% × (£28,000 − £27,295) = approximately £63 per year. This is modest, but for someone who expects their loan to be written off before repayment is complete (typically after 30 years on Plan 2), every repayment avoided is a genuine saving.",
-                    "However, for someone who will repay their loan in full before the write-off date, reducing repayments by sacrificing salary actually increases total interest paid — because the loan balance reduces more slowly. Run the numbers for your specific loan balance, interest rate and expected earnings trajectory before deciding whether reducing repayments through salary sacrifice is beneficial.",
+                    "The interaction becomes significant for people on Plan 2 with income near the £27,295 threshold. If your income (after sacrifice) falls below the threshold, your repayments stop entirely. A small sacrifice of £1,000 for someone earning £28,000 could eliminate their Plan 2 repayments altogether, a saving of 9% × (£28,000 − £27,295) = approximately £63 per year. This is modest, but for someone who expects their loan to be written off before repayment is complete (typically after 30 years on Plan 2), every repayment avoided is a genuine saving.",
+                    "However, for someone who will repay their loan in full before the write-off date, reducing repayments by sacrificing salary actually increases total interest paid, because the loan balance reduces more slowly. Run the numbers for your specific loan balance, interest rate and expected earnings trajectory before deciding whether reducing repayments through salary sacrifice is beneficial.",
                 ],
             },
             {
                 "heading": "What Actually Reduces Student Loan Repayments",
                 "paragraphs": [
-                    "The most direct ways to reduce student loan repayments are: reducing your income (working fewer hours, taking unpaid leave), salary sacrifice into qualifying schemes (pension, EV, cycle to work — all reduce gross pay), or making voluntary capital repayments directly to the Student Loans Company. The latter option only makes financial sense if your interest rate on the loan exceeds what you could earn elsewhere — for many Plan 2 borrowers the interest rate makes early repayment unattractive.",
-                    "There is no mechanism to voluntarily pause or reduce repayments without reducing income — the repayment is deducted automatically through PAYE at the applicable rate on income above threshold. The only reliable lever is income itself.",
+                    "The most direct ways to reduce student loan repayments are: reducing your income (working fewer hours, taking unpaid leave), salary sacrifice into qualifying schemes (pension, EV, cycle to work, all reduce gross pay), or making voluntary capital repayments directly to the Student Loans Company. The latter option only makes financial sense if your interest rate on the loan exceeds what you could earn elsewhere, for many Plan 2 borrowers the interest rate makes early repayment unattractive.",
+                    "There is no mechanism to voluntarily pause or reduce repayments without reducing income, the repayment is deducted automatically through PAYE at the applicable rate on income above threshold. The only reliable lever is income itself.",
                 ],
             },
         ],
         "faqs": [
             {"q": "Does pension salary sacrifice reduce student loan repayments?", "a": "Yes, in practice. Salary sacrifice reduces the PAYE income figure, and student loan repayments are calculated on that figure. A lower PAYE income means lower repayments."},
-            {"q": "Should I use salary sacrifice to reduce my student loan repayments?", "a": "It depends on whether you will repay in full or rely on the write-off. If you will repay in full, reducing repayments extends the loan and increases interest — potentially a worse outcome. If the loan will be written off, every repayment avoided is a saving."},
+            {"q": "Should I use salary sacrifice to reduce my student loan repayments?", "a": "It depends on whether you will repay in full or rely on the write-off. If you will repay in full, reducing repayments extends the loan and increases interest, potentially a worse outcome. If the loan will be written off, every repayment avoided is a saving."},
             {"q": "What student loan plan do most graduates have?", "a": "Most UK graduates who started university from 2012 are on Plan 2, with a repayment threshold of £27,295 for 2026/27 and a 30-year write-off period."},
         ],
         "sources": [
@@ -737,7 +1032,7 @@ BLOG_POSTS = [
     },
     {
         "slug": "employer-ni-savings-salary-sacrifice",
-        "title": "Employer NI Savings from Salary Sacrifice — Who Benefits?",
+        "title": "Employer NI Savings from Salary Sacrifice, Who Benefits?",
         "description": "How the employer NI saving from salary sacrifice works, why some employers share it with employees and others don't, the maths for a typical firm and how to negotiate a better deal.",
         "date": "26 May 2026",
         "date_iso": "2026-05-26",
@@ -746,28 +1041,28 @@ BLOG_POSTS = [
             {
                 "heading": "How Employer NI Saving Works",
                 "paragraphs": [
-                    "Employer secondary National Insurance is charged at 15% on employee earnings above the secondary threshold (£5,000 per year for 2026/27). When an employee sacrifices salary, their gross pay is reduced, and employer NI is calculated on the lower figure. For every £1,000 of salary sacrifice, the employer saves 15% × £1,000 = £150. This is a genuine cash saving for the business — not a deferral or redistribution, but an actual reduction in payroll tax.",
-                    "The saving arises from the moment the salary sacrifice arrangement takes effect and recurs for as long as the sacrifice continues. For an employee sacrificing £5,000 per year, the employer saves £750 per year indefinitely. This is why employers — particularly larger ones — are genuinely motivated to offer well-structured salary sacrifice schemes: the financial benefit to the business of running the scheme can be substantial, especially for large workforces.",
+                    "Employer secondary National Insurance is charged at 15% on employee earnings above the secondary threshold (£5,000 per year for 2026/27). When an employee sacrifices salary, their gross pay is reduced, and employer NI is calculated on the lower figure. For every £1,000 of salary sacrifice, the employer saves 15% × £1,000 = £150. This is a genuine cash saving for the business, not a deferral or redistribution, but an actual reduction in payroll tax.",
+                    "The saving arises from the moment the salary sacrifice arrangement takes effect and recurs for as long as the sacrifice continues. For an employee sacrificing £5,000 per year, the employer saves £750 per year indefinitely. This is why employers, particularly larger ones, are genuinely motivated to offer well-structured salary sacrifice schemes: the financial benefit to the business of running the scheme can be substantial, especially for large workforces.",
                 ],
             },
             {
                 "heading": "Do Employees See the Saving?",
                 "paragraphs": [
-                    "There is no legal obligation for employers to share their NI saving with employees. Many keep the full saving. However, a significant number — particularly larger organisations, financial services firms, professional services practices and technology companies — direct all or part of the saving into employees' pensions as additional employer contributions. This is known as NI matching or NI passthrough.",
-                    "When an employer passes back 100% of their NI saving, the employee's pension receives the sacrifice amount plus the employer's NI saving. On a £5,000 annual sacrifice, the pension receives £5,750 — the employee's net pay reduces by only the post-tax cost of the £5,000 sacrifice (approximately £3,400 for a basic-rate employee), and the pension receives £5,750. The ratio of pension input to net pay reduction is extraordinary.",
+                    "There is no legal obligation for employers to share their NI saving with employees. Many keep the full saving. However, a significant number, particularly larger organisations, financial services firms, professional services practices and technology companies, direct all or part of the saving into employees' pensions as additional employer contributions. This is known as NI matching or NI passthrough.",
+                    "When an employer passes back 100% of their NI saving, the employee's pension receives the sacrifice amount plus the employer's NI saving. On a £5,000 annual sacrifice, the pension receives £5,750, the employee's net pay reduces by only the post-tax cost of the £5,000 sacrifice (approximately £3,400 for a basic-rate employee), and the pension receives £5,750. The ratio of pension input to net pay reduction is extraordinary.",
                 ],
             },
             {
                 "heading": "The Maths for the Employer",
                 "paragraphs": [
-                    "For a 50-person company where each employee sacrifices an average of £5,000 per year into pension: employer NI saving = 15% × £5,000 × 50 = £37,500 per year. This is a recurring annual saving at no cost to the employees — in fact employees are better off as well. For larger firms the numbers scale proportionally: a 500-person company with the same average sacrifice saves £375,000 per year in employer NI.",
-                    "These are material sums that justify the cost of establishing and administering a salary sacrifice scheme. Many employers choose to absorb the full employer NI saving as profit (or reinvest it in the business) rather than sharing it. But the best-designed schemes — particularly those competing for talent in professional services and technology — use the NI saving to fund enhanced pension contributions, which are a highly valued employee benefit at zero marginal cost to the employer.",
+                    "For a 50-person company where each employee sacrifices an average of £5,000 per year into pension: employer NI saving = 15% × £5,000 × 50 = £37,500 per year. This is a recurring annual saving at no cost to the employees, in fact employees are better off as well. For larger firms the numbers scale proportionally: a 500-person company with the same average sacrifice saves £375,000 per year in employer NI.",
+                    "These are material sums that justify the cost of establishing and administering a salary sacrifice scheme. Many employers choose to absorb the full employer NI saving as profit (or reinvest it in the business) rather than sharing it. But the best-designed schemes, particularly those competing for talent in professional services and technology, use the NI saving to fund enhanced pension contributions, which are a highly valued employee benefit at zero marginal cost to the employer.",
                 ],
             },
             {
                 "heading": "Salary Sacrifice as a Retention Tool",
                 "paragraphs": [
-                    "The employer NI saving makes salary sacrifice one of the few employee benefits that is genuinely cost-neutral (or better) for the employer while being valuable to employees. This is why companies increasingly use salary sacrifice as part of a broader benefits suite — electric cars, cycle to work, technology schemes and pension sacrifice all combined. Employees who are using multiple sacrifice schemes build substantial locked-in benefits that make them less inclined to leave; replacement hires would have to rebuild those benefits from scratch.",
+                    "The employer NI saving makes salary sacrifice one of the few employee benefits that is genuinely cost-neutral (or better) for the employer while being valuable to employees. This is why companies increasingly use salary sacrifice as part of a broader benefits suite, electric cars, cycle to work, technology schemes and pension sacrifice all combined. Employees who are using multiple sacrifice schemes build substantial locked-in benefits that make them less inclined to leave; replacement hires would have to rebuild those benefits from scratch.",
                     "When evaluating a job offer, the quality of the employer's salary sacrifice scheme deserves explicit consideration. Two offers at the same gross salary may have very different net costs depending on whether one employer passes back NI savings, matches pension contributions generously, and offers a broader scheme including EVs. Ask detailed questions in the recruitment process: it is a legitimate and increasingly expected area of scrutiny.",
                 ],
             },
@@ -775,7 +1070,7 @@ BLOG_POSTS = [
         "faqs": [
             {"q": "What is the employer NI saving on a £5,000 salary sacrifice?", "a": "15% × £5,000 = £750 per year. This is a cash saving for the employer, not a transfer from elsewhere in the business."},
             {"q": "How do I find out if my employer passes on NI savings?", "a": "Ask HR or payroll directly: 'Does the company pass on its employer NI savings from salary sacrifice as additional pension contributions, and if so, at what percentage?' It is not always prominently advertised."},
-            {"q": "If my employer keeps the NI saving, is salary sacrifice still worth it for me?", "a": "Yes — you still save employee NI (8% at main rate) and income tax on the sacrifice. The employer NI passthrough is an additional bonus if available, but the scheme is financially worthwhile for employees regardless of whether the employer shares their saving."},
+            {"q": "If my employer keeps the NI saving, is salary sacrifice still worth it for me?", "a": "Yes, you still save employee NI (8% at main rate) and income tax on the sacrifice. The employer NI passthrough is an additional bonus if available, but the scheme is financially worthwhile for employees regardless of whether the employer shares their saving."},
         ],
         "sources": [
             {"label": "HMRC: Employer NI rates and secondary contributions", "url": "https://www.gov.uk/national-insurance-rates-letters"},
@@ -786,7 +1081,7 @@ BLOG_POSTS = [
     {
         "slug": "salary-sacrifice-scotland-2026",
         "title": "Salary Sacrifice in Scotland 2026/27: Income Tax Bands and NI Savings Explained",
-        "description": "Scottish taxpayers have five income tax bands, not the two used in rUK. This changes how much you save on income tax through salary sacrifice — though the NI saving is identical across the UK.",
+        "description": "Scottish taxpayers have five income tax bands, not the two used in rUK. This changes how much you save on income tax through salary sacrifice, though the NI saving is identical across the UK.",
         "date": "22 May 2026",
         "date_iso": "2026-05-22",
         "reading_time": "6 min read",
@@ -800,27 +1095,27 @@ BLOG_POSTS = [
                 "heading": "Scotland's five income tax bands",
                 "paragraphs": [
                     "In 2026/27 Scottish taxpayers face five distinct income tax bands: 19% starter rate (£12,571–£15,397), 20% basic rate (£15,398–£27,491), 21% intermediate rate (£27,492–£43,662), 42% higher rate (£43,663–£75,000), and 45% top rate above £75,000. This contrasts with rUK, which has just three bands: 20%, 40% and 45%. The key difference for salary sacrifice planning is that Scotland's intermediate rate of 21% applies to a significant band of mid-range earnings where rUK basic-rate taxpayers would pay only 20%.",
-                    "Because salary sacrifice reduces your gross pay before income tax is assessed, it saves you tax at your marginal rate. For a Scottish taxpayer earning £35,000 — firmly in the 21% intermediate band — sacrificing £2,000 into a pension saves £420 in income tax (21% × £2,000), compared to £400 for an rUK basic-rate taxpayer (20% × £2,000). The difference is modest but real, and stacks on top of the NI saving.",
+                    "Because salary sacrifice reduces your gross pay before income tax is assessed, it saves you tax at your marginal rate. For a Scottish taxpayer earning £35,000, firmly in the 21% intermediate band, sacrificing £2,000 into a pension saves £420 in income tax (21% × £2,000), compared to £400 for an rUK basic-rate taxpayer (20% × £2,000). The difference is modest but real, and stacks on top of the NI saving.",
                 ],
             },
             {
                 "heading": "The NI saving is UK-wide",
                 "paragraphs": [
-                    "National Insurance contributions are a reserved matter, set by Westminster and charged at the same rates across Scotland, England, Wales and Northern Ireland. For 2026/27 the employee NI rate is 8% on earnings between £12,570 and £50,270, and 2% above that. When you sacrifice salary, those earnings disappear from the NI calculation altogether — so a Scottish employee on £35,000 sacrificing £2,000 saves the same £160 in employee NI as someone in Manchester or Cardiff.",
-                    "Employer NI is also unchanged across the UK. Employers pay 15% secondary NI on employee earnings above the secondary threshold of £5,000. A £2,000 salary sacrifice saves the employer £300 in NI. Many employers pass this saving on to employees as additional pension contributions — particularly valuable in Scotland where combined income tax and NI savings are slightly higher for intermediate-rate earners.",
+                    "National Insurance contributions are a reserved matter, set by Westminster and charged at the same rates across Scotland, England, Wales and Northern Ireland. For 2026/27 the employee NI rate is 8% on earnings between £12,570 and £50,270, and 2% above that. When you sacrifice salary, those earnings disappear from the NI calculation altogether, so a Scottish employee on £35,000 sacrificing £2,000 saves the same £160 in employee NI as someone in Manchester or Cardiff.",
+                    "Employer NI is also unchanged across the UK. Employers pay 15% secondary NI on employee earnings above the secondary threshold of £5,000. A £2,000 salary sacrifice saves the employer £300 in NI. Many employers pass this saving on to employees as additional pension contributions, particularly valuable in Scotland where combined income tax and NI savings are slightly higher for intermediate-rate earners.",
                 ],
             },
             {
                 "heading": "Worked example: Scottish taxpayer at £35,000",
                 "paragraphs": [
                     "Consider a Scottish employee earning £35,000 who sacrifices £2,000 per year into a pension. Their income tax saving is 21% × £2,000 = £420 (using the intermediate rate). Their employee NI saving is 8% × £2,000 = £160. Total personal saving: £580 per year, or £48.33 per month. The gross cost to their net pay is therefore only £2,000 − £580 = £1,420, or roughly 71p in the pound.",
-                    "Compare this to an rUK basic-rate taxpayer on the same salary: income tax saving is 20% × £2,000 = £400, NI saving £160, total £560. The Scottish taxpayer saves £20 more per year simply because their marginal income tax rate is 1 percentage point higher. At higher Scottish bands the difference is more pronounced — a Scottish higher-rate taxpayer at 42% saves significantly more in income tax than an rUK higher-rate taxpayer at 40%.",
+                    "Compare this to an rUK basic-rate taxpayer on the same salary: income tax saving is 20% × £2,000 = £400, NI saving £160, total £560. The Scottish taxpayer saves £20 more per year simply because their marginal income tax rate is 1 percentage point higher. At higher Scottish bands the difference is more pronounced, a Scottish higher-rate taxpayer at 42% saves significantly more in income tax than an rUK higher-rate taxpayer at 40%.",
                 ],
             },
             {
                 "heading": "Higher and top rate Scottish taxpayers",
                 "paragraphs": [
-                    "Scotland's higher rate of 42% applies from £43,663, which is lower than the rUK higher rate threshold of £50,270. This means Scottish higher earners enter the 42% band earlier and benefit from the full 42% income tax saving on pension sacrifice in that range. An employee earning £50,000 in Scotland has earnings between £43,663 and £50,000 taxed at 42% — if they sacrifice £3,000 into a pension that crosses or falls within this band, part of the saving is at 42% rather than the rUK 40%.",
+                    "Scotland's higher rate of 42% applies from £43,663, which is lower than the rUK higher rate threshold of £50,270. This means Scottish higher earners enter the 42% band earlier and benefit from the full 42% income tax saving on pension sacrifice in that range. An employee earning £50,000 in Scotland has earnings between £43,663 and £50,000 taxed at 42%, if they sacrifice £3,000 into a pension that crosses or falls within this band, part of the saving is at 42% rather than the rUK 40%.",
                     "Scotland's top rate of 45% applies above £75,000, compared to the rUK additional rate which also starts at £125,140 (after personal allowance withdrawal). High-earning Scots therefore benefit from very substantial salary sacrifice income tax savings. A Scottish taxpayer at £80,000 sacrificing £5,000 saves 45% × £5,000 = £2,250 in income tax alone. Adding the NI saving makes the combined benefit compelling.",
                 ],
             },
@@ -840,7 +1135,7 @@ BLOG_POSTS = [
     {
         "slug": "salary-sacrifice-vs-ras-2026",
         "title": "Salary Sacrifice vs Relief at Source vs Net Pay Arrangement 2026/27",
-        "description": "Three ways to get pension tax relief — and they are not equivalent. Salary sacrifice removes gross pay entirely; NPA gives full marginal-rate relief automatically; RaS requires a Self Assessment claim for higher-rate top-up. Here is how to choose.",
+        "description": "Three ways to get pension tax relief, and they are not equivalent. Salary sacrifice removes gross pay entirely; NPA gives full marginal-rate relief automatically; RaS requires a Self Assessment claim for higher-rate top-up. Here is how to choose.",
         "date": "22 May 2026",
         "date_iso": "2026-05-22",
         "reading_time": "7 min read",
@@ -854,41 +1149,41 @@ BLOG_POSTS = [
                 "heading": "The three routes to pension tax relief",
                 "paragraphs": [
                     "When money goes into a UK pension, the government provides tax relief to recognise that contributions come from income that has already been (or will be) taxed. There are three different mechanisms used in practice: relief at source (RaS), net pay arrangement (NPA), and salary sacrifice. Each operates differently, delivers different amounts of relief to different types of taxpayer, and involves different admin.",
-                    "Relief at source is used by most personal pensions and SIPPs. You contribute the net amount — 80p to receive £1 in the pension — and your provider automatically claims the 20% basic-rate top-up from HMRC. If you pay 40% or 45% income tax, you must claim the extra 20% or 25% yourself via Self Assessment or by contacting HMRC. Net pay arrangement is used by many workplace schemes: contributions are deducted from gross pay before income tax is applied, so you never pay tax on the money in the first place. Salary sacrifice is different again — it is a contractual arrangement, not technically pension tax relief, where you give up a portion of your salary entirely and your employer makes the pension contribution instead.",
+                    "Relief at source is used by most personal pensions and SIPPs. You contribute the net amount, 80p to receive £1 in the pension, and your provider automatically claims the 20% basic-rate top-up from HMRC. If you pay 40% or 45% income tax, you must claim the extra 20% or 25% yourself via Self Assessment or by contacting HMRC. Net pay arrangement is used by many workplace schemes: contributions are deducted from gross pay before income tax is applied, so you never pay tax on the money in the first place. Salary sacrifice is different again, it is a contractual arrangement, not technically pension tax relief, where you give up a portion of your salary entirely and your employer makes the pension contribution instead.",
                 ],
             },
             {
                 "heading": "Salary sacrifice: the NI advantage",
                 "paragraphs": [
-                    "The key advantage of salary sacrifice over both RaS and NPA is that the sacrificed amount also avoids National Insurance. Under RaS and NPA, your gross salary is unchanged — you still pay NI on the full amount. Under salary sacrifice, your contractual salary is reduced, so you pay NI on a lower figure. At the main employee NI rate of 8%, a £1,000 sacrifice saves £80 in NI on top of the income tax saving.",
-                    "Employers benefit too: employer NI of 15% applies to the reduced salary only, saving the employer £150 per £1,000 sacrificed. Many employers pass some or all of this saving back as an enhanced pension contribution. If your employer does this — known as NI matching or passthrough — your effective pension contribution rate is higher than the headline figure, at no extra cost to you.",
+                    "The key advantage of salary sacrifice over both RaS and NPA is that the sacrificed amount also avoids National Insurance. Under RaS and NPA, your gross salary is unchanged, you still pay NI on the full amount. Under salary sacrifice, your contractual salary is reduced, so you pay NI on a lower figure. At the main employee NI rate of 8%, a £1,000 sacrifice saves £80 in NI on top of the income tax saving.",
+                    "Employers benefit too: employer NI of 15% applies to the reduced salary only, saving the employer £150 per £1,000 sacrificed. Many employers pass some or all of this saving back as an enhanced pension contribution. If your employer does this, known as NI matching or passthrough, your effective pension contribution rate is higher than the headline figure, at no extra cost to you.",
                 ],
             },
             {
                 "heading": "When NPA is better than RaS",
                 "paragraphs": [
-                    "For higher and additional-rate taxpayers who are not in a salary sacrifice scheme, a net pay arrangement is generally preferable to relief at source because relief is applied automatically at the correct marginal rate. Under RaS, a 40% taxpayer who forgets to claim the extra 20% on their Self Assessment return effectively receives only basic-rate relief — a costly mistake. Under NPA, the full 40% (or 45%) relief is built in.",
+                    "For higher and additional-rate taxpayers who are not in a salary sacrifice scheme, a net pay arrangement is generally preferable to relief at source because relief is applied automatically at the correct marginal rate. Under RaS, a 40% taxpayer who forgets to claim the extra 20% on their Self Assessment return effectively receives only basic-rate relief, a costly mistake. Under NPA, the full 40% (or 45%) relief is built in.",
                     "However, NPA has historically disadvantaged non-taxpayers and those earning below the personal allowance. For 2024/25 onwards the government introduced a top-up payment for low earners in NPA schemes to address this disparity, but the administration is complex. Low earners in RaS schemes automatically receive 20% top-up even if they pay no income tax.",
                 ],
             },
             {
                 "heading": "Practical considerations: can you actually use salary sacrifice?",
                 "paragraphs": [
-                    "Salary sacrifice requires your employer to offer it as an option and to amend your contract of employment. You cannot unilaterally decide to sacrifice salary — it must be a formal arrangement. Not all employers offer it, particularly smaller businesses. Where it is offered, the scheme rules govern the minimum and maximum sacrifice amounts and which benefits qualify.",
-                    "The sacrifice must not reduce your cash salary below the National Minimum Wage for your age group — a constraint that limits the available sacrifice amount for low-paid workers. Salary sacrifice can also reduce mortgage affordability assessments since lenders may look at contractual salary rather than gross-plus-benefits. These are edge cases for most employees, but worth checking if they apply to you.",
+                    "Salary sacrifice requires your employer to offer it as an option and to amend your contract of employment. You cannot unilaterally decide to sacrifice salary, it must be a formal arrangement. Not all employers offer it, particularly smaller businesses. Where it is offered, the scheme rules govern the minimum and maximum sacrifice amounts and which benefits qualify.",
+                    "The sacrifice must not reduce your cash salary below the National Minimum Wage for your age group, a constraint that limits the available sacrifice amount for low-paid workers. Salary sacrifice can also reduce mortgage affordability assessments since lenders may look at contractual salary rather than gross-plus-benefits. These are edge cases for most employees, but worth checking if they apply to you.",
                 ],
             },
             {
                 "heading": "Summary comparison",
                 "paragraphs": [
-                    "For employed basic-rate taxpayers in a salary sacrifice scheme: always prefer sacrifice over RaS or NPA — it saves income tax plus NI. For employed higher-rate taxpayers in a sacrifice scheme: same applies, and the income tax saving is 40% or 42% (Scotland) versus just the 20% automatic RaS top-up. For self-employed: salary sacrifice is not available; use a SIPP under RaS and claim higher-rate relief via Self Assessment.",
+                    "For employed basic-rate taxpayers in a salary sacrifice scheme: always prefer sacrifice over RaS or NPA, it saves income tax plus NI. For employed higher-rate taxpayers in a sacrifice scheme: same applies, and the income tax saving is 40% or 42% (Scotland) versus just the 20% automatic RaS top-up. For self-employed: salary sacrifice is not available; use a SIPP under RaS and claim higher-rate relief via Self Assessment.",
                 ],
             },
         ],
         "sources": [
             {"label": "HMRC: Salary sacrifice arrangements", "url": "https://www.gov.uk/salary-sacrifice-and-the-effects-on-pensions"},
             {"label": "HMRC: Tax on your private pension contributions", "url": "https://www.gov.uk/tax-on-your-private-pension/pension-tax-relief"},
-            {"label": "HMRC: Registered pension schemes — relief at source", "url": "https://www.gov.uk/hmrc-internal-manuals/pensions-tax-manual/ptm044100"},
+            {"label": "HMRC: Registered pension schemes, relief at source", "url": "https://www.gov.uk/hmrc-internal-manuals/pensions-tax-manual/ptm044100"},
         ],
     },
     {
@@ -907,7 +1202,7 @@ BLOG_POSTS = [
             {
                 "heading": "How electric car salary sacrifice works",
                 "paragraphs": [
-                    "Under an EV salary sacrifice scheme, your employer leases an electric car and provides it to you as a benefit. You sacrifice a portion of your gross salary — typically the monthly lease cost plus insurance and maintenance — and in return you get use of the car. Because your gross salary is reduced, you pay less income tax and National Insurance. Your employer also saves 15% employer NI on the sacrificed amount, which some pass on to you in the form of a reduced sacrifice contribution.",
+                    "Under an EV salary sacrifice scheme, your employer leases an electric car and provides it to you as a benefit. You sacrifice a portion of your gross salary, typically the monthly lease cost plus insurance and maintenance, and in return you get use of the car. Because your gross salary is reduced, you pay less income tax and National Insurance. Your employer also saves 15% employer NI on the sacrificed amount, which some pass on to you in the form of a reduced sacrifice contribution.",
                     "The car is provided to you as a company car, which means it is subject to benefit-in-kind (BiK) tax. You pay income tax on the BiK value, which is calculated as P11D value × BiK percentage. For a zero-emission car in 2026/27, the BiK rate is 4%. So a £40,000 EV has a BiK value of £40,000 × 4% = £1,600 per year. A basic-rate taxpayer pays 20% × £1,600 = £320 in income tax on the benefit. A higher-rate taxpayer pays 40% × £1,600 = £640.",
                 ],
             },
@@ -915,7 +1210,7 @@ BLOG_POSTS = [
                 "heading": "Worked example at £40,000 salary",
                 "paragraphs": [
                     "Take an employee earning £40,000 who uses salary sacrifice to get a £35,000 P11D-value EV, with a monthly salary sacrifice of £600 (£7,200 per year). Their gross salary drops from £40,000 to £32,800. Income tax saving: approximately £7,200 × 20% = £1,440 (all in the basic-rate band). Employee NI saving: £7,200 × 8% = £576. Total annual saving before BiK tax: £2,016.",
-                    "The BiK charge is £35,000 × 4% × 20% (basic-rate tax) = £280 per year. Net annual saving after BiK tax: £2,016 − £280 = £1,736. This means the employee is effectively getting a £35,000 electric car at a net cost of £7,200 − £1,736 = £5,464 per year — roughly £455 per month — instead of paying the full lease cost from after-tax income. For a higher-rate taxpayer, the income tax saving is 40% rather than 20%, making the deal even more attractive.",
+                    "The BiK charge is £35,000 × 4% × 20% (basic-rate tax) = £280 per year. Net annual saving after BiK tax: £2,016 − £280 = £1,736. This means the employee is effectively getting a £35,000 electric car at a net cost of £7,200 − £1,736 = £5,464 per year, roughly £455 per month, instead of paying the full lease cost from after-tax income. For a higher-rate taxpayer, the income tax saving is 40% rather than 20%, making the deal even more attractive.",
                 ],
             },
             {
@@ -928,7 +1223,7 @@ BLOG_POSTS = [
             {
                 "heading": "Employer NI saving and passthrough",
                 "paragraphs": [
-                    "On a £7,200 annual sacrifice, your employer saves 15% × £7,200 = £1,080 in secondary NI. Some employers pass this directly back to you as a reduction in the required sacrifice amount. If your employer passes back 50% of their NI saving, your net sacrifice drops by £540 per year — a meaningful additional benefit. Ask your HR or benefits team whether NI matching is available on EV schemes; it varies significantly between employers.",
+                    "On a £7,200 annual sacrifice, your employer saves 15% × £7,200 = £1,080 in secondary NI. Some employers pass this directly back to you as a reduction in the required sacrifice amount. If your employer passes back 50% of their NI saving, your net sacrifice drops by £540 per year, a meaningful additional benefit. Ask your HR or benefits team whether NI matching is available on EV schemes; it varies significantly between employers.",
                 ],
             },
         ],
@@ -941,34 +1236,34 @@ BLOG_POSTS = [
     {
         "slug": "cycle-to-work-scheme-explained",
         "title": "Cycle to Work Scheme Explained: How Salary Sacrifice Reduces the Cost",
-        "description": "The cycle to work scheme lets you get a bike and safety equipment through salary sacrifice, spreading the cost from pre-tax income. Your actual saving depends on your income tax and NI rate — here is how to work it out.",
+        "description": "The cycle to work scheme lets you get a bike and safety equipment through salary sacrifice, spreading the cost from pre-tax income. Your actual saving depends on your income tax and NI rate, here is how to work it out.",
         "date": "22 May 2026",
         "date_iso": "2026-05-22",
         "reading_time": "5 min read",
         "faqs": [
-            {"q": "Is there a cap on the cycle to work scheme?", "a": "There is no statutory cap, but individual scheme providers set their own limits. The original government guidance suggested £1,000, but many providers — including Cyclescheme, Gogeta and Green Commute Initiative — now facilitate orders well above that amount, particularly for e-bikes which can cost £3,000–£5,000."},
-            {"q": "Can I keep the bike at the end?", "a": "Yes, in most cases. The scheme is structured as a hire agreement — you hire the bike from your employer. At the end of the hire period (usually 12 months) you are offered a fair market value purchase. HMRC has published fair market value tables. In practice the final purchase cost is small, and the overall deal is still very cost-effective."},
+            {"q": "Is there a cap on the cycle to work scheme?", "a": "There is no statutory cap, but individual scheme providers set their own limits. The original government guidance suggested £1,000, but many providers, including Cyclescheme, Gogeta and Green Commute Initiative, now facilitate orders well above that amount, particularly for e-bikes which can cost £3,000–£5,000."},
+            {"q": "Can I keep the bike at the end?", "a": "Yes, in most cases. The scheme is structured as a hire agreement, you hire the bike from your employer. At the end of the hire period (usually 12 months) you are offered a fair market value purchase. HMRC has published fair market value tables. In practice the final purchase cost is small, and the overall deal is still very cost-effective."},
             {"q": "Does cycle to work affect my mortgage application?", "a": "As with all salary sacrifice, your contractual salary is reduced by the sacrifice amount during the scheme period. Some mortgage lenders base affordability on your contractual salary. If you are about to apply for a mortgage, it may be worth deferring the cycle to work agreement until after the application is completed."},
         ],
         "sections": [
             {
                 "heading": "How the scheme works",
                 "paragraphs": [
-                    "Under the cycle to work scheme, your employer purchases a bike (and qualifying safety equipment) and lends it to you under a hire agreement. You repay the cost via a salary sacrifice from your gross pay, spread over the hire period — typically 12 or 18 months. Because the sacrifice comes from gross pay, you never pay income tax or National Insurance on that portion of your earnings. At the end of the hire period, the employer can sell the bike to you at fair market value.",
-                    "The scheme applies to standard bikes, e-bikes and a wide range of safety accessories including helmets, lights, locks and high-visibility clothing. The equipment must be used at least partly for commuting. The benefit-in-kind rules are exempt for cycle to work equipment, meaning you do not pay any BiK tax — unlike company cars.",
+                    "Under the cycle to work scheme, your employer purchases a bike (and qualifying safety equipment) and lends it to you under a hire agreement. You repay the cost via a salary sacrifice from your gross pay, spread over the hire period, typically 12 or 18 months. Because the sacrifice comes from gross pay, you never pay income tax or National Insurance on that portion of your earnings. At the end of the hire period, the employer can sell the bike to you at fair market value.",
+                    "The scheme applies to standard bikes, e-bikes and a wide range of safety accessories including helmets, lights, locks and high-visibility clothing. The equipment must be used at least partly for commuting. The benefit-in-kind rules are exempt for cycle to work equipment, meaning you do not pay any BiK tax, unlike company cars.",
                 ],
             },
             {
                 "heading": "Calculating your actual saving",
                 "paragraphs": [
-                    "Your saving depends on your marginal income tax rate and your NI rate. For a basic-rate taxpayer (20% income tax, 8% NI), the combined saving is 28% — so a £1,000 bike costs £720 net. For a higher-rate taxpayer (40% income tax, 2% NI above the upper earnings limit), the saving is 42% — the same £1,000 bike costs £580 net. For a Scottish intermediate-rate taxpayer (21% income tax, 8% NI), the combined saving is 29%, giving a net cost of £710.",
-                    "These figures assume the full sacrifice amount sits within the relevant tax and NI bands. If the sacrifice straddles a threshold — for example if it pushes your income across the NI upper earnings limit — the saving on the excess is calculated at different rates. The calculator can account for this if you enter the correct starting salary and scheme amount.",
+                    "Your saving depends on your marginal income tax rate and your NI rate. For a basic-rate taxpayer (20% income tax, 8% NI), the combined saving is 28%, so a £1,000 bike costs £720 net. For a higher-rate taxpayer (40% income tax, 2% NI above the upper earnings limit), the saving is 42%, the same £1,000 bike costs £580 net. For a Scottish intermediate-rate taxpayer (21% income tax, 8% NI), the combined saving is 29%, giving a net cost of £710.",
+                    "These figures assume the full sacrifice amount sits within the relevant tax and NI bands. If the sacrifice straddles a threshold, for example if it pushes your income across the NI upper earnings limit, the saving on the excess is calculated at different rates. The calculator can account for this if you enter the correct starting salary and scheme amount.",
                 ],
             },
             {
                 "heading": "Employer benefits",
                 "paragraphs": [
-                    "Your employer also saves 15% employer NI on the sacrificed amount. On a £1,000 scheme the employer saves £150. Many employers pass this saving on to employees, effectively reducing the gross sacrifice cost. Some larger employers have dedicated cycle to work administrators and absorb all admin costs. Smaller employers may use a third-party scheme provider who charges an administration fee — typically 5–10% of the scheme value, which may reduce (but not eliminate) the net saving.",
+                    "Your employer also saves 15% employer NI on the sacrificed amount. On a £1,000 scheme the employer saves £150. Many employers pass this saving on to employees, effectively reducing the gross sacrifice cost. Some larger employers have dedicated cycle to work administrators and absorb all admin costs. Smaller employers may use a third-party scheme provider who charges an administration fee, typically 5–10% of the scheme value, which may reduce (but not eliminate) the net saving.",
                 ],
             },
             {
@@ -979,7 +1274,7 @@ BLOG_POSTS = [
             },
         ],
         "sources": [
-            {"label": "HMRC: Cycle to work scheme — technical guidance", "url": "https://www.gov.uk/government/publications/cycle-to-work-scheme-implementation-guidance"},
+            {"label": "HMRC: Cycle to work scheme, technical guidance", "url": "https://www.gov.uk/government/publications/cycle-to-work-scheme-implementation-guidance"},
             {"label": "HMRC: Salary sacrifice for employees", "url": "https://www.gov.uk/salary-sacrifice-and-the-effects-on-pensions"},
         ],
     },
@@ -992,22 +1287,22 @@ BLOG_POSTS = [
         "reading_time": "6 min read",
         "faqs": [
             {"q": "What is the income limit for 30 hours free childcare?", "a": "In 2026/27 the 30 hours free childcare offer (for 3–4 year olds) requires both parents (or a single parent) to each earn at least the equivalent of 16 hours at NMW and less than £100,000 adjusted net income per year. If your ANI exceeds £100,000 due to income, salary sacrifice into a pension can bring it below that threshold and restore full eligibility."},
-            {"q": "Is Tax-Free Childcare the same as salary sacrifice for childcare?", "a": "No. Tax-Free Childcare is a government scheme where for every 80p you pay into an online childcare account, the government adds 20p — giving up to £500 per child per quarter (£2,000 per year). It is separate from salary sacrifice. Salary sacrifice for childcare referred historically to childcare vouchers, which closed to new entrants in October 2018. The indirect benefit of salary sacrifice now is through ANI reduction, not direct childcare vouchers."},
+            {"q": "Is Tax-Free Childcare the same as salary sacrifice for childcare?", "a": "No. Tax-Free Childcare is a government scheme where for every 80p you pay into an online childcare account, the government adds 20p, giving up to £500 per child per quarter (£2,000 per year). It is separate from salary sacrifice. Salary sacrifice for childcare referred historically to childcare vouchers, which closed to new entrants in October 2018. The indirect benefit of salary sacrifice now is through ANI reduction, not direct childcare vouchers."},
             {"q": "Does salary sacrifice affect child benefit eligibility?", "a": "Yes. The High Income Child Benefit Charge (HICBC) applies when ANI exceeds £60,000. For every £200 of ANI above £60,000, 1% of child benefit is clawed back. At £80,000 ANI the charge equals the full benefit. Pension salary sacrifice reduces ANI, potentially reducing or eliminating the HICBC."},
         ],
         "sections": [
             {
                 "heading": "What is adjusted net income and why does it matter?",
                 "paragraphs": [
-                    "Adjusted net income (ANI) is your total income after deducting gross pension contributions (not just relief received). It is the figure HMRC uses for several threshold tests. ANI above £100,000 triggers personal allowance tapering at £1 for every £2 of excess — creating an effective 60% marginal tax rate in the £100,000–£125,140 band. ANI above £60,000 triggers the High Income Child Benefit Charge. ANI above £100,000 also removes eligibility for the 30 hours free childcare offer.",
-                    "Salary sacrifice reduces your gross pay, which directly reduces ANI. Unlike relief at source or net pay contributions which are added back under the gross basis, salary sacrifice reduces the starting income figure — so it is the most efficient method for bringing ANI below these thresholds.",
+                    "Adjusted net income (ANI) is your total income after deducting gross pension contributions (not just relief received). It is the figure HMRC uses for several threshold tests. ANI above £100,000 triggers personal allowance tapering at £1 for every £2 of excess, creating an effective 60% marginal tax rate in the £100,000–£125,140 band. ANI above £60,000 triggers the High Income Child Benefit Charge. ANI above £100,000 also removes eligibility for the 30 hours free childcare offer.",
+                    "Salary sacrifice reduces your gross pay, which directly reduces ANI. Unlike relief at source or net pay contributions which are added back under the gross basis, salary sacrifice reduces the starting income figure, so it is the most efficient method for bringing ANI below these thresholds.",
                 ],
             },
             {
                 "heading": "The 30 hours free childcare threshold",
                 "paragraphs": [
-                    "The 30 hours free childcare offer is available to families where each working parent (or single parent) earns less than £100,000 ANI and at least the equivalent of 16 hours per week at the National Living Wage. The £100,000 limit is a hard cliff — exceed it by £1 and you lose 15 hours of free provision per week. For a family using 30 hours, losing the additional 15 hours can cost thousands of pounds per year in childcare fees.",
-                    "If your income is between £100,000 and approximately £110,000 and you have children aged 3–4, pension salary sacrifice is an extremely high-value strategy. Each pound sacrificed reduces ANI by £1. If £5,000 of salary sacrifice brings your ANI from £103,000 to £98,000, you restore 30-hour eligibility. The total value — childcare saving plus income tax saving at 60% effective rate plus NI saving — makes this one of the most compelling uses of salary sacrifice available.",
+                    "The 30 hours free childcare offer is available to families where each working parent (or single parent) earns less than £100,000 ANI and at least the equivalent of 16 hours per week at the National Living Wage. The £100,000 limit is a hard cliff, exceed it by £1 and you lose 15 hours of free provision per week. For a family using 30 hours, losing the additional 15 hours can cost thousands of pounds per year in childcare fees.",
+                    "If your income is between £100,000 and approximately £110,000 and you have children aged 3–4, pension salary sacrifice is an extremely high-value strategy. Each pound sacrificed reduces ANI by £1. If £5,000 of salary sacrifice brings your ANI from £103,000 to £98,000, you restore 30-hour eligibility. The total value, childcare saving plus income tax saving at 60% effective rate plus NI saving, makes this one of the most compelling uses of salary sacrifice available.",
                 ],
             },
             {
@@ -1038,36 +1333,36 @@ BLOG_POSTS = [
         "date_iso": "2026-05-22",
         "reading_time": "6 min read",
         "faqs": [
-            {"q": "Are employers required to pass on their NI saving?", "a": "No. There is no legal requirement for employers to pass on the employer NI saving from salary sacrifice. However, many do — either in full or partially — because it helps recruitment and retention, and the cost to the employer is genuinely zero (they are sharing a saving, not incurring an expense)."},
+            {"q": "Are employers required to pass on their NI saving?", "a": "No. There is no legal requirement for employers to pass on the employer NI saving from salary sacrifice. However, many do, either in full or partially, because it helps recruitment and retention, and the cost to the employer is genuinely zero (they are sharing a saving, not incurring an expense)."},
             {"q": "How do I find out if my employer passes on NI savings?", "a": "Ask your HR or payroll team directly. Specifically ask: 'Does the company pass on employer NI savings from salary sacrifice as additional pension contributions?' If the answer is yes, ask for the percentage passed through. Some schemes pass 100%, some 50%, and some none."},
-            {"q": "What is the employer NI rate in 2026/27?", "a": "From April 2025, the employer secondary NI rate increased to 15% (up from 13.8%). The secondary threshold — the wage level above which employer NI applies — is £5,000 per year. So employers pay 15% NI on all salary above £5,000 per employee."},
+            {"q": "What is the employer NI rate in 2026/27?", "a": "From April 2025, the employer secondary NI rate increased to 15% (up from 13.8%). The secondary threshold, the wage level above which employer NI applies, is £5,000 per year. So employers pay 15% NI on all salary above £5,000 per employee."},
         ],
         "sections": [
             {
                 "heading": "How the employer NI saving arises",
                 "paragraphs": [
                     "When an employee sacrifices salary, their gross pay is reduced. Employer National Insurance is calculated on gross pay above the secondary threshold (£5,000 in 2026/27) at a rate of 15%. By reducing gross pay, salary sacrifice directly reduces the employer's NI liability. For a single employee sacrificing £5,000 per year, the employer saves 15% × £5,000 = £750. For a team of 100 employees each sacrificing £5,000, the employer saves £75,000 per year.",
-                    "This is a genuine cost saving for the employer — not a transfer from one pocket to another, but an actual reduction in payroll tax. HMRC permits employers to pass this saving on to employees in any form, including as additional employer pension contributions, enhanced salary sacrifice limits, or simply as a higher take-home benefit package.",
+                    "This is a genuine cost saving for the employer, not a transfer from one pocket to another, but an actual reduction in payroll tax. HMRC permits employers to pass this saving on to employees in any form, including as additional employer pension contributions, enhanced salary sacrifice limits, or simply as a higher take-home benefit package.",
                 ],
             },
             {
                 "heading": "Full passthrough: the most employee-friendly arrangement",
                 "paragraphs": [
-                    "Under full passthrough, the employer directs 100% of their NI saving into the employee's pension alongside the employee's own sacrifice. On a £5,000 sacrifice, the employer adds £750 to the pension. This means the employee's pension receives £5,750 (£5,000 sacrifice + £750 employer NI passthrough), while their take-home pay reduces only by the post-tax cost of the £5,000 sacrifice (roughly £3,400 for a basic-rate taxpayer). The pension contribution efficiency is exceptional — each pound of net pay reduction delivers roughly £1.69 into the pension.",
+                    "Under full passthrough, the employer directs 100% of their NI saving into the employee's pension alongside the employee's own sacrifice. On a £5,000 sacrifice, the employer adds £750 to the pension. This means the employee's pension receives £5,750 (£5,000 sacrifice + £750 employer NI passthrough), while their take-home pay reduces only by the post-tax cost of the £5,000 sacrifice (roughly £3,400 for a basic-rate taxpayer). The pension contribution efficiency is exceptional, each pound of net pay reduction delivers roughly £1.69 into the pension.",
                     "Full passthrough is most commonly offered by larger employers who have set up salary sacrifice schemes specifically with NI sharing in mind. Public sector employers, large financial services firms and technology companies often offer it. Where offered, it effectively supercharges the pension sacrifice return and should be strongly preferred over personal pension contributions made outside the scheme.",
                 ],
             },
             {
                 "heading": "Partial passthrough and common structures",
                 "paragraphs": [
-                    "Many employers offer partial passthrough — typically 50% of the NI saving, meaning they keep 50% for themselves and direct 50% to the employee's pension. On a £5,000 sacrifice this adds £375 to the pension. This is still a meaningful benefit. Some employers offer a tiered structure: 100% passthrough up to a contribution threshold, then a lower rate above it.",
-                    "Where no passthrough is offered, the full employer NI saving accrues to the business. In this situation, employees still benefit from the employee NI saving (8% at main rate) and the income tax saving — the sacrifice is still financially worthwhile. But if you have leverage in salary negotiations, the absence of NI matching is a legitimate point to raise with an employer.",
+                    "Many employers offer partial passthrough, typically 50% of the NI saving, meaning they keep 50% for themselves and direct 50% to the employee's pension. On a £5,000 sacrifice this adds £375 to the pension. This is still a meaningful benefit. Some employers offer a tiered structure: 100% passthrough up to a contribution threshold, then a lower rate above it.",
+                    "Where no passthrough is offered, the full employer NI saving accrues to the business. In this situation, employees still benefit from the employee NI saving (8% at main rate) and the income tax saving, the sacrifice is still financially worthwhile. But if you have leverage in salary negotiations, the absence of NI matching is a legitimate point to raise with an employer.",
                 ],
             },
             {
                 "heading": "What to ask your employer",
                 "paragraphs": [
-                    "Before entering into a salary sacrifice arrangement, ask HR the following questions. First: does the employer pass on any NI savings, and if so what percentage and in what form? Second: is the sacrifice amount flexible — can it be changed mid-year or only at specific windows? Third: does sacrificing salary affect any other employment benefits such as death-in-service cover, income protection or maternity pay, which are often calculated on contractual salary?",
+                    "Before entering into a salary sacrifice arrangement, ask HR the following questions. First: does the employer pass on any NI savings, and if so what percentage and in what form? Second: is the sacrifice amount flexible, can it be changed mid-year or only at specific windows? Third: does sacrificing salary affect any other employment benefits such as death-in-service cover, income protection or maternity pay, which are often calculated on contractual salary?",
                     "If your employer does not currently operate a salary sacrifice scheme, you can propose one. The employer will need to amend employment contracts and set up payroll arrangements, but the financial benefit to the employer (NI savings on all participating employees) often makes it worth pursuing. Provide our employer NI saving calculator output as a concrete illustration of the potential saving.",
                 ],
             },
@@ -1079,43 +1374,43 @@ BLOG_POSTS = [
         ],
     },
     {
-        "slug": "salary-sacrifice-explained",
+        "slug": "salary-sacrifice-explained-mechanics",
         "title": "Salary Sacrifice Explained: What It Is, How It Works, and Whether It Is Worth It",
-        "description": "Salary sacrifice lets you give up part of your gross pay in exchange for a non-cash benefit — saving income tax and National Insurance in the process. This guide explains the mechanics, the maths, and when it makes sense.",
+        "description": "Salary sacrifice lets you give up part of your gross pay in exchange for a non-cash benefit, saving income tax and National Insurance in the process. This guide explains the mechanics, the maths, and when it makes sense.",
         "date": "22 May 2026",
         "date_iso": "2026-05-22",
         "reading_time": "7 min read",
         "faqs": [
             {"q": "Does salary sacrifice reduce my take-home pay?", "a": "Your cash take-home goes down by less than the amount you sacrifice, because you save income tax and NI on the sacrificed amount. For a basic-rate taxpayer sacrificing £100, take-home drops by roughly £72 (after saving £20 income tax and £8 NI). You give up £100 of gross but only feel £72 less in your pocket."},
             {"q": "Can my employer refuse salary sacrifice?", "a": "Yes. Salary sacrifice requires a formal contract change and your employer must agree to operate the arrangement. Not all employers offer it. Where it is offered, the scheme rules set out which benefits qualify and what the minimum and maximum sacrifice amounts are."},
-            {"q": "Is salary sacrifice the same as a pay cut?", "a": "Structurally yes — your contractual salary is reduced. But the trade-off is a non-cash benefit of equivalent or greater value, plus the tax and NI saving that comes from having a lower gross salary. Whether it is worth it depends on the benefit on offer and your personal tax position."},
+            {"q": "Is salary sacrifice the same as a pay cut?", "a": "Structurally yes, your contractual salary is reduced. But the trade-off is a non-cash benefit of equivalent or greater value, plus the tax and NI saving that comes from having a lower gross salary. Whether it is worth it depends on the benefit on offer and your personal tax position."},
         ],
         "sections": [
             {
                 "heading": "What salary sacrifice actually is",
                 "paragraphs": [
-                    "Salary sacrifice — also called salary exchange — is a formal arrangement between you and your employer. You agree to give up a portion of your contractual gross salary, and your employer provides a non-cash benefit in its place. Common examples are pension contributions, electric vehicle leases, cycle to work equipment, and childcare vouchers (though vouchers closed to new entrants in 2018).",
-                    "The arrangement must be recorded in writing as a change to your employment contract. It is not something you can apply unilaterally — your employer has to set up and agree to the scheme. Because your gross salary is reduced, you pay income tax and National Insurance on a smaller number. That is the core financial benefit.",
+                    "Salary sacrifice, also called salary exchange, is a formal arrangement between you and your employer. You agree to give up a portion of your contractual gross salary, and your employer provides a non-cash benefit in its place. Common examples are pension contributions, electric vehicle leases, cycle to work equipment, and childcare vouchers (though vouchers closed to new entrants in 2018).",
+                    "The arrangement must be recorded in writing as a change to your employment contract. It is not something you can apply unilaterally, your employer has to set up and agree to the scheme. Because your gross salary is reduced, you pay income tax and National Insurance on a smaller number. That is the core financial benefit.",
                 ],
             },
             {
                 "heading": "The tax and NI saving in plain numbers",
                 "paragraphs": [
                     "Take a basic-rate taxpayer earning £35,000 who sacrifices £1,200 per year (£100 per month) into a pension. Their gross pay drops from £35,000 to £33,800. Income tax saving: £1,200 × 20% = £240. Employee NI saving: £1,200 × 8% = £96. Total annual personal saving: £336. That means their net monthly pay drops by only (£1,200 − £336) ÷ 12 = £72 per month, even though £100 per month is going into their pension.",
-                    "For a higher-rate taxpayer the numbers are better still. At 40% income tax and 2% NI (above the upper earnings limit), the saving on £1,200 is £480 plus £24 = £504. Net monthly cost is (£1,200 − £504) ÷ 12 = £58. The employer also saves 15% secondary NI — in this case £180 — which some employers pass back as an additional pension contribution.",
+                    "For a higher-rate taxpayer the numbers are better still. At 40% income tax and 2% NI (above the upper earnings limit), the saving on £1,200 is £480 plus £24 = £504. Net monthly cost is (£1,200 − £504) ÷ 12 = £58. The employer also saves 15% secondary NI, in this case £180, which some employers pass back as an additional pension contribution.",
                 ],
             },
             {
                 "heading": "What qualifies for salary sacrifice",
                 "paragraphs": [
-                    "HMRC permits salary sacrifice for employer pension contributions, employer-provided childcare (now closed to new entrants), cycle to work schemes, ultra-low emission vehicles (particularly EVs), and workplace nurseries. Annual leave purchase schemes are also sometimes structured as salary sacrifice. HMRC does not permit salary sacrifice for cash — the benefit must be a genuine non-cash item.",
+                    "HMRC permits salary sacrifice for employer pension contributions, employer-provided childcare (now closed to new entrants), cycle to work schemes, ultra-low emission vehicles (particularly EVs), and workplace nurseries. Annual leave purchase schemes are also sometimes structured as salary sacrifice. HMRC does not permit salary sacrifice for cash, the benefit must be a genuine non-cash item.",
                     "The most widely used form is pension salary sacrifice because it is the most straightforward to administer and the tax saving is the largest for most employees. EV schemes are the fastest-growing category due to the very low 4% benefit-in-kind rate on zero-emission cars in 2026/27.",
                 ],
             },
             {
                 "heading": "When salary sacrifice might not be right for you",
                 "paragraphs": [
-                    "Salary sacrifice reduces your contractual pay. This matters in three situations. First, mortgage applications: some lenders base affordability on contractual salary, so a large sacrifice could reduce the mortgage you can borrow. Second, income-related benefits: statutory maternity pay, sick pay, and some employer benefits such as life cover are calculated on contractual salary. Third, state pension qualification: if sacrifice pushes your pay below the lower earnings limit (£6,396 in 2026/27), you may miss qualifying years — though this only affects very low earners.",
+                    "Salary sacrifice reduces your contractual pay. This matters in three situations. First, mortgage applications: some lenders base affordability on contractual salary, so a large sacrifice could reduce the mortgage you can borrow. Second, income-related benefits: statutory maternity pay, sick pay, and some employer benefits such as life cover are calculated on contractual salary. Third, state pension qualification: if sacrifice pushes your pay below the lower earnings limit (£6,396 in 2026/27), you may miss qualifying years, though this only affects very low earners.",
                     "For most employees in the middle of the earnings range, none of these edge cases apply. The tax saving is real, the pension benefit is real, and the only question is whether your employer operates a suitable scheme.",
                 ],
             },
@@ -1127,44 +1422,44 @@ BLOG_POSTS = [
         ],
     },
     {
-        "slug": "salary-sacrifice-pension-guide",
+        "slug": "salary-sacrifice-pension-guide-practical",
         "title": "Salary Sacrifice Pension: How It Works and Why It Beats a Personal Pension Contribution",
-        "description": "Pension salary sacrifice is the most tax-efficient way for an employed person to save for retirement — but not all employers offer it. This guide covers how it works, the numbers, and what to ask your HR team.",
+        "description": "Pension salary sacrifice is the most tax-efficient way for an employed person to save for retirement, but not all employers offer it. This guide covers how it works, the numbers, and what to ask your HR team.",
         "date": "22 May 2026",
         "date_iso": "2026-05-22",
         "reading_time": "7 min read",
         "faqs": [
-            {"q": "What is the difference between salary sacrifice and a normal pension contribution?", "a": "With a normal employee pension contribution, you pay from net salary and the pension provider reclaims basic-rate tax (relief at source) or your employer deducts from gross (net pay arrangement). Either way you still pay NI on the full salary. With salary sacrifice, the contribution never enters your salary — your gross pay is lower from the start, so you save both income tax and NI on the sacrificed amount."},
-            {"q": "Does salary sacrifice pension affect the employer's contribution?", "a": "Not usually — your employer's contractual contribution is typically calculated as a percentage of your pensionable pay, which may be defined in your contract. However, some employers adjust the basis. Check your scheme documentation. Separately, many employers voluntarily add their NI saving on top of their contractual contribution."},
-            {"q": "Is there an annual limit on salary sacrifice pension contributions?", "a": "The pension annual allowance of £60,000 (or 100% of earnings, whichever is lower) applies to all pension contributions combined — employee, employer, and any salary sacrifice amounts. Most employees are well below this limit. Only very high earners with large employer contributions need to track against it."},
+            {"q": "What is the difference between salary sacrifice and a normal pension contribution?", "a": "With a normal employee pension contribution, you pay from net salary and the pension provider reclaims basic-rate tax (relief at source) or your employer deducts from gross (net pay arrangement). Either way you still pay NI on the full salary. With salary sacrifice, the contribution never enters your salary, your gross pay is lower from the start, so you save both income tax and NI on the sacrificed amount."},
+            {"q": "Does salary sacrifice pension affect the employer's contribution?", "a": "Not usually, your employer's contractual contribution is typically calculated as a percentage of your pensionable pay, which may be defined in your contract. However, some employers adjust the basis. Check your scheme documentation. Separately, many employers voluntarily add their NI saving on top of their contractual contribution."},
+            {"q": "Is there an annual limit on salary sacrifice pension contributions?", "a": "The pension annual allowance of £60,000 (or 100% of earnings, whichever is lower) applies to all pension contributions combined, employee, employer, and any salary sacrifice amounts. Most employees are well below this limit. Only very high earners with large employer contributions need to track against it."},
         ],
         "sections": [
             {
                 "heading": "How pension salary sacrifice differs from other contribution routes",
                 "paragraphs": [
-                    "There are three ways money can enter your pension with tax relief: salary sacrifice, net pay arrangement, and relief at source. Of these, salary sacrifice is the only one that also saves National Insurance. Under a net pay arrangement or relief at source scheme, your gross salary remains unchanged — you pay NI on the full amount before any pension relief is applied. Under salary sacrifice, your contractual salary is reduced by the contribution amount, so NI is charged on a smaller base.",
-                    "For a basic-rate taxpayer, the NI saving on salary sacrifice is 8% of the contribution. On £3,000 per year that is £240 in NI — money you keep in addition to the income tax saving. For a higher-rate taxpayer earning above £50,270, the NI saving is 2% (the upper rate), but the 40% income tax saving is substantial.",
+                    "There are three ways money can enter your pension with tax relief: salary sacrifice, net pay arrangement, and relief at source. Of these, salary sacrifice is the only one that also saves National Insurance. Under a net pay arrangement or relief at source scheme, your gross salary remains unchanged, you pay NI on the full amount before any pension relief is applied. Under salary sacrifice, your contractual salary is reduced by the contribution amount, so NI is charged on a smaller base.",
+                    "For a basic-rate taxpayer, the NI saving on salary sacrifice is 8% of the contribution. On £3,000 per year that is £240 in NI, money you keep in addition to the income tax saving. For a higher-rate taxpayer earning above £50,270, the NI saving is 2% (the upper rate), but the 40% income tax saving is substantial.",
                 ],
             },
             {
-                "heading": "The employer NI saving — and how to claim it",
+                "heading": "The employer NI saving, and how to claim it",
                 "paragraphs": [
-                    "Your employer also saves 15% secondary NI on every pound you sacrifice. On a £3,000 annual sacrifice the employer saves £450. Many employers direct some or all of this saving into your pension on top of their normal employer contribution. This is sometimes called NI matching or NI passthrough. If your employer offers it, you receive an enhanced pension contribution at zero extra cost to either party — it is funded entirely by the HMRC NI saving.",
-                    "If your employer does not currently offer NI passthrough, it is worth asking HR explicitly. Providing concrete numbers often helps: 'If I sacrifice £3,000, you save £450 in NI — would you consider directing some of that into my pension?' The worst outcome is they say no; the best outcome is you get a meaningful pension boost at no cost to anyone.",
+                    "Your employer also saves 15% secondary NI on every pound you sacrifice. On a £3,000 annual sacrifice the employer saves £450. Many employers direct some or all of this saving into your pension on top of their normal employer contribution. This is sometimes called NI matching or NI passthrough. If your employer offers it, you receive an enhanced pension contribution at zero extra cost to either party, it is funded entirely by the HMRC NI saving.",
+                    "If your employer does not currently offer NI passthrough, it is worth asking HR explicitly. Providing concrete numbers often helps: 'If I sacrifice £3,000, you save £450 in NI, would you consider directing some of that into my pension?' The worst outcome is they say no; the best outcome is you get a meaningful pension boost at no cost to anyone.",
                 ],
             },
             {
                 "heading": "Worked example: comparing sacrifice vs standard contribution",
                 "paragraphs": [
-                    "An employee on £40,000 wants £2,400 per year in pension contributions. Option A: standard employee contribution via relief at source. HMRC adds 20% top-up, so £2,400 gross goes in. Employee pays £2,400 × (1 − 20%) = £1,920 net, but still pays NI on the full £40,000 salary. Option B: salary sacrifice of £2,400. Employee pays income tax and NI on £37,600 instead of £40,000. Income tax saving: £480. NI saving: £192. Total saving: £672. Net cost of the £2,400 pension contribution is just £1,728 — £192 less than the standard route for the same pension outcome.",
-                    "The difference is the NI saving, which the standard route misses entirely. Over 20 years, assuming the same salary, that extra £192 per year amounts to £3,840 in cumulative NI savings — just from the choice of contribution route.",
+                    "An employee on £40,000 wants £2,400 per year in pension contributions. Option A: standard employee contribution via relief at source. HMRC adds 20% top-up, so £2,400 gross goes in. Employee pays £2,400 × (1 − 20%) = £1,920 net, but still pays NI on the full £40,000 salary. Option B: salary sacrifice of £2,400. Employee pays income tax and NI on £37,600 instead of £40,000. Income tax saving: £480. NI saving: £192. Total saving: £672. Net cost of the £2,400 pension contribution is just £1,728, £192 less than the standard route for the same pension outcome.",
+                    "The difference is the NI saving, which the standard route misses entirely. Over 20 years, assuming the same salary, that extra £192 per year amounts to £3,840 in cumulative NI savings, just from the choice of contribution route.",
                 ],
             },
             {
                 "heading": "Setting up salary sacrifice with your employer",
                 "paragraphs": [
-                    "To use salary sacrifice for pension contributions, your employer must operate a salary sacrifice scheme. If they do not currently offer one, suggest it to HR or payroll — the employer also benefits from NI savings on all participating staff, so there is a strong business case for running the scheme. If they already offer it, you typically need to sign a salary sacrifice agreement (a contract amendment) specifying the amount and start date.",
-                    "Salary sacrifice contributions are shown on your payslip as a reduction in gross pay rather than as a pension deduction. Your P60 will show your reduced gross salary. This is normal and does not affect your personal tax calculation — HMRC only looks at the figures your employer reports, which already reflect the sacrifice.",
+                    "To use salary sacrifice for pension contributions, your employer must operate a salary sacrifice scheme. If they do not currently offer one, suggest it to HR or payroll, the employer also benefits from NI savings on all participating staff, so there is a strong business case for running the scheme. If they already offer it, you typically need to sign a salary sacrifice agreement (a contract amendment) specifying the amount and start date.",
+                    "Salary sacrifice contributions are shown on your payslip as a reduction in gross pay rather than as a pension deduction. Your P60 will show your reduced gross salary. This is normal and does not affect your personal tax calculation, HMRC only looks at the figures your employer reports, which already reflect the sacrifice.",
                 ],
             },
         ],
@@ -1175,9 +1470,9 @@ BLOG_POSTS = [
         ],
     },
     {
-        "slug": "electric-car-salary-sacrifice-guide",
+        "slug": "electric-car-salary-sacrifice-practical-guide",
         "title": "Electric Car Salary Sacrifice: A Practical Guide for Employees in 2026/27",
-        "description": "EV salary sacrifice lets you drive a new electric car while paying income tax and NI on a lower salary. With the BiK rate at just 4% in 2026/27, the savings can be significant — here is what to check before signing up.",
+        "description": "EV salary sacrifice lets you drive a new electric car while paying income tax and NI on a lower salary. With the BiK rate at just 4% in 2026/27, the savings can be significant, here is what to check before signing up.",
         "date": "22 May 2026",
         "date_iso": "2026-05-22",
         "reading_time": "8 min read",
@@ -1190,7 +1485,7 @@ BLOG_POSTS = [
             {
                 "heading": "Why the EV BiK rate makes salary sacrifice so attractive",
                 "paragraphs": [
-                    "The benefit-in-kind (BiK) rate for zero-emission electric cars is 4% of P11D value in 2026/27. Compared to a petrol car with 120g/km CO2 (BiK rate around 28%), this is strikingly low. The BiK tax you pay on an EV is tiny — a £40,000 EV generates a BiK charge of £40,000 × 4% × 20% = £320 per year for a basic-rate taxpayer, or £640 for a higher-rate taxpayer. Meanwhile, the salary sacrifice saves income tax and NI on the full monthly lease amount sacrificed.",
+                    "The benefit-in-kind (BiK) rate for zero-emission electric cars is 4% of P11D value in 2026/27. Compared to a petrol car with 120g/km CO2 (BiK rate around 28%), this is strikingly low. The BiK tax you pay on an EV is tiny, a £40,000 EV generates a BiK charge of £40,000 × 4% × 20% = £320 per year for a basic-rate taxpayer, or £640 for a higher-rate taxpayer. Meanwhile, the salary sacrifice saves income tax and NI on the full monthly lease amount sacrificed.",
                     "The net result for most employees is that an EV through salary sacrifice costs significantly less than leasing the same car privately from after-tax income. The exact saving depends on the car's P11D value, the lease cost, and your income tax rate.",
                 ],
             },
@@ -1198,20 +1493,20 @@ BLOG_POSTS = [
                 "heading": "Calculating the real monthly cost",
                 "paragraphs": [
                     "To work out your actual monthly cost, you need to know the monthly sacrifice amount and then subtract the income tax and NI savings, then add back the BiK tax. Example: sacrifice of £500/month (£6,000/year) on a £38,000 P11D-value EV. Basic-rate taxpayer: income tax saving £6,000 × 20% = £1,200, NI saving £6,000 × 8% = £480. Total saving: £1,680. BiK tax: £38,000 × 4% × 20% = £304. Net annual cost: £6,000 − £1,680 + £304 = £4,624. Monthly: £385.",
-                    "Without salary sacrifice, the same lease costing £500/month from after-tax income would actually cost more in gross terms — a basic-rate taxpayer would need to earn roughly £694/month gross to take home £500 after tax and NI. Salary sacrifice cuts that real cost to £385. The saving is £309 per month on a comparable after-tax lease.",
+                    "Without salary sacrifice, the same lease costing £500/month from after-tax income would actually cost more in gross terms, a basic-rate taxpayer would need to earn roughly £694/month gross to take home £500 after tax and NI. Salary sacrifice cuts that real cost to £385. The saving is £309 per month on a comparable after-tax lease.",
                 ],
             },
             {
-                "heading": "The BiK rate is rising — plan ahead",
+                "heading": "The BiK rate is rising, plan ahead",
                 "paragraphs": [
                     "The zero-emission BiK rate increases each year: 4% in 2026/27, 5% in 2027/28, 7% in 2028/29, and 9% in 2029/30. If you are signing a 3 or 4-year lease today, your BiK tax will be higher in later years. For a £40,000 car, the BiK tax to a basic-rate taxpayer rises from £320/year in 2026/27 to £720/year in 2029/30. Still modest, but worth factoring into the total cost over the scheme period.",
-                    "Even at 9%, the EV BiK rate is far below petrol car rates. The salary sacrifice NI saving does not depend on BiK rates at all — it is a function of the sacrificed amount. So EV salary sacrifice will remain cost-effective well into the 2030s, though the margin over private leasing will narrow slightly as BiK rates rise.",
+                    "Even at 9%, the EV BiK rate is far below petrol car rates. The salary sacrifice NI saving does not depend on BiK rates at all, it is a function of the sacrificed amount. So EV salary sacrifice will remain cost-effective well into the 2030s, though the margin over private leasing will narrow slightly as BiK rates rise.",
                 ],
             },
             {
                 "heading": "What to check before signing up",
                 "paragraphs": [
-                    "Before agreeing to an EV salary sacrifice arrangement, verify: (1) Does the scheme include comprehensive insurance, or do you need separate cover? (2) What are the mileage limits, and what do excess miles cost? (3) What happens to the arrangement if you leave employment? (4) Will your post-sacrifice salary fall below any critical thresholds — NMW, mortgage commitments, or income-linked benefits? (5) Does the scheme use a salary sacrifice contract amendment, and have you received a copy?",
+                    "Before agreeing to an EV salary sacrifice arrangement, verify: (1) Does the scheme include comprehensive insurance, or do you need separate cover? (2) What are the mileage limits, and what do excess miles cost? (3) What happens to the arrangement if you leave employment? (4) Will your post-sacrifice salary fall below any critical thresholds, NMW, mortgage commitments, or income-linked benefits? (5) Does the scheme use a salary sacrifice contract amendment, and have you received a copy?",
                     "Run the numbers using our salary sacrifice calculator, entering your salary and the monthly sacrifice amount. Compare the effective monthly cost against a like-for-like private lease. For most people in full-time employment with a stable income, EV salary sacrifice is one of the strongest financial benefits currently available in the UK employment market.",
                 ],
             },
@@ -1223,53 +1518,410 @@ BLOG_POSTS = [
         ],
     },
     {
-        "slug": "salary-sacrifice-student-loans",
+        "slug": "salary-sacrifice-student-loans-repayments",
         "title": "Salary Sacrifice and Student Loans: Can You Reduce Your Repayments?",
-        "description": "Student loan repayments in the UK are calculated on gross income above a threshold — not taxable income. Salary sacrifice lowers your gross pay, which can reduce your repayment amount each month. Here is how it works.",
+        "description": "Student loan repayments in the UK are calculated on gross income above a threshold, not taxable income. Salary sacrifice lowers your gross pay, which can reduce your repayment amount each month. Here is how it works.",
         "date": "22 May 2026",
         "date_iso": "2026-05-22",
         "reading_time": "6 min read",
         "faqs": [
-            {"q": "Does pension salary sacrifice reduce student loan repayments?", "a": "Yes — pension salary sacrifice reduces your gross salary, which is the figure used to calculate student loan repayments. If your sacrificed amount brings your salary closer to the repayment threshold (£27,295 for Plan 2, £24,990 for Plan 1 in 2026/27), or over the threshold, your monthly repayments will decrease or stop entirely."},
+            {"q": "Does pension salary sacrifice reduce student loan repayments?", "a": "Yes, pension salary sacrifice reduces your gross salary, which is the figure used to calculate student loan repayments. If your sacrificed amount brings your salary closer to the repayment threshold (£27,295 for Plan 2, £24,990 for Plan 1 in 2026/27), or over the threshold, your monthly repayments will decrease or stop entirely."},
             {"q": "What is the student loan repayment rate in 2026/27?", "a": "Plan 1 borrowers repay 9% of income above £24,990. Plan 2 borrowers repay 9% of income above £27,295. Postgraduate loan borrowers repay 6% of income above £21,000. Salary sacrifice reduces the income assessed, so a £2,000 sacrifice saves £180 per year in Plan 2 repayments (9% × £2,000) in addition to the income tax and NI savings."},
-            {"q": "Is this a legitimate way to reduce student loan repayments?", "a": "Yes, it is entirely above board. HMRC and the Student Loans Company both use gross salary as reported by your employer on your payroll return. Salary sacrifice is a formal, HMRC-recognised arrangement. There is no avoidance involved — you are simply using a tax-efficient route that lowers your gross pay by making a genuine non-cash exchange."},
+            {"q": "Is this a legitimate way to reduce student loan repayments?", "a": "Yes, it is entirely above board. HMRC and the Student Loans Company both use gross salary as reported by your employer on your payroll return. Salary sacrifice is a formal, HMRC-recognised arrangement. There is no avoidance involved, you are simply using a tax-efficient route that lowers your gross pay by making a genuine non-cash exchange."},
         ],
         "sections": [
             {
                 "heading": "How student loan repayments interact with salary sacrifice",
                 "paragraphs": [
                     "UK student loan repayments are collected through PAYE and calculated on the same gross salary figure used for income tax. The important distinction is that pension salary sacrifice reduces gross pay before both income tax and student loan deductions are calculated. This is different from personal pension contributions made through relief at source, which reduce taxable income but leave the student loan calculation unaffected.",
-                    "Specifically: if you earn £32,000 and sacrifice £2,000, your gross pay for payroll purposes becomes £30,000. Your Plan 2 repayment is now 9% × (£30,000 − £27,295) = 9% × £2,705 = £243.45 per year, compared to 9% × (£32,000 − £27,295) = 9% × £4,705 = £423.45 without the sacrifice. Saving: £180 per year in student loan repayments — on top of the income tax and NI savings.",
+                    "Specifically: if you earn £32,000 and sacrifice £2,000, your gross pay for payroll purposes becomes £30,000. Your Plan 2 repayment is now 9% × (£30,000 − £27,295) = 9% × £2,705 = £243.45 per year, compared to 9% × (£32,000 − £27,295) = 9% × £4,705 = £423.45 without the sacrifice. Saving: £180 per year in student loan repayments, on top of the income tax and NI savings.",
                 ],
             },
             {
                 "heading": "Combined saving: the full picture",
                 "paragraphs": [
-                    "For an employee on Plan 2 with a basic-rate income tax position and earnings in the main NI band, every £1,000 of pension salary sacrifice saves approximately: £200 income tax (20%), £80 NI (8%), and £90 student loan (9%). Total saving: £370 per £1,000 sacrificed. The net cost to take-home pay is only £630 — meaning a £1,000 pension contribution effectively costs £630 in reduced take-home.",
-                    "This triple saving (tax, NI, student loan) makes salary sacrifice particularly compelling for recent graduates. It is one of the few situations where contributing to a pension is financially dominant over virtually any alternative use of that money — you essentially receive a 59% immediate return (£1,000 contribution at a cost of £630).",
+                    "For an employee on Plan 2 with a basic-rate income tax position and earnings in the main NI band, every £1,000 of pension salary sacrifice saves approximately: £200 income tax (20%), £80 NI (8%), and £90 student loan (9%). Total saving: £370 per £1,000 sacrificed. The net cost to take-home pay is only £630, meaning a £1,000 pension contribution effectively costs £630 in reduced take-home.",
+                    "This triple saving (tax, NI, student loan) makes salary sacrifice particularly compelling for recent graduates. It is one of the few situations where contributing to a pension is financially dominant over virtually any alternative use of that money, you essentially receive a 59% immediate return (£1,000 contribution at a cost of £630).",
                 ],
             },
             {
                 "heading": "The threshold effect: reducing repayments to zero",
                 "paragraphs": [
-                    "If your salary is close to the student loan repayment threshold, salary sacrifice can eliminate repayments entirely. A Plan 2 borrower earning £29,000 who sacrifices £2,000 brings their assessed income to £27,000 — below the £27,295 threshold. Repayments stop completely. The income tax and NI savings on the £2,000 sacrifice make the pension contribution very cheap, and the additional student loan saving is a bonus.",
+                    "If your salary is close to the student loan repayment threshold, salary sacrifice can eliminate repayments entirely. A Plan 2 borrower earning £29,000 who sacrifices £2,000 brings their assessed income to £27,000, below the £27,295 threshold. Repayments stop completely. The income tax and NI savings on the £2,000 sacrifice make the pension contribution very cheap, and the additional student loan saving is a bonus.",
                     "This is worth modelling carefully if you are in the £28,000–£35,000 range. Use our calculator to see the combined monthly saving across income tax, NI, and student loan deductions. The three-way saving can be surprisingly large.",
                 ],
             },
             {
                 "heading": "Postgraduate loans",
                 "paragraphs": [
-                    "Postgraduate loan (PGL) repayments follow the same mechanics. Borrowers repay 6% of earnings above £21,000. Salary sacrifice reduces gross pay before PGL is assessed. Some employees carry both a Plan 2 undergraduate loan and a PGL — in this case salary sacrifice produces four separate savings: income tax, NI, Plan 2 repayment reduction, and PGL reduction. The combined saving rate for a basic-rate taxpayer with both loans is roughly 43% of each pound sacrificed, making pension sacrifice extremely cost-effective.",
+                    "Postgraduate loan (PGL) repayments follow the same mechanics. Borrowers repay 6% of earnings above £21,000. Salary sacrifice reduces gross pay before PGL is assessed. Some employees carry both a Plan 2 undergraduate loan and a PGL, in this case salary sacrifice produces four separate savings: income tax, NI, Plan 2 repayment reduction, and PGL reduction. The combined saving rate for a basic-rate taxpayer with both loans is roughly 43% of each pound sacrificed, making pension sacrifice extremely cost-effective.",
                 ],
             },
         ],
         "sources": [
-            {"label": "HMRC: Student loan deductions — employer guidance", "url": "https://www.gov.uk/guidance/special-rules-for-student-loans"},
+            {"label": "HMRC: Student loan deductions, employer guidance", "url": "https://www.gov.uk/guidance/special-rules-for-student-loans"},
             {"label": "Student Loans Company: Repayment thresholds 2026/27", "url": "https://www.slc.co.uk/students-and-customers/loan-repayment/repayment-thresholds.aspx"},
             {"label": "HMRC: Salary sacrifice arrangements", "url": "https://www.gov.uk/salary-sacrifice-and-the-effects-on-pensions"},
         ],
     },
+    {
+        "slug": "how-much-does-salary-sacrifice-save",
+        "title": "How Much Does Salary Sacrifice Save? Worked Examples 2026/27",
+        "description": "Salary sacrifice saves income tax AND employee NI on every pound sacrificed. For a basic-rate taxpayer sacrificing £2,400 into pension, the actual take-home cost is only £1,680. This guide walks through the exact numbers.",
+        "date": "27 May 2026",
+        "date_iso": "2026-05-27",
+        "reading_time": "6 min read",
+        "faqs": [
+            {"q": "How much does salary sacrifice actually save?", "a": "For a basic-rate taxpayer (20% income tax, 8% NI), every £1,000 sacrificed saves £280 in tax and NI, so the net cost to take-home pay is only £720. Higher-rate taxpayers save more: 40% tax + 2% NI = £420 saved per £1,000, so the net cost is only £580."},
+            {"q": "Do I save both income tax and NI with salary sacrifice?", "a": "Yes, this is the key advantage over a normal pension contribution. Salary sacrifice reduces your gross pay, so both income tax and National Insurance are assessed on a lower figure. A standard personal pension contribution only saves income tax, not NI."},
+            {"q": "Does my employer also save money?", "a": "Yes. Your employer saves 13.8% employer NI on the sacrificed amount. On a £2,400 sacrifice that is £331.20 saved per year. Many employers pass some or all of this saving back as an additional pension contribution, effectively giving you more pension for free."},
+            {"q": "How does salary sacrifice compare to relief at source?", "a": "Relief at source (used by personal pensions and most workplace pensions) saves income tax but not NI. Salary sacrifice saves both, so it is worth roughly £80–£240 more per year on a typical £3,000 contribution. If your employer also passes on their NI saving, the difference is even larger."},
+        ],
+        "sections": [
+            {
+                "heading": "The core saving: tax and NI on every pound",
+                "paragraphs": [
+                    "Salary sacrifice reduces your contractual gross salary. Because income tax and National Insurance are both calculated on gross pay, a lower gross means less of both. This is why salary sacrifice saves more than a standard pension contribution, a normal employee contribution does not reduce gross pay, so NI is still charged on the full amount.",
+                    "For 2026/27, the savings per pound sacrificed are: 20p income tax (basic rate) + 8p employee NI = 28p per pound in the basic-rate band. For higher-rate taxpayers: 40p income tax + 2p employee NI = 42p per pound above £50,270. In both cases, the employer also saves 13.8p per pound on their employer NI bill.",
+                ],
+            },
+            {
+                "heading": "Worked example: £35,000 salary, £2,400 pension sacrifice",
+                "paragraphs": [
+                    "Take someone earning £35,000 who sacrifices £2,400 per year (£200 per month) into a workplace pension via salary sacrifice. Their gross salary for PAYE purposes falls from £35,000 to £32,600.",
+                    "Income tax saving: £2,400 × 20% = £480. Employee NI saving: £2,400 × 8% = £192 (the full £2,400 sits in the 8% band since their salary is well within the £12,570–£50,270 range). Total personal saving: £672. Net cost to take-home pay: £2,400 − £672 = £1,728 per year, or £144 per month. They are putting £200/month into pension but only losing £144 from their pay packet.",
+                    "Employer NI saving: 13.8% × £2,400 = £331.20 per year. If the employer passes this back in full, the pension receives £2,731.20 from a sacrifice that costs the employee £1,728. That is a 58% immediate uplift, the employer's saved NI plus the tax and NI relief means each £1 of reduced take-home buys roughly £1.58 of pension.",
+                ],
+            },
+            {
+                "heading": "Higher-rate taxpayer example: £60,000 salary, £5,000 sacrifice",
+                "paragraphs": [
+                    "For a higher-rate taxpayer earning £60,000 who sacrifices £5,000 per year: their gross falls from £60,000 to £55,000. The first £9,730 of the sacrifice (from £50,270 up to £60,000) saves 40% tax and 2% NI, and the remaining amounts are also in the higher-rate band.",
+                    "Income tax saving: £5,000 × 40% = £2,000. Employee NI saving: £5,000 × 2% = £100 (all in the above-UEL band at 2%). Total saving: £2,100. Net cost to take-home: £5,000 − £2,100 = £2,900. The employer NI saving: 13.8% × £5,000 = £690, which if passed back takes the pension value to £5,690 at a cost of only £2,900 from take-home.",
+                ],
+            },
+            {
+                "heading": "Salary sacrifice vs relief at source: the NI gap",
+                "paragraphs": [
+                    "Relief at source (RaS) is the method used by most personal pensions and many workplace defined contribution schemes. Under RaS, you contribute from net pay and the pension provider claims 20% basic-rate relief from HMRC. Higher-rate taxpayers claim additional relief via Self Assessment. But crucially, RaS contributions do not reduce your gross pay, so NI is still charged on the full salary.",
+                    "On a £2,400 annual contribution, a basic-rate taxpayer using RaS saves only £480 in income tax (via the claimed relief). The same contribution via salary sacrifice saves £480 income tax plus £192 NI = £672 total. The salary sacrifice route is £192 per year better, 40% more saving on the same contribution. Over 20 years that difference alone compounds into meaningful additional retirement wealth.",
+                    "For higher-rate taxpayers the RaS gap is smaller in absolute NI terms (only 2% NI above £50,270) but the total saving through salary sacrifice (42% per pound) still beats RaS (40% per pound with a Self Assessment claim required). Salary sacrifice is also simpler, no need to complete a Self Assessment return to reclaim the higher-rate top-up.",
+                ],
+            },
+            {
+                "heading": "When the employer passes on their NI saving",
+                "paragraphs": [
+                    "Employers are not legally required to share their NI saving, but many do, particularly larger employers or those in competitive hiring markets. The most generous arrangements pass back 100% of the employer NI saving as additional pension contributions. Others offer 50% passthrough, and some retain it entirely.",
+                    "A 100% passthrough on a £2,400 sacrifice adds £331.20 to the pension. Combined with the sacrifice itself, the pension receives £2,731.20 at a cost of £1,728 from take-home, an immediate return of 58%. Even a 50% passthrough (£165.60 extra) takes the pension to £2,565.60 at a cost of £1,728. In any case, it is worth asking HR explicitly: 'Does the company pass on any employer NI saving from salary sacrifice, and what percentage?'",
+                ],
+            },
+        ],
+        "sources": [
+            {"label": "HMRC: Salary sacrifice and the effects on PAYE", "url": "https://www.gov.uk/guidance/salary-sacrifice-and-the-effects-on-paye"},
+            {"label": "HMRC: National Insurance rates and categories", "url": "https://www.gov.uk/national-insurance-rates-letters"},
+            {"label": "GOV.UK: Income tax rates and allowances", "url": "https://www.gov.uk/income-tax-rates"},
+        ],
+    },
 ]
+
+NEW_BLOG_POSTS = [
+    {
+        "slug": "salary-sacrifice-higher-rate-taxpayer-guide",
+        "title": "Salary Sacrifice for Higher-Rate Taxpayers: The Complete 2026/27 Guide",
+        "description": "At 40% income tax plus 2% NI, every £1,000 you sacrifice saves £420 in tax. Guide covers worked examples at £55k, £70k and £100k, the £100k personal allowance trap, and how to maximise your pension.",
+        "date": "27 May 2026",
+        "date_iso": "2026-05-27",
+        "reading_time": "9 min read",
+        "faqs": [
+            {"q": "How much does a higher-rate taxpayer save with salary sacrifice?", "a": "A higher-rate taxpayer saves 40% income tax plus 2% employee NI on income above £50,270, a total of 42p per pound sacrificed. On a £5,000 annual sacrifice that is £2,100 saved. The employer also saves 15% employer NI (£750), which many employers direct into the pension."},
+            {"q": "Is the NI saving smaller for higher earners?", "a": "Yes. Employee NI above the upper earnings limit (£50,270) is only 2%, compared to 8% in the main band. So if your sacrifice sits entirely above £50,270, the NI saving is £20 per £1,000 rather than £80. However the 40% income tax saving is twice that of a basic-rate taxpayer, making the total saving (42p per £1) still very attractive."},
+            {"q": "What happens at £100,000 and above?", "a": "Income above £100,000 triggers personal allowance tapering at £1 for every £2 of excess. Between £100,000 and £125,140 the effective marginal tax rate is 60%. Salary sacrifice reduces adjusted net income directly, sacrificing £5,000 at £103,000 saves you £3,000 in income tax at the effective 60% rate, plus the NI saving."},
+            {"q": "Does salary sacrifice affect pension lifetime allowance?", "a": "The lifetime allowance was abolished from April 2024 and replaced with the lump sum allowance (£268,275) and lump sum and death benefit allowance (£1,073,100). For most employees making typical pension sacrifices, these limits are not relevant. Very high earners with large defined benefit entitlements should take separate advice."},
+        ],
+        "sections": [
+            {
+                "heading": "Why higher-rate taxpayers benefit so much from salary sacrifice",
+                "paragraphs": [
+                    "The income tax saving from salary sacrifice is at your marginal rate. For a higher-rate taxpayer, someone with income above £50,270, that means 40p saved for every £1 sacrificed, on top of the NI saving. Employee NI above £50,270 is 2% (the upper rate), so the combined saving for income in this band is 40% + 2% = 42p per pound. A £5,000 annual sacrifice saves £2,100 in tax and NI.",
+                    "Compare this to a basic-rate taxpayer sacrificing the same amount: 20% tax + 8% NI = 28p per pound, saving £1,400 on a £5,000 sacrifice. The higher-rate taxpayer saves 50% more in absolute terms from the same sacrifice. This asymmetry makes salary sacrifice particularly powerful for anyone earning above £50,270, and genuinely transformative for those near or above £100,000.",
+                ],
+            },
+            {
+                "heading": "Worked example: £55,000 salary",
+                "paragraphs": [
+                    "An employee earning £55,000, comfortably in the higher-rate band, decides to sacrifice £4,730 per year into their workplace pension (the full amount in the higher-rate band above £50,270). Their gross salary for PAYE falls to £50,270.",
+                    "Income tax saving: £4,730 × 40% = £1,892. Employee NI saving: £4,730 × 2% (upper rate) = £94.60. Total personal annual saving: £1,986.60. Net cost of the £4,730 pension contribution: £4,730 − £1,986.60 = £2,743.40 per year, or £228.62 per month. The employer also saves 15% NI on the sacrificed amount: £4,730 × 15% = £709.50, which if passed on takes the total pension input to £5,439.50, funded by a take-home reduction of just £2,743.",
+                ],
+            },
+            {
+                "heading": "Worked example: £70,000 salary, full higher-rate sacrifice",
+                "paragraphs": [
+                    "An employee on £70,000 who wants to sacrifice the maximum into pension without crossing into additional-rate territory. Their income above £50,270 is £19,730. Sacrificing this entire amount would reduce gross pay to £50,270. But for practical purposes, let us look at a £10,000 annual sacrifice.",
+                    "All £10,000 sits in the higher-rate band (above £50,270). Income tax saving: £10,000 × 40% = £4,000. Employee NI saving: £10,000 × 2% = £200. Total saving: £4,200. Net cost to take-home: £5,800. Pension receives £10,000 plus the employer NI passthrough of £1,500 (if offered) = £11,500. The net take-home cost of £11,500 of pension contribution is just £5,800, an immediate 98% uplift.",
+                ],
+            },
+            {
+                "heading": "The £100,000 personal allowance trap",
+                "paragraphs": [
+                    "Income between £100,000 and £125,140 is subject to an effective marginal tax rate of 60%. This arises because the personal allowance (£12,570 for 2026/27) is reduced by £1 for every £2 of income above £100,000. Each extra £2 earned costs £1 of personal allowance, which would have sheltered income from 40% tax, so the effective tax on that £2 is 40% direct plus 40% on the clawed-back allowance = 80p on £2, i.e. 60%.",
+                    "Salary sacrifice is the primary mechanism for escaping this trap. Because salary sacrifice reduces adjusted net income (the figure used for personal allowance tapering), each pound sacrificed above £100,000 saves tax at the effective 60% rate, not just 40%. A £5,000 sacrifice at £103,000 saves: 60% × £3,000 (the portion restoring the personal allowance taper) + 40% × £2,000 = £1,800 + £800 = £2,600. Adding 2% NI: £2,700 total. The net cost of a £5,000 pension contribution is only £2,300.",
+                ],
+            },
+            {
+                "heading": "Interaction with the pension annual allowance",
+                "paragraphs": [
+                    "The pension annual allowance for 2026/27 is £60,000. This includes all pension contributions, employee, employer, and salary sacrifice amounts. For employees receiving both employer contributions and making salary sacrifice, the annual allowance can become relevant. A higher earner receiving a 10% employer contribution on a £70,000 salary (£7,000 from employer) and sacrificing £20,000 would have total inputs of £27,000, well below the £60,000 limit. Only very large combined contributions (employer + sacrifice) approach the limit.",
+                    "Tapered annual allowance applies if your adjusted income exceeds £260,000. The allowance reduces by £1 for every £2 of income above this level, down to a minimum of £10,000. This affects a small number of very high earners. If your income is approaching £260,000 and you have significant employer contributions, consider whether the tapered allowance will cap how much additional salary you can sacrifice. Our pension annual allowance guide covers this in detail.",
+                ],
+            },
+            {
+                "heading": "Practical steps for higher-rate taxpayers",
+                "paragraphs": [
+                    "First, calculate your adjusted net income (ANI). For most employees it is simply your P60 gross salary minus any Gift Aid donations. Check whether ANI exceeds £100,000, if so, any sacrifice that reduces ANI below £100,000 saves tax at the 60% effective rate, not just 40%.",
+                    "Second, check whether your employer operates salary sacrifice and whether they pass on any NI saving. Ask HR: 'Does the company offer NI passthrough on salary sacrifice pension contributions?' If yes, ask the percentage. Third, check your employer's scheme rules for annual change windows, most allow changes once or twice per year. Set up the sacrifice and monitor your payslip to confirm the correct gross reduction. Keep a copy of the salary sacrifice agreement for your records and review it each April to confirm rates are correct for the new tax year.",
+                ],
+            },
+        ],
+        "sources": [
+            {"label": "HMRC: Income over £100,000, personal allowance withdrawal", "url": "https://www.gov.uk/income-over-100000"},
+            {"label": "HMRC: Salary sacrifice and the effects on pensions", "url": "https://www.gov.uk/salary-sacrifice-and-the-effects-on-pensions"},
+            {"label": "HMRC: Pension annual allowance", "url": "https://www.gov.uk/pension-annual-allowance"},
+        ],
+    },
+    {
+        "slug": "salary-sacrifice-nhs-pension-guide",
+        "title": "Salary Sacrifice for NHS Staff: Pension, AVC and EV Schemes Explained",
+        "description": "NHS employees have access to one of the UK's best pension schemes, but salary sacrifice works differently alongside it. This guide covers NHS pension salary sacrifice, AVCs, cycle to work and EV schemes for 2026/27.",
+        "date": "27 May 2026",
+        "date_iso": "2026-05-27",
+        "reading_time": "9 min read",
+        "faqs": [
+            {"q": "Can NHS employees use salary sacrifice for pension contributions?", "a": "NHS employees are automatically enrolled in the NHS Pension Scheme, which operates as a defined benefit scheme on a net pay arrangement, not salary sacrifice. You cannot sacrifice salary to increase NHS pension contributions directly. However, you can make Additional Voluntary Contributions (AVCs) via salary sacrifice, and you can use salary sacrifice for other benefits (cycle to work, EV, technology) alongside your NHS pension membership."},
+            {"q": "Does salary sacrifice affect NHS pension contributions?", "a": "The NHS Pension Scheme contribution is calculated as a percentage of your actual pensionable pay. If you reduce your gross salary through salary sacrifice for other benefits (e.g. cycle to work, EV), your NHS pension contribution amount will reduce slightly. This means less goes into your DB pension pot. For most modest sacrifice amounts this difference is small, but worth factoring in, particularly if you are close to a tier threshold in the member contribution table."},
+            {"q": "What is the NHS AVC scheme?", "a": "The NHS AVC scheme (Additional Voluntary Contributions) allows NHS staff to make additional contributions to a defined contribution top-up fund alongside the main NHS Pension Scheme. Many NHS trusts allow AVCs to be made via salary sacrifice, providing the NI saving on top of the income tax relief. AVCs count towards the total pension annual allowance of £60,000."},
+            {"q": "Can NHS staff use EV salary sacrifice?", "a": "Yes. Many NHS trusts operate EV salary sacrifice schemes through third-party providers. Eligibility depends on your NHS employer. The tax savings are identical to any other employee, 40% income tax for higher-rate staff plus 2% NI if above the upper earnings limit, or 20% + 8% for those in the main NI band."},
+        ],
+        "sections": [
+            {
+                "heading": "How the NHS Pension Scheme works with salary sacrifice",
+                "paragraphs": [
+                    "The NHS Pension Scheme (NHSPS) is a defined benefit scheme, your retirement income is based on your years of pensionable service and a fraction of your pensionable pay, not on a pot of invested funds. Because it is a DB scheme, it operates as a net pay arrangement: member contributions are deducted from gross pay before income tax is calculated, giving full marginal-rate tax relief automatically without any claim. This is distinct from salary sacrifice.",
+                    "You cannot make standard NHS Pension Scheme contributions via salary sacrifice because the scheme rules define contributions as a percentage of pensionable pay and HMRC rules require employer contributions under salary sacrifice to genuinely replace employee contributions with employer ones. For DB schemes this is structurally complex. What most NHS trusts do instead is allow salary sacrifice for Additional Voluntary Contributions and for non-pension benefits.",
+                ],
+            },
+            {
+                "heading": "NHS AVC salary sacrifice: how it works",
+                "paragraphs": [
+                    "Most NHS trusts offer an AVC arrangement alongside the main scheme, often with Prudential or Scottish Widows as provider. These AVCs can typically be made via salary sacrifice where the trust has set up the appropriate payroll arrangements. The AVC route allows you to build a defined contribution pot on top of your defined benefit pension, useful for those who want more flexibility (e.g. taking a lump sum at retirement) or who want to make up for periods of reduced or no accrual.",
+                    "The salary sacrifice NI saving applies in full. For a Band 5 nurse earning £33,000 who sacrifices £1,500 per year into AVCs: income tax saving is 20% × £1,500 = £300; NI saving is 8% × £1,500 = £120; total saving £420. Net cost of the £1,500 AVC contribution is only £1,080. The NHS trust also saves 15% NI (£225), which some trusts direct to members' AVC accounts.",
+                ],
+            },
+            {
+                "heading": "NHS pension contributions and Agenda for Change tiers",
+                "paragraphs": [
+                    "Agenda for Change member contribution rates are tiered by pensionable pay. The tier thresholds for 2026/27 range from around 5% for lower bands to approximately 12% for the highest earners. If you use salary sacrifice for non-pension benefits (cycle to work, EV), your sacrificed gross pay is reduced. If this reduction pushes you into a lower contribution tier, your member contribution percentage will also drop, which means both you and your employer contribute less to the NHSPS for that period.",
+                    "For modest sacrifice amounts (£500–£2,000 per year) on a mid-range Agenda for Change salary, the likelihood of crossing a tier threshold is low but worth checking. Use NHS Employers' contribution tier table to verify your tier before and after the sacrifice. If a sacrifice would push you into a lower tier, consider whether the NI saving from the sacrifice is worth the marginal reduction in DB accrual.",
+                ],
+            },
+            {
+                "heading": "Cycle to work and EV schemes for NHS staff",
+                "paragraphs": [
+                    "Many NHS trusts participate in cycle to work schemes, often administered through Cyclescheme or similar providers. The mechanics are identical to private sector: you sacrifice salary over 12 months to hire a bike and accessories, and the post-sacrifice cost is your normal gross minus tax and NI savings. For a basic-rate NHS employee, the effective discount is around 28%.",
+                    "EV salary sacrifice is increasingly available through NHS trusts via dedicated fleet management providers. The trust leases the car and provides it to you in exchange for a salary sacrifice. The 4% BIK rate for 2026/27 makes this highly attractive. You must check your trust's specific scheme, some NHS employers operate through NHS Fleet Solutions or Tusker; others have local arrangements. Terms, eligible vehicles and administration fees vary.",
+                ],
+            },
+            {
+                "heading": "Worked example: Band 6 NHS employee, £35,000, AVC sacrifice",
+                "paragraphs": [
+                    "A Band 6 physiotherapist earning £35,000 (pensionable pay) makes £2,000 per year AVC via salary sacrifice through their NHS trust's arrangement. Their gross pay falls from £35,000 to £33,000. They remain in the same Agenda for Change contribution tier (let us say 7.1%), so their NHS pension contributions fall by 7.1% × £2,000 = £142 per year, this is the small downside of reducing pensionable pay.",
+                    "Income tax saving on the AVC: £2,000 × 20% = £400. NI saving: £2,000 × 8% = £160. Total saving: £560. Net cost of £2,000 AVC contribution: £1,440. The reduction in NHS pension contributions (£142) means the net benefit is £560 − £142 = £418 per year in combined savings, while adding £2,000 to the AVC pot annually. Over 10 years that is £4,180 in cumulative NI and tax savings on £20,000 of AVC contributions.",
+                ],
+            },
+        ],
+        "sources": [
+            {"label": "NHS Employers: Salary sacrifice for NHS staff", "url": "https://www.nhsemployers.org/articles/salary-sacrifice"},
+            {"label": "NHSBSA: NHS Pension Scheme member hub", "url": "https://www.nhsbsa.nhs.uk/nhs-pensions"},
+            {"label": "HMRC: Salary sacrifice arrangements", "url": "https://www.gov.uk/salary-sacrifice-and-the-effects-on-pensions"},
+        ],
+    },
+    {
+        "slug": "salary-sacrifice-worked-examples-2026",
+        "title": "Salary Sacrifice Worked Examples 2026/27: £30k, £40k, £50k Salaries",
+        "description": "Exact salary sacrifice calculations for 2026/27 at three salary levels: £30,000, £40,000 and £50,000. See the income tax saving, NI saving, employer NI saving and net take-home cost for each.",
+        "date": "27 May 2026",
+        "date_iso": "2026-05-27",
+        "reading_time": "7 min read",
+        "faqs": [
+            {"q": "How much does salary sacrifice save on a £30,000 salary?", "a": "On a £30,000 salary with a £1,500 annual pension sacrifice (5%): income tax saving £300, NI saving £120, total £420 per year. Net monthly take-home falls by £90 instead of £125. The employer saves £225 in NI."},
+            {"q": "What is the saving on a £40,000 salary with 5% sacrifice?", "a": "5% of £40,000 is £2,000. All in the basic-rate and main NI band. Income tax saving: £400. NI saving: £160. Total: £560. Net monthly cost: approximately £120 instead of £167."},
+            {"q": "Does the calculation change at the higher-rate threshold?", "a": "Yes. Once income exceeds £50,270, the NI rate drops from 8% to 2%. Income tax rate rises from 20% to 40%. Net effect: total saving per pound of sacrifice rises from 28% to 42%, but the NI component shrinks. The total saving is higher, but the NI element is smaller."},
+        ],
+        "sections": [
+            {
+                "heading": "How to read these examples",
+                "paragraphs": [
+                    "All examples use England/Wales/Northern Ireland income tax rates for 2026/27. The personal allowance is £12,570. Income tax rates: 20% basic rate on £12,571–£50,270; 40% higher rate on £50,271–£125,140. Employee NI: 8% on £12,570–£50,270; 2% above that. Employer NI: 15% on all earnings above £5,000.",
+                    "Each example shows a 5% pension sacrifice, a common starting point for employee pension contributions. Substitute your own sacrifice amount proportionally if needed. All figures are annual unless stated. 'Net cost' means the reduction in take-home pay after allowing for income tax and NI savings. The pension contribution itself is shown as gross, the amount that goes into the pension.",
+                ],
+            },
+            {
+                "heading": "£30,000 salary, 5% sacrifice (£1,500 per year)",
+                "paragraphs": [
+                    "Gross salary: £30,000. Annual sacrifice: £1,500 (5%). Post-sacrifice gross for PAYE: £28,500. All the sacrifice sits in the basic-rate income tax band and the main employee NI band.",
+                    "Income tax saving: £1,500 × 20% = £300. Employee NI saving: £1,500 × 8% = £120. Total personal saving: £420 per year, or £35 per month. Net take-home cost of the £1,500 pension contribution: £1,080 per year (£90 per month). Without sacrifice, the same £1,500 contribution under relief at source would cost only £300 in tax relief, the employee still pays NI on the full £30,000. The sacrifice route saves an extra £120 per year (the NI saving). Employer NI saving: £1,500 × 15% = £225 per year.",
+                ],
+            },
+            {
+                "heading": "£40,000 salary, 5% sacrifice (£2,000 per year)",
+                "paragraphs": [
+                    "Gross salary: £40,000. Annual sacrifice: £2,000 (5%). Post-sacrifice gross: £38,000. All the sacrifice sits in the basic-rate and main NI band (well below the £50,270 threshold).",
+                    "Income tax saving: £2,000 × 20% = £400. Employee NI saving: £2,000 × 8% = £160. Total personal saving: £560 per year, or £46.67 per month. Net cost of the £2,000 pension contribution: £1,440 per year (£120 per month). In other words, you put £167 per month into your pension and only feel £120 less in your pay packet. The employer saves 15% × £2,000 = £300 per year in NI, which if passed back in full takes the total pension input to £2,300 at a net cost to you of just £1,440.",
+                ],
+            },
+            {
+                "heading": "£50,000 salary, 5% sacrifice (£2,500 per year)",
+                "paragraphs": [
+                    "Gross salary: £50,000. Annual sacrifice: £2,500 (5%). Post-sacrifice gross: £47,500. Note: the original salary of £50,000 is below the higher-rate threshold of £50,270, so all of the sacrifice sits in the basic-rate band. The saving is: income tax 20% × £2,500 = £500; NI 8% × £2,500 = £200; total £700 per year, or £58.33 per month. Net cost: £1,800 per year (£150 per month). Employer NI saving: £375.",
+                    "Now consider a £52,000 salary with a £2,600 sacrifice (5%). The sacrifice spans the higher-rate threshold. The first £1,730 of sacrifice (from £52,000 down to £50,270) saves 40% tax + 2% NI = 42%. The remaining £870 (from £50,270 down to £49,400) saves 20% tax + 8% NI = 28%. Blended saving: (£1,730 × 0.42) + (£870 × 0.28) = £726.60 + £243.60 = £970.20. Net cost: £1,629.80 per year (£135.82 per month), noticeably less than the lower-salary example, because more of the sacrifice falls in the higher-rate band.",
+                ],
+            },
+            {
+                "heading": "Bonus sacrifice: the additional higher-rate saving",
+                "paragraphs": [
+                    "Bonus sacrifice follows the same rules but may save more because bonuses are often taxed at the higher rate. If you earn £45,000 basic and receive a £5,000 bonus, the first £5,270 of the bonus (from £45,000 to £50,270) is taxed at 20% and NI at 8%, while the remaining £4,730 (above £50,270) is taxed at 40% and NI at 2%. Sacrificing the full £5,000 bonus before it is paid into the basic-rate portion saves 28p per pound (£1,400 total); the portion in the higher-rate band saves 42p per pound.",
+                    "The timing rule for bonus sacrifice is critical: the election to sacrifice must be made before the bonus is declared as payable, not after. HMRC will not allow retrospective sacrifice after the employee has gained a right to the cash. Confirm the timing with HR before relying on this planning.",
+                ],
+            },
+            {
+                "heading": "Using the calculator",
+                "paragraphs": [
+                    "Our main salary sacrifice calculator lets you enter any salary and sacrifice amount and returns a full breakdown: income tax saving, NI saving, employer NI saving, and net monthly take-home impact. Select your region (England/Wales/NI or Scotland) and student loan plan if applicable for a complete picture. Use the pension salary sacrifice calculator for pension-specific scenarios, or the bonus sacrifice calculator for pre-bonus election planning.",
+                ],
+            },
+        ],
+        "sources": [
+            {"label": "HMRC: Income tax rates 2026/27", "url": "https://www.gov.uk/income-tax-rates"},
+            {"label": "HMRC: National Insurance rates and categories", "url": "https://www.gov.uk/national-insurance-rates-letters"},
+            {"label": "HMRC: Salary sacrifice for employees", "url": "https://www.gov.uk/salary-sacrifice-and-the-effects-on-pensions"},
+        ],
+    },
+    {
+        "slug": "salary-sacrifice-vs-normal-pension-contributions-2026",
+        "title": "Salary Sacrifice vs Normal Pension Contributions 2026/27: Which Saves More?",
+        "description": "The key difference between salary sacrifice and a standard pension contribution is National Insurance. Sacrifice saves NI; standard contributions don't. Here is the full comparison with exact numbers for 2026/27.",
+        "date": "27 May 2026",
+        "date_iso": "2026-05-27",
+        "reading_time": "8 min read",
+        "faqs": [
+            {"q": "Why does salary sacrifice save more than a normal pension contribution?", "a": "Under salary sacrifice your gross pay is reduced, so employee National Insurance is charged on a smaller amount. A standard employee pension contribution (via relief at source or net pay arrangement) does not reduce gross pay, so you pay NI on the full salary regardless. The NI saving is 8% in the main band (£12,570–£50,270) and 2% above that. On a £3,000 annual contribution, this is £240 extra per year compared to relief at source."},
+            {"q": "Is there any scenario where relief at source is better?", "a": "Relief at source can be better for non-taxpayers (they receive 20% top-up from HMRC even if they pay no tax) and for high earners who want to claim higher-rate relief on contributions made outside their employer scheme. For employed people who have access to a good salary sacrifice scheme, however, sacrifice is almost always the superior route."},
+            {"q": "What is a net pay arrangement?", "a": "A net pay arrangement deducts pension contributions from gross pay before income tax is applied, giving full marginal-rate relief automatically. It is different from salary sacrifice (which changes the gross salary contractually) but it does reduce taxable income. NI is still charged on the full salary under NPA, so it saves less than salary sacrifice."},
+        ],
+        "sections": [
+            {
+                "heading": "The three contribution routes compared",
+                "paragraphs": [
+                    "Employed pension savers have access to up to three ways of getting money into their workplace pension, depending on what their employer has set up. Relief at source (RaS): you contribute from net pay; the provider claims 20% basic-rate top-up from HMRC; higher-rate taxpayers claim additional relief via Self Assessment. Net pay arrangement (NPA): contributions are deducted from gross salary before income tax is calculated; full marginal-rate relief applies automatically; no Self Assessment needed. Salary sacrifice: your contractual gross salary is reduced; your employer pays the contribution; income tax AND NI are both assessed on the lower gross. Salary sacrifice is the only route that also saves NI.",
+                    "Most workplace pensions operated by employers use one of these methods. RaS is standard for most personal pensions, SIPPs and some workplace schemes (Nest, for example). NPA is used by many large employers. Salary sacrifice is offered where the employer has set up the formal contractual arrangement. Some employers offer salary sacrifice on top of an existing NPA or RaS scheme.",
+                ],
+            },
+            {
+                "heading": "The NI saving gap, by salary",
+                "paragraphs": [
+                    "For a £3,000 annual contribution at different salary levels: (1) £30,000 salary, basic rate throughout. Salary sacrifice saves 20% tax + 8% NI = £840. RaS saves only 20% tax = £600. NI saving: £240 per year. (2) £45,000 salary, all basic rate. Same calculation, £840 vs £600. (3) £55,000 salary, all in higher-rate band. Sacrifice saves 40% + 2% = £1,260. RaS saves 40% (assuming Self Assessment claim made correctly) = £1,200. NI saving from sacrifice: £60 per year, smaller above the UEL, but the total saving is still higher with sacrifice.",
+                    "The NI gap is largest for earnings in the main NI band (£12,570–£50,270). At 8%, the NI saving on a £3,000 sacrifice is £240. Above the UEL at 2%, it is only £60. For higher earners, the income tax saving (40% vs 40%) is identical between sacrifice and RaS (with a Self Assessment claim), the marginal benefit of sacrifice is purely the NI saving of £60. Still worth having, and the administrative simplicity of sacrifice (no Self Assessment claim needed) is an additional benefit.",
+                ],
+            },
+            {
+                "heading": "Employer NI: a saving that can go to you",
+                "paragraphs": [
+                    "Neither RaS nor NPA produces any employer NI saving, the employee's gross pay is unchanged or is adjusted only for income tax purposes. Salary sacrifice reduces the employer's NI liability. At 15%, the saving on a £3,000 annual sacrifice is £450. Employers who pass this back to employees in the form of additional pension contributions give employees a significant additional benefit at zero cost to anyone.",
+                    "If your employer passes back 100% of NI saving: a £3,000 sacrifice delivers £3,450 into the pension (£3,000 sacrifice + £450 employer NI). Your take-home falls by £3,000 − £840 = £2,160. The ratio of pension gain to take-home reduction is £3,450 / £2,160 = 1.60, a 60% immediate return on every pound of reduced take-home. This is exceptional value compared to any other savings vehicle.",
+                ],
+            },
+            {
+                "heading": "When salary sacrifice is not available",
+                "paragraphs": [
+                    "Not all employers offer salary sacrifice. Smaller businesses, some charities and some public sector bodies may only offer RaS or NPA schemes. In this case, the choice between RaS and NPA matters. NPA is generally preferable for higher-rate taxpayers (automatic relief at the correct rate, no Self Assessment required). RaS is better for non-taxpayers (free 20% top-up). For basic-rate taxpayers: NPA and RaS are broadly equivalent in net pension cost, but NPA is administratively simpler.",
+                    "If your employer does not offer salary sacrifice, it is worth raising with HR. The employer's own NI saving (15% on all sacrifice amounts across all staff) provides a strong business case for introducing the scheme. Many employers who do not currently offer it simply have not been asked, particularly smaller businesses where a single persistent question from a payroll-savvy employee has led to a scheme being set up.",
+                ],
+            },
+            {
+                "heading": "Summary: when each method wins",
+                "paragraphs": [
+                    "Salary sacrifice wins: for all employed people with access to a well-run scheme, always. The NI saving and potential employer NI passthrough make it strictly superior to both RaS and NPA for employed people. The only caveat is that it requires your employer to offer it. Relief at source wins: for non-taxpayers (free 20% top-up even on zero income tax). Also useful for self-employed people who cannot access salary sacrifice. Net pay arrangement wins: for higher-rate taxpayers who cannot access sacrifice and want automatic higher-rate relief without Self Assessment. Also for those who forget to file Self Assessment, NPA eliminates the risk of missing the higher-rate claim.",
+                ],
+            },
+        ],
+        "sources": [
+            {"label": "HMRC: Salary sacrifice for employees", "url": "https://www.gov.uk/salary-sacrifice-and-the-effects-on-pensions"},
+            {"label": "HMRC: Tax on private pension contributions, relief at source", "url": "https://www.gov.uk/tax-on-your-private-pension/pension-tax-relief"},
+            {"label": "The Pensions Regulator: Types of pension scheme", "url": "https://www.thepensionsregulator.gov.uk/en/employers/new-staff"},
+        ],
+    },
+    {
+        "slug": "how-to-calculate-salary-sacrifice-savings",
+        "title": "How to Calculate Your Salary Sacrifice Savings: Step-by-Step 2026/27",
+        "description": "A step-by-step guide to working out exactly how much salary sacrifice saves you in income tax, NI and take-home pay for 2026/27. Includes the formula, worked examples and an explanation of each component.",
+        "date": "27 May 2026",
+        "date_iso": "2026-05-27",
+        "reading_time": "8 min read",
+        "faqs": [
+            {"q": "What is the formula for salary sacrifice savings?", "a": "Saving = (sacrifice amount × income tax marginal rate) + (sacrifice amount × employee NI marginal rate). For a basic-rate taxpayer: saving = sacrifice × (20% + 8%) = sacrifice × 28%. For a higher-rate taxpayer (income above £50,270): saving = sacrifice × (40% + 2%) = sacrifice × 42%."},
+            {"q": "How do I know which tax and NI rate applies to my sacrifice?", "a": "Apply the rates that apply to your income at the margin, i.e. the rates on your highest-taxed pounds. If your salary is £38,000, all of it is in the basic-rate (20%) and main NI (8%) band, so the saving is 28% per pound sacrificed. If your salary is £55,000, the top £4,730 is in the higher-rate (40%) and upper NI (2%) band, if your sacrifice comes out of that top slice, the saving is 42% per pound."},
+            {"q": "Does the calculation change for Scottish taxpayers?", "a": "Yes, Scottish income tax rates are different. An intermediate-rate taxpayer (21%) in Scotland saves 21% + 8% = 29% per pound. A Scottish higher-rate taxpayer (42%) saves 42% + 2% = 44% per pound. Use the Scottish region option in our calculator for correct figures."},
+        ],
+        "sections": [
+            {
+                "heading": "Step 1: Identify your marginal income tax rate",
+                "paragraphs": [
+                    "Your marginal income tax rate is the rate you pay on your highest-taxed income, specifically, on the pounds of salary you would be sacrificing. For 2026/27 (England, Wales, Northern Ireland): 20% basic rate applies to taxable income between £12,571 and £50,270. 40% higher rate applies to taxable income between £50,271 and £125,140. 45% additional rate applies above £125,140. For Scottish taxpayers the bands are different: 19% starter, 20% basic, 21% intermediate, 42% higher, 45% advanced, 48% top rate.",
+                    "If your salary is comfortably within one band, your marginal rate is simply that band's rate. If your salary straddles a threshold (e.g. £51,000), the sacrifice may span two rates. In that case, calculate the saving in each band separately and add them together.",
+                ],
+            },
+            {
+                "heading": "Step 2: Identify your marginal employee NI rate",
+                "paragraphs": [
+                    "Employee NI for 2026/27: 8% on earnings between £12,570 and £50,270 (the main rate). 2% on earnings above £50,270 (the upper rate). If your salary is between £12,570 and £50,270, all your sacrifice saves 8% NI. If your salary is above £50,270 and the sacrifice comes from that portion, it saves only 2% NI. If the sacrifice straddles the £50,270 threshold, split the calculation accordingly.",
+                ],
+            },
+            {
+                "heading": "Step 3: Calculate the total saving",
+                "paragraphs": [
+                    "Add your marginal income tax rate and marginal NI rate together. This is your saving rate per pound sacrificed. Multiply by the sacrifice amount. Example: salary £38,000, annual sacrifice £2,400. Both rates: 20% income tax + 8% NI = 28%. Total saving: 28% × £2,400 = £672. Net cost of the £2,400 sacrifice: £2,400 − £672 = £1,728. Monthly impact: −£144 take-home to put £200 into pension.",
+                    "Example 2: salary £52,000, annual sacrifice £3,000. The salary is £1,730 above the higher-rate threshold (£52,000 − £50,270). Assuming the sacrifice comes from the top of income: first £1,730 is at 40% + 2% = 42%; remaining £1,270 is at 20% + 8% = 28%. Saving: (£1,730 × 42%) + (£1,270 × 28%) = £726.60 + £355.60 = £1,082.20. Net cost: £3,000 − £1,082.20 = £1,917.80 per year (£159.82 per month).",
+                ],
+            },
+            {
+                "heading": "Step 4: Add the employer NI saving (if passed on)",
+                "paragraphs": [
+                    "Employer NI is 15% on employee earnings above £5,000. If your employer passes any of this saving back to you as pension contributions, the pension receives more than the sacrifice amount. Employer NI on a £2,400 sacrifice: 15% × £2,400 = £360. At 100% passthrough: pension receives £2,760 at a take-home cost of £1,728. At 50% passthrough: pension receives £2,580 at a cost of £1,728. If no passthrough: pension receives £2,400 at a cost of £1,728. The calculation still shows an excellent return even without passthrough.",
+                ],
+            },
+            {
+                "heading": "Step 5: Student loan adjustment (if applicable)",
+                "paragraphs": [
+                    "If you have a student loan, salary sacrifice also reduces your student loan repayments. For Plan 2 borrowers: repayment is 9% of income above £27,295. Each £1,000 sacrificed saves £90 in Plan 2 repayments (assuming income stays above the threshold). Add this to the income tax and NI saving for the full picture.",
+                    "Example: salary £33,000, Plan 2 loan, £2,000 sacrifice. Income tax saving: £400. NI saving: £160. Student loan saving: 9% × £2,000 = £180. Total saving: £740. Net cost of £2,000 pension contribution: £1,260, an effective discount of 37%.",
+                ],
+            },
+            {
+                "heading": "Using the calculator vs doing it manually",
+                "paragraphs": [
+                    "The manual calculation above gives accurate results for most people in a single tax and NI band. The calculator handles edge cases: salary straddling the higher-rate threshold, Scottish tax bands, personal allowance withdrawal above £100,000, student loan plans 1/2/4/5, and postgraduate loans. For an exact figure, particularly if your sacrifice is large relative to your salary, use the calculator rather than the approximate manual formula.",
+                    "The pension salary sacrifice calculator on this site lets you enter salary, sacrifice amount, region, and student loan plan, and returns a complete breakdown of savings and net cost. It is particularly useful for modelling different sacrifice amounts to find the one that maximises pension input while keeping net pay above any critical floor (mortgage payments, spending commitments).",
+                ],
+            },
+        ],
+        "sources": [
+            {"label": "HMRC: Income tax rates and allowances 2026/27", "url": "https://www.gov.uk/income-tax-rates"},
+            {"label": "HMRC: National Insurance rates and categories", "url": "https://www.gov.uk/national-insurance-rates-letters"},
+            {"label": "HMRC: Salary sacrifice for employees", "url": "https://www.gov.uk/salary-sacrifice-and-the-effects-on-pensions"},
+        ],
+    },
+]
+
+BLOG_POSTS = NEW_BLOG_POSTS + BLOG_POSTS
 
 BLOG_BY_SLUG = {p["slug"]: p for p in BLOG_POSTS}
 
