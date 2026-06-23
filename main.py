@@ -9,6 +9,7 @@ from dotenv import load_dotenv
 from flask import Flask, abort, make_response, redirect, render_template, request, send_from_directory
 from flask_limiter import Limiter
 from scraper_guard import init_guard
+import firestore_client as _fs
 
 from calculator import (
     active_tax_year,
@@ -157,6 +158,7 @@ def sitemap():
         (f"{SITE_URL}/privacy", "0.3", "yearly"),
         (f"{SITE_URL}/contact", "0.3", "yearly"),
         (f"{SITE_URL}/disclaimer", "0.3", "yearly"),
+        (f"{SITE_URL}/editorial-standards", "0.4", "yearly"),
         (f"{SITE_URL}/salary-sacrifice-employer-ni-saving", "0.6", "monthly"),
         (f"{SITE_URL}/salary-sacrifice-electric-car", "0.6", "monthly"),
         (f"{SITE_URL}/salary-sacrifice-cycle-to-work", "0.6", "monthly"),
@@ -304,9 +306,38 @@ def privacy():
     )
 
 
-@app.route("/contact")
+@app.route("/editorial-standards")
+def editorial_standards():
+    return render_template("editorial_standards.html", **_ctx(
+        title="Editorial Standards, UKSalarySacrificeCalculator.co.uk",
+        meta_description="How UKSalarySacrificeCalculator.co.uk writes, reviews and maintains its calculator content and guides on UK salary sacrifice.",
+        canonical_url=SITE_URL+"/editorial-standards",
+        breadcrumbs=[{"name":"Home","url":SITE_URL+"/"},{"name":"Editorial Standards","url":SITE_URL+"/editorial-standards"}],
+    ))
+
+
+@app.route("/contact", methods=["GET", "POST"])
 def contact():
     canonical_url = SITE_URL + "/contact"
+    if request.method == "POST":
+        name = request.form.get("name", "").strip()
+        email = request.form.get("email", "").strip()
+        message = request.form.get("message", "").strip()
+        try:
+            db = _fs.get_db()
+            if db is not None:
+                db.collection("contact_messages").add({
+                    "name": name,
+                    "email": email,
+                    "message": message,
+                    "site": SITE_URL,
+                    "created_at": _fs.server_timestamp(),
+                    "read": False,
+                })
+        except Exception:
+            pass
+        return redirect("/contact?sent=1")
+    sent = request.args.get("sent") == "1"
     return render_template(
         "contact.html",
         **_ctx(
@@ -317,6 +348,7 @@ def contact():
                 {"name": "Home", "url": SITE_URL + "/"},
                 {"name": "Contact", "url": canonical_url},
             ],
+            sent=sent,
         ),
     )
 

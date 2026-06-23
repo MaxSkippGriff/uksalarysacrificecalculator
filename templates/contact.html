@@ -4,11 +4,39 @@
   <div class="badge">Contact</div>
   <h1>Contact — UKSalarySacrificeCalculator.co.uk</h1>
 
-  <article class="card" style="padding:1rem 1.25rem;margin-top:0.9rem;">
-    <h2>Get in touch</h2>
-    <p>For corrections, data-quality feedback, or editorial queries about our salary sacrifice calculations:</p>
-    <p><strong><a href="mailto:editorial@uksalarysacrificecalculator.co.uk" style="color:var(--accent);font-size:1rem;">editorial@uksalarysacrificecalculator.co.uk</a></strong></p>
-    <p style="margin-bottom:0;font-size:0.87rem;color:var(--text-secondary);">We aim to respond within 2–3 working days. For general salary sacrifice questions, please consult your employer's HR team or a qualified financial adviser.</p>
+  {% if sent %}
+  <article class="card" style="padding:1.25rem 1.4rem;margin-top:0.9rem;max-width:540px;">
+    <p style="font-weight:600;color:var(--accent);margin:0 0 0.5rem;">Message sent</p>
+    <p style="margin:0;color:var(--text-secondary);">Thanks for getting in touch. We'll aim to respond within 2–3 working days.</p>
   </article>
+  {% else %}
+  <article class="card" style="padding:1.25rem 1.4rem;margin-top:0.9rem;max-width:540px;">
+    <h2>Get in touch</h2>
+    <p style="color:var(--text-secondary);">For corrections, data-quality feedback, or editorial queries about our salary sacrifice calculations, use the form below.</p>
+    <p style="font-size:0.87rem;color:var(--text-secondary);margin-bottom:1.25rem;">We can't provide personal tax or financial advice.</p>
+
+    <form method="post" action="/contact" style="display:flex;flex-direction:column;gap:1rem;">
+      <div>
+        <label for="contact-name" style="display:block;font-size:0.85rem;font-weight:600;margin-bottom:0.3rem;">Name <span style="color:var(--text-secondary);font-weight:400;">(optional)</span></label>
+        <input type="text" id="contact-name" name="name" autocomplete="name"
+          style="width:100%;box-sizing:border-box;padding:0.55rem 0.75rem;border:1.5px solid var(--border-strong);border-radius:6px;font-size:0.95rem;background:var(--surface);">
+      </div>
+      <div>
+        <label for="contact-email" style="display:block;font-size:0.85rem;font-weight:600;margin-bottom:0.3rem;">Email <span style="color:var(--accent);">*</span></label>
+        <input type="email" id="contact-email" name="email" required autocomplete="email"
+          style="width:100%;box-sizing:border-box;padding:0.55rem 0.75rem;border:1.5px solid var(--border-strong);border-radius:6px;font-size:0.95rem;background:var(--surface);">
+      </div>
+      <div>
+        <label for="contact-message" style="display:block;font-size:0.85rem;font-weight:600;margin-bottom:0.3rem;">Message <span style="color:var(--accent);">*</span></label>
+        <textarea id="contact-message" name="message" required rows="5"
+          style="width:100%;box-sizing:border-box;padding:0.55rem 0.75rem;border:1.5px solid var(--border-strong);border-radius:6px;font-size:0.95rem;background:var(--surface);resize:vertical;font-family:inherit;"></textarea>
+      </div>
+      <button type="submit"
+        style="align-self:flex-start;padding:0.6rem 1.5rem;background:var(--accent);color:#fff;border:none;border-radius:6px;font-size:0.95rem;font-weight:600;cursor:pointer;">
+        Send message
+      </button>
+    </form>
+  </article>
+  {% endif %}
 </section>
 {% endblock %}
