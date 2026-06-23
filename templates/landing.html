@@ -694,6 +694,23 @@ body {
   </div><!-- /calc-card -->
 </section>
 
+<!-- SMART SACRIFICE TARGETS — computed client-side from your salary (no server call) -->
+<section class="section" id="smart-targets" style="padding-top:0.4rem;padding-bottom:0.75rem;scroll-margin-top:90px;">
+  <div style="background:var(--surface,#fff);border:1.5px solid var(--border,#e5e1da);border-top:3px solid var(--accent,#1B6B4A);border-radius:var(--radius,14px);padding:1.4rem 1.6rem;">
+    <div style="font-size:0.72rem;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;color:var(--accent,#1B6B4A);">Smart sacrifice targets</div>
+    <h2 style="font-size:1.3rem;font-weight:700;color:var(--text-primary,#1a1a1a);margin:0.25rem 0 0;letter-spacing:-0.01em;">How much should you sacrifice — and where it pays off most</h2>
+    <p style="font-size:0.88rem;color:var(--text-secondary,#555);line-height:1.65;margin:0.7rem 0 0;max-width:700px;">The biggest salary-sacrifice wins come from sacrificing down to a key tax threshold. Based on a salary of <strong id="st-salary" style="color:var(--text-primary,#1a1a1a);">£60,000</strong>, here is what each target would take — and the effective relief on the money you put into your pension. <span style="color:var(--text-tertiary,#888);">Estimate only — not financial advice.</span></p>
+
+    <div id="targets-list" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:0.8rem;margin-top:1.15rem;"></div>
+
+    <div id="targets-none" style="display:none;margin-top:1rem;padding:0.85rem 1rem;background:var(--accent-light,#eef6f1);border:1px solid var(--border,#e5e1da);border-radius:var(--radius,14px);font-size:0.86rem;color:var(--text-secondary,#555);line-height:1.6;">
+      Your salary is at or below the £50,270 higher-rate threshold, so these threshold-based targets don't apply yet. Salary sacrifice still saves you 20% income tax and 8% National Insurance on every pound sacrificed — see the result above.
+    </div>
+
+    <details class="faq-item" style="margin-top:1.1rem;"><summary class="faq-q" style="cursor:pointer;font-weight:700;">Why the £100,000 and £60,000 targets matter most</summary><div class="faq-a" style="font-size:0.86rem;color:var(--text-secondary,#555);line-height:1.7;padding-top:0.5rem;">Between £100,000 and £125,140 you lose £1 of your £12,570 Personal Allowance for every £2 earned, creating an <strong>effective 60% tax rate</strong> — so sacrificing in this band gives the highest relief of all. Between £60,000 and £80,000 the High Income Child Benefit Charge claws back Child Benefit if you or your partner claim it, so sacrificing under £60,000 can be worth far more than the headline tax saving. These figures use your full take-home before and after, so the relief shown already accounts for the taper.</div></details>
+  </div>
+</section>
+
 <!-- HOW IT WORKS -->
 <section class="section" id="how-it-works" style="padding-top:0.9rem;padding-bottom:0.75rem;">
   <div class="section-label">How it works</div>
@@ -1107,6 +1124,41 @@ function calculate() {
   // Sticky bar
   setText('srAfter', fmt(after.annual) + '/yr');
   setText('srSaving', fmt(taxSaving + niSaving) + '/yr');
+
+  updateTargets(gross, region);
+}
+
+// Smart sacrifice targets — reuses takeHome() so the effective relief already reflects the
+// 60% Personal-Allowance-taper band. Pure client-side, no server call.
+function updateTargets(gross, region) {
+  const salEl = document.getElementById('st-salary'); if (salEl) salEl.textContent = fmt(gross);
+  const list = document.getElementById('targets-list');
+  const none = document.getElementById('targets-none');
+  if (!list) return;
+  const defs = [
+    { th: 100000, tag: 'Restore Personal Allowance', detail: 'Drops you to £100,000 and restores your full £12,570 tax-free allowance — the 60% effective-rate band.' },
+    { th: 60000,  tag: 'Avoid Child Benefit charge', detail: 'Drops you to £60,000 — removes the High Income Child Benefit Charge if you or your partner claim it.' },
+    { th: 50270,  tag: 'Into the basic-rate band',   detail: 'Drops you to £50,270 — every sacrificed pound saves 40% income tax plus 2% NI.' },
+  ];
+  const before = takeHome(gross, region);
+  let html = '';
+  for (const d of defs) {
+    if (gross > d.th + 1) {
+      const sac = gross - d.th;
+      const after = takeHome(d.th, region);
+      const netCost = Math.max(0, before.annual - after.annual);
+      const relief = sac > 0 ? Math.round((1 - netCost / sac) * 100) : 0;
+      html += '<div style="border:1px solid var(--border,#e5e1da);border-radius:var(--radius,14px);padding:0.9rem 1rem;background:var(--surface,#fff);">'
+        + '<div style="font-size:0.72rem;font-weight:700;color:var(--accent,#1B6B4A);text-transform:uppercase;letter-spacing:0.03em;">' + d.tag + '</div>'
+        + '<div style="font-size:1.4rem;font-weight:800;color:var(--text-primary,#1a1a1a);font-variant-numeric:tabular-nums;margin:0.2rem 0 0.1rem;">' + fmt(sac) + '<span style="font-size:0.78rem;font-weight:600;color:var(--text-tertiary,#888);"> to sacrifice</span></div>'
+        + '<div style="font-size:0.8rem;color:var(--text-secondary,#555);line-height:1.5;">' + d.detail + '</div>'
+        + '<div style="display:flex;justify-content:space-between;margin-top:0.6rem;padding-top:0.55rem;border-top:1px solid var(--border,#e5e1da);font-size:0.82rem;"><span style="color:var(--text-tertiary,#888);">Net cost to you</span><span style="font-weight:700;color:var(--text-primary,#1a1a1a);font-variant-numeric:tabular-nums;">' + fmt(netCost) + '/yr</span></div>'
+        + '<div style="display:flex;justify-content:space-between;font-size:0.82rem;margin-top:0.2rem;"><span style="color:var(--text-tertiary,#888);">Effective relief</span><span style="font-weight:800;color:var(--accent,#1B6B4A);">' + relief + '%</span></div>'
+        + '</div>';
+    }
+  }
+  if (html) { list.innerHTML = html; list.style.display = ''; if (none) none.style.display = 'none'; }
+  else { list.innerHTML = ''; list.style.display = 'none'; if (none) none.style.display = 'block'; }
 }
 
 function setSalary(v) {
